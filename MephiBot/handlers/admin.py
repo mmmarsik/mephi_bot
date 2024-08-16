@@ -17,20 +17,18 @@ class IsAdminFilter(BaseFilter):
     async def __call__(self, message: Message) -> bool:
         return message.from_user.id in game_info.admins
 
-
 admin_router = Router()
 admin_router.message.filter(IsAdminFilter())
-
 
 class FSMStatesRegister(StatesGroup):
     choose_name = State()
     accept_info = State()
 
-
 def register_keyboard() -> ReplyKeyboardMarkup:
     keyboard = ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text="Зарегистрировать команду")]
+            [KeyboardButton(text="Зарегистрировать команду")],
+            [KeyboardButton(text="Показать команды"), KeyboardButton(text="Статус станций")]
         ],
         resize_keyboard=True
     )
@@ -40,7 +38,9 @@ def register_keyboard() -> ReplyKeyboardMarkup:
 async def cmd_start(message: Message):
     logging.info(f"Админ {message.from_user.id} вызвал команду /start")
     await message.answer(f"Привет, {message.from_user.first_name}, твоя роль - админ.\n"
-                         f"Чтобы зарегистрировать команду, нажми на кнопку или введи: /register",
+                         f"Чтобы зарегистрировать команду, нажми на кнопку ниже или введи: /register\n"
+                         f"Чтобы посмотреть список станций и их статус нажми на кнопку ниже или введи /stations\n"
+                         f"Чтобы посмотреть список зарегистрированных команд нажми на кнопку ниже или введи /showteams",
                          reply_markup=register_keyboard()
                          )
 
@@ -155,6 +155,7 @@ async def cheking_not_correct_name(message: Message, state: FSMContext):
     )
 
 @admin_router.message(Command("showteams"))
+@admin_router.message(F.text == "Показать команды")
 async def cmd_show_teams(message: Message):
     logging.info(f"Админ {message.from_user.id} запросил список команд")
     string_teams_presentation = "Зарегистрированные команды:\n"
@@ -164,8 +165,9 @@ async def cmd_show_teams(message: Message):
         await message.answer(string_teams_presentation)
     else:
         await message.answer("Пока что не было зарегистрировано ни одной команды")
-
+        
 @admin_router.message(Command("stations"))
+@admin_router.message(F.text == "Статус станций")
 async def cmd_show_stations(message: Message):
     logging.info(f"Админ {message.from_user.id} запросил состояние станций")
     status_emojis = {

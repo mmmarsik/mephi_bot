@@ -15,7 +15,7 @@ dp = Dispatcher(storage=storage)
 game_info = GameInfo(
     caretakers={1808760043: "Shreks-1"},
     admins={593807464, 1413950580},
-    location_list=[("Shreks", 1), ("Taxi", 1), ("Water-Sport", 1)]
+    location_list=[("Shreks", 1), ("Taxi", 1), ("Water-Sport", 1), ("Chalyan", 1), ("Chill", 1)]
 )
 
 logging.basicConfig(
