@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class StationStatus(Enum):
     FREE, WAITING, IN_PROGRESS = range(3)
 
@@ -8,7 +9,7 @@ class Station():
     def __init__(self, name: str):
         self.name = name
         self.status = StationStatus.FREE
-    
+
     def __eq__(self, other):
         if isinstance(other, Station):
             return self.name == other.name
@@ -16,7 +17,7 @@ class Station():
 
     def __hash__(self):
         return hash(self.name)
-    
+
     def IsFree(self) -> bool:
         return self.status == StationStatus.FREE
 
@@ -28,7 +29,7 @@ class Station():
 
     def GetName(self) -> str:
         return self.name
-    
+
     def WriteStatus(self) -> str:
         if self.status == StationStatus.FREE:
             return "Free"
@@ -43,20 +44,19 @@ class Location():
         self.name: str = location_name
         self.stations: list[Station] = []
 
-
         for i in range(1, number_of_stations + 1):
             station_name: str = self.name + "-" + str(i)
             self.stations.append(Station(station_name))
-        
+
     def GetName(self) -> str:
         return self.name
 
 
 class Team():
-    def __init__(self, name: str, to_visit_list: list[Location]) -> None:
+    def __init__(self, name: str, to_visit_list: list[str]) -> None:
         self.name = name
         self.to_visit_list = to_visit_list
-    
+
     def __eq__(self, other):
         if isinstance(other, Team):
             return self.name == other.name
@@ -66,14 +66,14 @@ class Team():
         return hash(self.name)
 
     def ToVisitLocation(self, location_name: str):
-        
+
         for location in self.to_visit_list:
-            if location.GetName() == location_name:
+            if location == location_name:
                 location_to_remove = location
-        
+
         self.to_visit_list.remove(location_to_remove)
 
-    def GetToVisitList(self) -> list[Location]:
+    def GetToVisitList(self) -> list[str]:
         return self.to_visit_list
 
     def GetName(self) -> str:
@@ -82,27 +82,26 @@ class Team():
 
 class GameInfo:
     def __init__(self, caretakers: dict[int, str], admins: set[int], location_list: list[tuple[str, int]]):
-        self.caretakers: dict[int, Station] = dict()
+        self.caretakers: dict[int, str] = dict()
         self.admins = admins
         self.locations: set[Location] = set()
         self.teams: set[Team] = set()
-        self.team_on_station: dict[Station, Team] = dict()
+        self.team_on_station: dict[str, str] = dict()
 
         for elem in location_list:
-
-            self.locations.add(Location(location_name=elem[0], number_of_stations=elem[1]))
-
-        for caretaker_id, station_name in caretakers.items():
-            self.caretakers[caretaker_id] = Station(station_name)
+            self.locations.add(
+                Location(location_name=elem[0], number_of_stations=elem[1]))
 
     def AddTeam(self, team_name: str):
-        self.teams.add(Team(team_name, self.locations.copy()))
+        to_visit_list: list[str] = [location.GetName()
+                                    for location in self.locations]
+        self.teams.add(Team(team_name, to_visit_list))
 
-    def SendTeamOnStation(self, team: Team, station: Station):
-        self.team_on_station[station] = team
-    
-    def ResetTeamOnStation(self, station: Station):
-        self.team_on_station[station] = None
+    def SendTeamOnStation(self, team_name: str, station_name: str):
+        self.team_on_station[station_name] = team_name
+
+    def ResetTeamOnStation(self, station_name: str):
+        self.team_on_station[station_name] = None
 
     def GetTeamByTeamName(self, team_name: str):
         for team in self.teams:
@@ -115,29 +114,41 @@ class GameInfo:
             if team_.GetName() == team_name:
                 team = team_
 
-        to_visit_list: list[Location] = team.GetToVisitList()
+        to_visit_list: list[str] = team.GetToVisitList()
 
-        for location in to_visit_list:
-            for station in location.stations:
-                if station.IsFree():
-                    return station
+        for location in self.locations:
+            if location.GetName() in to_visit_list:
+                for station in location.stations:
+                    if station.IsFree():
+                        return station
 
         print(f"None in GetNextFreeStation")
         return None
 
     def GetStationByID(self, caretaker_id: int) -> Station | None:
-        return self.caretakers.get(caretaker_id, None)
-    
+        print(f"GetStationByID was called")
+        station_name: str = self.caretakers.get(caretaker_id, None)
+        location_name: str = station_name[:-2]
+        for location in self.locations:
+            if location.GetName() == location_name:
+                for station in location.stations:
+                    return station
+        return None
+
     def GetIDByStationName(self, station_name: str) -> int | None:
         for id, station in self.caretakers.items():
             if station_name == station.GetName():
                 return id
         return None
-    
-    def GetTeamByStation(self, station: Station) -> Team:    
-        return self.team_on_station.get(station, None)
 
+    def GetTeamByStation(self, station_name: str) -> Team | None:
+        team_name = self.team_on_station.get(station_name, None)
 
-    
-        
+        if team_name is None:
+            return None
 
+        for team in self.teams:
+            if team.GetName() == team_name:
+                return team
+            
+        return None
