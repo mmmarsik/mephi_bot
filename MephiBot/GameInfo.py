@@ -111,8 +111,6 @@ class GameInfo:
         return None
 
     def GetNextFreeStation(self, team_name: str) -> Station | None:
-        team: Team = str()
-
         for team_ in self.teams:
             if team_.GetName() == team_name:
                 team = team_
