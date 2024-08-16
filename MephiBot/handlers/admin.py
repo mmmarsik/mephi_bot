@@ -154,22 +154,26 @@ async def cmd_show_teams(message: Message):
 
 @admin_router.message(Command("stations"))
 async def cmd_show_stations(message: Message):
-    station_and_status: dict[Station, StationStatus] = dict()
+    status_emojis = {
+        StationStatus.FREE: "🟢 Свободна",
+        StationStatus.WAITING: "🟡 Ожидание",
+        StationStatus.IN_PROGRESS: "🔴 В процессе"
+    }
+    
+    answer_repr = "📍 Состояние станций\n\n"
+    
     for location in game_info.locations:
+        answer_repr += f"{location.GetName()}\n"
         for station in location.stations:
-            station_and_status[station] = station.status
+            status_text = status_emojis.get(station.status, "Неизвестный статус")
+            answer_repr += f"- {station.GetName()}: {status_text}\n"
+        answer_repr += "\n"  
     
-    answer_repr = str()
-    for station_, status_ in station_and_status.items():
-        answer_repr += station_.GetName()
-        answer_repr += " status is "
-        answer_repr += station.WriteStatus()
-        answer_repr += "\n"
-    
-    if len(answer_repr) > 0:
+    if len(answer_repr.strip()) > 0:
         await message.answer(answer_repr)
     else:
-        await message.answer(f"Пока еще не было зарегистрировано ни одной команды")
+        await message.answer("Пока еще не было зарегистрировано ни одной станции.")
+
 
 
 @admin_router.message(StateFilter(FSMStatesRegister.accept_info), F.text.lower() == "нет")
