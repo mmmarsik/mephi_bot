@@ -141,6 +141,22 @@ async def cheking_correct_name(message: Message, state: FSMContext):
                          reply_markup=register_keyboard())
 
 
+
+@admin_router.message(StateFilter(FSMStatesRegister.accept_info), F.text.lower() == "нет")
+async def cheking_correct_name(message: Message, state: FSMContext):
+    await state.clear()
+    await message.answer(f"Процесс регистрации был отменен, чтобы повторить напишите /register")
+
+
+@admin_router.message(StateFilter(FSMStatesRegister.accept_info))
+async def cheking_not_correct_name(message: Message, state: FSMContext):
+    await message.answer(
+        f'Вы отправили что-то некорректное\n\n'
+        f'Пожалуйста, напишите Да, если название верно, иначе напишите Нет\n\n'
+        f'Если вы хотите прервать заполнение - '
+        f'отправьте команду /cancel'
+    )
+
 @admin_router.message(Command("showteams"))
 async def cmd_show_teams(message: Message):
     string_teams_presentation: str = ""
@@ -166,6 +182,7 @@ async def cmd_show_stations(message: Message):
         answer_repr += f"{location.GetName()}\n"
         for station in location.stations:
             status_text = status_emojis.get(station.status, "Неизвестный статус")
+            print(f"запущен /stations статус станции {station.GetName()} это {station.WriteStatus()}")
             answer_repr += f"- {station.GetName()}: {status_text}\n"
         answer_repr += "\n"  
     
@@ -173,20 +190,3 @@ async def cmd_show_stations(message: Message):
         await message.answer(answer_repr)
     else:
         await message.answer("Пока еще не было зарегистрировано ни одной станции.")
-
-
-
-@admin_router.message(StateFilter(FSMStatesRegister.accept_info), F.text.lower() == "нет")
-async def cheking_correct_name(message: Message, state: FSMContext):
-    await state.clear()
-    await message.answer(f"Процесс регистрации был отменен, чтобы повторить напишите /register")
-
-
-@admin_router.message(StateFilter(FSMStatesRegister.accept_info))
-async def cheking_not_correct_name(message: Message, state: FSMContext):
-    await message.answer(
-        f'Вы отправили что-то некорректное\n\n'
-        f'Пожалуйста, напишите Да, если название верно, иначе напишите Нет\n\n'
-        f'Если вы хотите прервать заполнение - '
-        f'отправьте команду /cancel'
-    )
