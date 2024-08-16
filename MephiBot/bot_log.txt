@@ -1,0 +1,1089 @@
+2024-08-16 11:51:02 | start_polling | Start polling
+2024-08-16 11:51:02 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 11:51:26 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 11:51:26 | feed_update | Update id=612799412 is handled. Duration 258 ms by bot id=7317277427
+2024-08-16 11:51:30 | process_name_sent | Админ 593807464 ввел название команды: ufa-1
+2024-08-16 11:51:30 | feed_update | Update id=612799413 is handled. Duration 116 ms by bot id=7317277427
+2024-08-16 11:51:31 | cheking_correct_name | Команда ufa-1 успешно зарегистрирована
+2024-08-16 11:51:31 | cheking_correct_name | Команда ufa-1 отправлена на станцию Shreks-1
+2024-08-16 11:51:32 | feed_update | Update id=612799414 is handled. Duration 1000 ms by bot id=7317277427
+2024-08-16 11:51:37 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 11:51:37 | feed_update | Update id=612799415 is handled. Duration 92 ms by bot id=7317277427
+2024-08-16 11:51:43 | feed_update | Update id=612799416 is handled. Duration 108 ms by bot id=7317277427
+2024-08-16 11:51:46 | feed_update | Update id=612799417 is handled. Duration 461 ms by bot id=7317277427
+2024-08-16 11:51:49 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 11:51:50 | feed_update | Update id=612799418 is handled. Duration 103 ms by bot id=7317277427
+2024-08-16 12:09:10 | start_polling | Start polling
+2024-08-16 12:09:10 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 12:09:25 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 12:09:25 | feed_update | Update id=612799419 is handled. Duration 235 ms by bot id=7317277427
+2024-08-16 12:09:28 | process_name_sent | Админ 593807464 ввел название команды: ufa
+2024-08-16 12:09:28 | feed_update | Update id=612799420 is handled. Duration 128 ms by bot id=7317277427
+2024-08-16 12:09:29 | cheking_correct_name | Команда ufa успешно зарегистрирована
+2024-08-16 12:09:29 | cheking_correct_name | Команда ufa отправлена на станцию Taxi-1
+2024-08-16 12:09:29 | feed_update | Update id=612799421 is handled. Duration 94 ms by bot id=7317277427
+2024-08-16 12:09:34 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 12:09:34 | feed_update | Update id=612799422 is handled. Duration 129 ms by bot id=7317277427
+2024-08-16 12:10:00 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 12:10:00 | feed_update | Update id=612799423 is handled. Duration 343 ms by bot id=7317277427
+2024-08-16 12:10:04 | process_name_sent | Админ 593807464 ввел название команды: x
+2024-08-16 12:10:04 | feed_update | Update id=612799424 is handled. Duration 111 ms by bot id=7317277427
+2024-08-16 12:10:06 | cheking_correct_name | Команда x успешно зарегистрирована
+2024-08-16 12:10:06 | cheking_correct_name | Команда x отправлена на станцию Shreks-1
+2024-08-16 12:10:06 | feed_update | Update id=612799425 is handled. Duration 585 ms by bot id=7317277427
+2024-08-16 12:10:11 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 12:10:11 | feed_update | Update id=612799426 is handled. Duration 97 ms by bot id=7317277427
+2024-08-16 12:10:14 | feed_update | Update id=612799427 is handled. Duration 96 ms by bot id=7317277427
+2024-08-16 12:10:16 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 12:10:16 | feed_update | Update id=612799428 is handled. Duration 131 ms by bot id=7317277427
+2024-08-16 12:10:18 | feed_update | Update id=612799429 is handled. Duration 110 ms by bot id=7317277427
+2024-08-16 12:10:20 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 12:10:20 | feed_update | Update id=612799430 is handled. Duration 168 ms by bot id=7317277427
+2024-08-16 14:00:01 | start_polling | Start polling
+2024-08-16 14:00:01 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 14:00:11 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 14:00:11 | feed_update | Update id=612799431 is handled. Duration 331 ms by bot id=7317277427
+2024-08-16 14:00:13 | process_name_sent | Админ 593807464 ввел название команды: ufa
+2024-08-16 14:00:14 | feed_update | Update id=612799432 is handled. Duration 147 ms by bot id=7317277427
+2024-08-16 14:00:16 | cheking_correct_name | Команда ufa успешно зарегистрирована
+2024-08-16 14:00:16 | feed_update | Update id=612799433 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:00:16 | _process_update | Cause exception while process update id=612799433 by bot id=7317277427
+AttributeError: 'str' object has no attribute 'stations'
+Traceback (most recent call last):
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/handlers/admin.py", line 114, in cheking_correct_name
+    next_station: Station = game_info.GetNextFreeStation(team_name)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/GameInfo.py", line 120, in GetNextFreeStation
+    for station in location.stations:
+                   ^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'stations'
+2024-08-16 14:06:08 | start_polling | Start polling
+2024-08-16 14:06:08 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 14:06:15 | cmd_start | Админ 593807464 вызвал команду /start
+2024-08-16 14:06:16 | feed_update | Update id=612799434 is handled. Duration 377 ms by bot id=7317277427
+2024-08-16 14:06:17 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 14:06:17 | feed_update | Update id=612799435 is handled. Duration 128 ms by bot id=7317277427
+2024-08-16 14:06:18 | process_name_sent | Админ 593807464 ввел название команды: ufa
+2024-08-16 14:06:18 | feed_update | Update id=612799436 is handled. Duration 112 ms by bot id=7317277427
+2024-08-16 14:06:21 | cheking_correct_name | Команда ufa успешно зарегистрирована
+2024-08-16 14:06:21 | cheking_correct_name | Команда ufa отправлена на станцию Taxi-1
+2024-08-16 14:06:21 | feed_update | Update id=612799437 is handled. Duration 212 ms by bot id=7317277427
+2024-08-16 14:06:27 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 14:06:27 | feed_update | Update id=612799438 is handled. Duration 205 ms by bot id=7317277427
+2024-08-16 14:06:29 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 14:06:29 | feed_update | Update id=612799439 is handled. Duration 169 ms by bot id=7317277427
+2024-08-16 14:06:37 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 14:06:37 | feed_update | Update id=612799440 is handled. Duration 114 ms by bot id=7317277427
+2024-08-16 14:06:40 | process_name_sent | Админ 593807464 ввел название команды: grek
+2024-08-16 14:06:40 | feed_update | Update id=612799441 is handled. Duration 102 ms by bot id=7317277427
+2024-08-16 14:06:41 | cheking_correct_name | Команда grek успешно зарегистрирована
+2024-08-16 14:06:41 | cheking_correct_name | Команда grek отправлена на станцию Shreks-1
+2024-08-16 14:06:41 | feed_update | Update id=612799442 is handled. Duration 226 ms by bot id=7317277427
+2024-08-16 14:06:51 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 14:06:52 | feed_update | Update id=612799443 is handled. Duration 121 ms by bot id=7317277427
+2024-08-16 14:07:23 | feed_update | Update id=612799444 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:07:24 | feed_update | Update id=612799445 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:07:52 | feed_update | Update id=612799446 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:07:52 | feed_update | Update id=612799447 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:07:52 | feed_update | Update id=612799448 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:07:52 | feed_update | Update id=612799449 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:07:53 | feed_update | Update id=612799450 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:07:53 | feed_update | Update id=612799451 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:07:54 | feed_update | Update id=612799452 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:07:54 | feed_update | Update id=612799453 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:07:55 | feed_update | Update id=612799454 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:07:55 | feed_update | Update id=612799455 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:07:56 | feed_update | Update id=612799456 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:09:09 | start_polling | Start polling
+2024-08-16 14:09:10 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 14:09:22 | feed_update | Update id=612799457 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:09:31 | cmd_start | Админ 593807464 вызвал команду /start
+2024-08-16 14:09:31 | feed_update | Update id=612799458 is handled. Duration 364 ms by bot id=7317277427
+2024-08-16 14:09:33 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 14:09:33 | feed_update | Update id=612799459 is handled. Duration 154 ms by bot id=7317277427
+2024-08-16 14:09:34 | process_name_sent | Админ 593807464 ввел название команды: as
+2024-08-16 14:09:34 | feed_update | Update id=612799460 is handled. Duration 154 ms by bot id=7317277427
+2024-08-16 14:09:35 | cheking_correct_name | Команда as успешно зарегистрирована
+2024-08-16 14:09:35 | cheking_correct_name | Команда as отправлена на станцию Water-Sport-1
+2024-08-16 14:09:35 | feed_update | Update id=612799461 is handled. Duration 169 ms by bot id=7317277427
+2024-08-16 14:09:38 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 14:09:38 | feed_update | Update id=612799462 is handled. Duration 125 ms by bot id=7317277427
+2024-08-16 14:09:39 | process_name_sent | Админ 593807464 ввел название команды: as
+2024-08-16 14:09:40 | feed_update | Update id=612799463 is handled. Duration 113 ms by bot id=7317277427
+2024-08-16 14:09:41 | cheking_correct_name | Админ 593807464 отменил процесс регистрации команды
+2024-08-16 14:09:41 | feed_update | Update id=612799464 is handled. Duration 96 ms by bot id=7317277427
+2024-08-16 14:09:43 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 14:09:43 | feed_update | Update id=612799465 is handled. Duration 153 ms by bot id=7317277427
+2024-08-16 14:09:44 | process_name_sent | Админ 593807464 ввел название команды: aff
+2024-08-16 14:09:44 | feed_update | Update id=612799466 is handled. Duration 163 ms by bot id=7317277427
+2024-08-16 14:09:45 | cheking_correct_name | Команда aff успешно зарегистрирована
+2024-08-16 14:09:45 | cheking_correct_name | Команда aff отправлена на станцию Taxi-1
+2024-08-16 14:09:46 | feed_update | Update id=612799467 is handled. Duration 247 ms by bot id=7317277427
+2024-08-16 14:09:47 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 14:09:47 | feed_update | Update id=612799468 is handled. Duration 155 ms by bot id=7317277427
+2024-08-16 14:09:49 | process_name_sent | Админ 593807464 ввел название команды: aa
+2024-08-16 14:09:49 | feed_update | Update id=612799469 is handled. Duration 141 ms by bot id=7317277427
+2024-08-16 14:09:50 | cheking_correct_name | Команда aa успешно зарегистрирована
+2024-08-16 14:09:50 | cheking_correct_name | Команда aa отправлена на станцию Shreks-1
+2024-08-16 14:09:50 | feed_update | Update id=612799470 is handled. Duration 274 ms by bot id=7317277427
+2024-08-16 14:09:52 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 14:09:52 | feed_update | Update id=612799471 is handled. Duration 176 ms by bot id=7317277427
+2024-08-16 14:09:54 | process_name_sent | Админ 593807464 ввел название команды: sadf
+2024-08-16 14:09:54 | feed_update | Update id=612799472 is handled. Duration 114 ms by bot id=7317277427
+2024-08-16 14:09:55 | cheking_correct_name | Команда sadf успешно зарегистрирована
+2024-08-16 14:09:55 | cheking_correct_name | Все станции заняты, невозможно отправить команду на станцию
+2024-08-16 14:09:55 | feed_update | Update id=612799473 is handled. Duration 131 ms by bot id=7317277427
+2024-08-16 14:10:04 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 14:10:04 | feed_update | Update id=612799474 is handled. Duration 219 ms by bot id=7317277427
+2024-08-16 14:11:23 | start_polling | Start polling
+2024-08-16 14:11:23 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 14:11:23 | feed_update | Update id=612799475 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:11:31 | feed_update | Update id=612799476 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:11:32 | feed_update | Update id=612799477 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:11:32 | feed_update | Update id=612799478 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:11:32 | feed_update | Update id=612799479 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 14:11:32 | feed_update | Update id=612799480 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 15:12:56 | _listen_updates | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2024-08-16 15:12:56 | _listen_updates | Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7317277427)
+2024-08-16 15:13:07 | _listen_updates | Connection established (tryings = 1, bot id = 7317277427)
+2024-08-16 20:29:05 | start_polling | Start polling
+2024-08-16 20:29:05 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 20:29:22 | cmd_start | Админ 593807464 вызвал команду /start
+2024-08-16 20:29:23 | feed_update | Update id=612799481 is handled. Duration 284 ms by bot id=7317277427
+2024-08-16 20:29:25 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 20:29:25 | feed_update | Update id=612799482 is handled. Duration 200 ms by bot id=7317277427
+2024-08-16 20:29:26 | process_name_sent | Админ 593807464 ввел название команды: ads
+2024-08-16 20:29:26 | feed_update | Update id=612799483 is handled. Duration 172 ms by bot id=7317277427
+2024-08-16 20:29:27 | cheking_correct_name | Команда ads успешно зарегистрирована
+2024-08-16 20:29:27 | cheking_correct_name | Команда ads отправлена на станцию Shreks-1
+2024-08-16 20:29:27 | feed_update | Update id=612799484 is handled. Duration 130 ms by bot id=7317277427
+2024-08-16 20:29:35 | feed_update | Update id=612799485 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:29:36 | feed_update | Update id=612799486 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:29:36 | feed_update | Update id=612799487 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:29:36 | feed_update | Update id=612799488 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:29:36 | feed_update | Update id=612799489 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:30:33 | start_polling | Start polling
+2024-08-16 20:30:33 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 20:30:40 | feed_update | Update id=612799490 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:34:38 | start_polling | Start polling
+2024-08-16 20:34:38 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 20:34:41 | __call__ | IsCaretakerFilter: 593807464 is caretaker: False
+2024-08-16 20:34:41 | cmd_start | Админ 593807464 вызвал команду /start
+2024-08-16 20:34:41 | feed_update | Update id=612799491 is handled. Duration 393 ms by bot id=7317277427
+2024-08-16 20:34:51 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: False
+2024-08-16 20:34:51 | feed_update | Update id=612799492 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:35:10 | _signal_stop_polling | Received SIGINT signal
+2024-08-16 20:35:10 | _polling | Polling stopped for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 20:35:10 | start_polling | Polling stopped
+2024-08-16 20:39:03 | start_polling | Start polling
+2024-08-16 20:39:03 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 20:39:07 | feed_update | Update id=612799493 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:39:15 | feed_update | Update id=612799494 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:39:15 | feed_update | Update id=612799495 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:39:15 | feed_update | Update id=612799496 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:39:16 | feed_update | Update id=612799497 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:39:16 | feed_update | Update id=612799498 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:39:16 | feed_update | Update id=612799499 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:39:16 | feed_update | Update id=612799500 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:39:16 | feed_update | Update id=612799501 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:39:17 | feed_update | Update id=612799502 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:39:48 | start_polling | Start polling
+2024-08-16 20:39:48 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 20:40:08 | feed_update | Update id=612799503 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:40:08 | _process_update | Cause exception while process update id=612799503 by bot id=7317277427
+TypeError: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/handlers/caretaker.py", line 30, in cmd_start
+    station = game_info.GetStationByID(message.from_user.id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/GameInfo.py", line 131, in GetStationByID
+    location_name: str = station_name[:-2]
+                         ~~~~~~~~~~~~^^^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-08-16 20:40:08 | feed_update | Update id=612799504 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:40:08 | _process_update | Cause exception while process update id=612799504 by bot id=7317277427
+TypeError: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/handlers/caretaker.py", line 30, in cmd_start
+    station = game_info.GetStationByID(message.from_user.id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/GameInfo.py", line 131, in GetStationByID
+    location_name: str = station_name[:-2]
+                         ~~~~~~~~~~~~^^^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-08-16 20:40:08 | feed_update | Update id=612799505 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:40:08 | _process_update | Cause exception while process update id=612799505 by bot id=7317277427
+TypeError: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/handlers/caretaker.py", line 30, in cmd_start
+    station = game_info.GetStationByID(message.from_user.id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/GameInfo.py", line 131, in GetStationByID
+    location_name: str = station_name[:-2]
+                         ~~~~~~~~~~~~^^^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-08-16 20:40:21 | start_polling | Start polling
+2024-08-16 20:40:21 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 20:40:25 | feed_update | Update id=612799506 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:40:25 | _process_update | Cause exception while process update id=612799506 by bot id=7317277427
+TypeError: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/handlers/caretaker.py", line 30, in cmd_start
+    station = game_info.GetStationByID(message.from_user.id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/GameInfo.py", line 131, in GetStationByID
+    location_name: str = station_name[:-2]
+                         ~~~~~~~~~~~~^^^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-08-16 20:43:39 | start_polling | Start polling
+2024-08-16 20:43:39 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 20:43:42 | feed_update | Update id=612799507 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:43:46 | feed_update | Update id=612799508 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:43:47 | feed_update | Update id=612799509 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:43:47 | feed_update | Update id=612799510 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:45:11 | start_polling | Start polling
+2024-08-16 20:45:11 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 20:45:14 | feed_update | Update id=612799511 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:45:42 | start_polling | Start polling
+2024-08-16 20:45:42 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 20:45:45 | feed_update | Update id=612799512 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:49:57 | start_polling | Start polling
+2024-08-16 20:49:57 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 20:49:59 | feed_update | Update id=612799513 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 20:49:59 | _process_update | Cause exception while process update id=612799513 by bot id=7317277427
+TypeError: cannot unpack non-iterable int object
+Traceback (most recent call last):
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 157, in _propagate_event
+    result, data = await observer.check_root_filters(event, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 94, in check
+    check = await event_filter.call(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/handlers/caretaker.py", line 17, in __call__
+    for caretaker_id, _ in game_info.caretakers:
+        ^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable int object
+2024-08-16 21:53:49 | start_polling | Start polling
+2024-08-16 21:53:49 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 21:53:51 | feed_update | Update id=612799514 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 21:53:51 | _process_update | Cause exception while process update id=612799514 by bot id=7317277427
+TypeError: cannot unpack non-iterable int object
+Traceback (most recent call last):
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 157, in _propagate_event
+    result, data = await observer.check_root_filters(event, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 94, in check
+    check = await event_filter.call(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/handlers/caretaker.py", line 17, in __call__
+    for caretaker_id, _ in game_info.caretakers:
+        ^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable int object
+2024-08-16 21:55:23 | start_polling | Start polling
+2024-08-16 21:55:23 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 21:55:26 | feed_update | Update id=612799515 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 21:55:26 | _process_update | Cause exception while process update id=612799515 by bot id=7317277427
+TypeError: cannot unpack non-iterable int object
+Traceback (most recent call last):
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 157, in _propagate_event
+    result, data = await observer.check_root_filters(event, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 94, in check
+    check = await event_filter.call(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/handlers/caretaker.py", line 18, in __call__
+    for caretaker_id, _ in game_info.caretakers:
+        ^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable int object
+2024-08-16 21:58:21 | start_polling | Start polling
+2024-08-16 21:58:21 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 21:58:24 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 21:58:24 | cmd_start | Caretaker 1808760043 запустил команду /start для станции Shreks-1
+2024-08-16 21:58:24 | feed_update | Update id=612799516 is handled. Duration 254 ms by bot id=7317277427
+2024-08-16 21:58:30 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 21:58:30 | cmd_work | Caretaker 1808760043 запустил команду /go
+2024-08-16 21:58:31 | feed_update | Update id=612799517 is handled. Duration 130 ms by bot id=7317277427
+2024-08-16 21:58:31 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 21:58:31 | accept_new_task | Caretaker 1808760043 попытался принять новую команду, но на станции Shreks-1 нет команды
+2024-08-16 21:58:31 | feed_update | Update id=612799518 is handled. Duration 106 ms by bot id=7317277427
+2024-08-16 21:58:32 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 21:58:32 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но на станции Shreks-1 нет команды
+2024-08-16 21:58:32 | feed_update | Update id=612799519 is handled. Duration 103 ms by bot id=7317277427
+2024-08-16 21:58:38 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 21:58:38 | cmd_start | Админ 593807464 вызвал команду /start
+2024-08-16 21:58:38 | feed_update | Update id=612799520 is handled. Duration 123 ms by bot id=7317277427
+2024-08-16 21:58:40 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 21:58:40 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 21:58:40 | feed_update | Update id=612799521 is handled. Duration 109 ms by bot id=7317277427
+2024-08-16 21:58:42 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 21:58:42 | process_name_sent | Админ 593807464 ввел название команды: ufa
+2024-08-16 21:58:42 | feed_update | Update id=612799522 is handled. Duration 153 ms by bot id=7317277427
+2024-08-16 21:58:43 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 21:58:43 | cheking_correct_name | Команда ufa успешно зарегистрирована
+2024-08-16 21:58:43 | cheking_correct_name | Команда ufa отправлена на станцию Taxi-1
+2024-08-16 21:58:43 | feed_update | Update id=612799523 is not handled. Duration 1 ms by bot id=7317277427
+2024-08-16 21:58:43 | _process_update | Cause exception while process update id=612799523 by bot id=7317277427
+AttributeError: 'str' object has no attribute 'GetName'
+Traceback (most recent call last):
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 49, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/handlers/admin.py", line 130, in cheking_correct_name
+    next_caretaker_id: int = game_info.GetIDByStationName(next_station.GetName())
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/marsel/my_projects_github_repo/my_tg_bot_for_Mephi/mephi_bot/MephiBot/GameInfo.py", line 140, in GetIDByStationName
+    if station_name == station.GetName():
+                       ^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'GetName'
+2024-08-16 22:01:28 | start_polling | Start polling
+2024-08-16 22:01:28 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 22:01:32 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:01:32 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:01:32 | feed_update | Update id=612799524 is handled. Duration 361 ms by bot id=7317277427
+2024-08-16 22:01:34 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:01:34 | process_name_sent | Админ 593807464 ввел название команды: asd
+2024-08-16 22:01:34 | feed_update | Update id=612799525 is handled. Duration 136 ms by bot id=7317277427
+2024-08-16 22:01:35 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:01:35 | cheking_correct_name | Команда asd успешно зарегистрирована
+2024-08-16 22:01:35 | cheking_correct_name | Команда asd отправлена на станцию Shreks-1
+2024-08-16 22:01:35 | cheking_correct_name | Найден куратор с id 1808760043 к нему идет команда asd
+2024-08-16 22:01:36 | feed_update | Update id=612799526 is handled. Duration 802 ms by bot id=7317277427
+2024-08-16 22:01:37 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:01:37 | cmd_show_teams | Админ 593807464 запросил список команд
+2024-08-16 22:01:37 | feed_update | Update id=612799527 is handled. Duration 184 ms by bot id=7317277427
+2024-08-16 22:01:44 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:01:44 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:01:45 | feed_update | Update id=612799528 is handled. Duration 158 ms by bot id=7317277427
+2024-08-16 22:01:55 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 22:01:55 | accept_new_task | Caretaker 1808760043 попытался принять новую команду, но на станции Shreks-1 нет команды
+2024-08-16 22:01:55 | feed_update | Update id=612799529 is handled. Duration 114 ms by bot id=7317277427
+2024-08-16 22:01:58 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 22:01:58 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но на станции Shreks-1 нет команды
+2024-08-16 22:01:58 | feed_update | Update id=612799530 is handled. Duration 126 ms by bot id=7317277427
+2024-08-16 22:02:00 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 22:02:00 | accept_new_task | Caretaker 1808760043 попытался принять новую команду, но на станции Shreks-1 нет команды
+2024-08-16 22:02:00 | feed_update | Update id=612799531 is handled. Duration 138 ms by bot id=7317277427
+2024-08-16 22:02:01 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:02:01 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:02:01 | feed_update | Update id=612799532 is handled. Duration 147 ms by bot id=7317277427
+2024-08-16 22:03:24 | start_polling | Start polling
+2024-08-16 22:03:24 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 22:03:28 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:03:28 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:03:28 | feed_update | Update id=612799533 is handled. Duration 310 ms by bot id=7317277427
+2024-08-16 22:03:30 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:03:30 | process_name_sent | Админ 593807464 ввел название команды: sd
+2024-08-16 22:03:30 | feed_update | Update id=612799534 is handled. Duration 187 ms by bot id=7317277427
+2024-08-16 22:03:31 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:03:31 | cheking_correct_name | Команда sd успешно зарегистрирована
+2024-08-16 22:03:31 | cheking_correct_name | Команда sd отправлена на станцию Shreks-1
+2024-08-16 22:03:31 | cheking_correct_name | Найден куратор с id 1808760043 к нему идет команда sd
+2024-08-16 22:03:31 | feed_update | Update id=612799535 is handled. Duration 507 ms by bot id=7317277427
+2024-08-16 22:03:34 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 22:03:34 | accept_new_task | Caretaker 1808760043 попытался принять новую команду, но станция Shreks-1 уже занята
+2024-08-16 22:03:34 | feed_update | Update id=612799536 is handled. Duration 127 ms by bot id=7317277427
+2024-08-16 22:03:39 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 22:03:39 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но станция Shreks-1 не в процессе работы
+2024-08-16 22:03:39 | feed_update | Update id=612799537 is handled. Duration 182 ms by bot id=7317277427
+2024-08-16 22:03:46 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:03:46 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:03:46 | feed_update | Update id=612799538 is handled. Duration 134 ms by bot id=7317277427
+2024-08-16 22:07:16 | start_polling | Start polling
+2024-08-16 22:07:16 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 22:07:19 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:19 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:07:19 | feed_update | Update id=612799539 is handled. Duration 280 ms by bot id=7317277427
+2024-08-16 22:07:20 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:20 | process_name_sent | Админ 593807464 ввел название команды: asd
+2024-08-16 22:07:20 | feed_update | Update id=612799540 is handled. Duration 169 ms by bot id=7317277427
+2024-08-16 22:07:22 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:22 | cheking_correct_name | Команда asd успешно зарегистрирована
+2024-08-16 22:07:22 | cheking_correct_name | Команда asd отправлена на станцию Water-Sport-1
+2024-08-16 22:07:22 | feed_update | Update id=612799541 is handled. Duration 175 ms by bot id=7317277427
+2024-08-16 22:07:24 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:24 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:07:24 | feed_update | Update id=612799542 is handled. Duration 190 ms by bot id=7317277427
+2024-08-16 22:07:26 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:26 | process_name_sent | Админ 593807464 ввел название команды: ads
+2024-08-16 22:07:26 | feed_update | Update id=612799543 is handled. Duration 211 ms by bot id=7317277427
+2024-08-16 22:07:27 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:27 | cheking_correct_name | Команда ads успешно зарегистрирована
+2024-08-16 22:07:27 | cheking_correct_name | Команда ads отправлена на станцию Taxi-1
+2024-08-16 22:07:27 | feed_update | Update id=612799544 is handled. Duration 158 ms by bot id=7317277427
+2024-08-16 22:07:29 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:29 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:07:29 | feed_update | Update id=612799545 is handled. Duration 106 ms by bot id=7317277427
+2024-08-16 22:07:30 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:30 | process_name_sent | Админ 593807464 ввел название команды: asd
+2024-08-16 22:07:30 | feed_update | Update id=612799546 is handled. Duration 189 ms by bot id=7317277427
+2024-08-16 22:07:31 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:31 | cheking_correct_name | Админ 593807464 отменил процесс регистрации команды
+2024-08-16 22:07:32 | feed_update | Update id=612799547 is handled. Duration 241 ms by bot id=7317277427
+2024-08-16 22:07:33 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:33 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:07:33 | feed_update | Update id=612799548 is handled. Duration 210 ms by bot id=7317277427
+2024-08-16 22:07:35 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:35 | process_name_sent | Админ 593807464 ввел название команды: fr
+2024-08-16 22:07:35 | feed_update | Update id=612799549 is handled. Duration 160 ms by bot id=7317277427
+2024-08-16 22:07:36 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:36 | cheking_correct_name | Команда fr успешно зарегистрирована
+2024-08-16 22:07:36 | cheking_correct_name | Команда fr отправлена на станцию Shreks-1
+2024-08-16 22:07:36 | cheking_correct_name | Найден куратор с id 1808760043 к нему идет команда fr
+2024-08-16 22:07:36 | feed_update | Update id=612799550 is handled. Duration 369 ms by bot id=7317277427
+2024-08-16 22:07:46 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:46 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:07:46 | feed_update | Update id=612799551 is handled. Duration 122 ms by bot id=7317277427
+2024-08-16 22:07:51 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 22:07:51 | accept_new_task | Caretaker 1808760043 принял команду fr на станцию Shreks-1
+2024-08-16 22:07:51 | feed_update | Update id=612799552 is handled. Duration 208 ms by bot id=7317277427
+2024-08-16 22:07:54 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:07:54 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:07:54 | feed_update | Update id=612799553 is handled. Duration 197 ms by bot id=7317277427
+2024-08-16 22:08:01 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 22:08:01 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но все станции заняты
+2024-08-16 22:08:01 | feed_update | Update id=612799554 is handled. Duration 143 ms by bot id=7317277427
+2024-08-16 22:08:03 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:08:03 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:08:03 | feed_update | Update id=612799555 is handled. Duration 190 ms by bot id=7317277427
+2024-08-16 22:37:02 | start_polling | Start polling
+2024-08-16 22:37:02 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 22:37:13 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:37:13 | cmd_start | Админ 593807464 вызвал команду /start
+2024-08-16 22:37:13 | feed_update | Update id=612799556 is handled. Duration 313 ms by bot id=7317277427
+2024-08-16 22:37:16 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:37:16 | feed_update | Update id=612799557 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 22:37:24 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:37:24 | feed_update | Update id=612799558 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 22:37:31 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:37:31 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:37:31 | feed_update | Update id=612799559 is handled. Duration 256 ms by bot id=7317277427
+2024-08-16 22:37:33 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:37:33 | process_name_sent | Админ 593807464 ввел название команды: ufa
+2024-08-16 22:37:33 | feed_update | Update id=612799560 is handled. Duration 208 ms by bot id=7317277427
+2024-08-16 22:37:34 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:37:34 | cheking_correct_name | Команда ufa успешно зарегистрирована
+2024-08-16 22:37:34 | cheking_correct_name | Команда ufa отправлена на станцию Water-Sport-1
+2024-08-16 22:37:34 | feed_update | Update id=612799561 is handled. Duration 143 ms by bot id=7317277427
+2024-08-16 22:37:44 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:37:44 | feed_update | Update id=612799562 is not handled. Duration 0 ms by bot id=7317277427
+2024-08-16 22:37:45 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:37:45 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:37:45 | feed_update | Update id=612799563 is handled. Duration 132 ms by bot id=7317277427
+2024-08-16 22:37:46 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:37:46 | process_name_sent | Админ 593807464 ввел название команды: ad
+2024-08-16 22:37:46 | feed_update | Update id=612799564 is handled. Duration 124 ms by bot id=7317277427
+2024-08-16 22:37:47 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:37:47 | cheking_correct_name | Команда ad успешно зарегистрирована
+2024-08-16 22:37:47 | cheking_correct_name | Команда ad отправлена на станцию Taxi-1
+2024-08-16 22:37:47 | feed_update | Update id=612799565 is handled. Duration 167 ms by bot id=7317277427
+2024-08-16 22:37:50 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:37:50 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:37:50 | feed_update | Update id=612799566 is handled. Duration 109 ms by bot id=7317277427
+2024-08-16 22:37:51 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:37:51 | process_name_sent | Админ 593807464 ввел название команды: sa
+2024-08-16 22:37:51 | feed_update | Update id=612799567 is handled. Duration 139 ms by bot id=7317277427
+2024-08-16 22:37:52 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:37:52 | cheking_correct_name | Команда sa успешно зарегистрирована
+2024-08-16 22:37:52 | cheking_correct_name | Команда sa отправлена на станцию Shreks-1
+2024-08-16 22:37:52 | cheking_correct_name | Найден куратор с id 1808760043 к нему идет команда sa
+2024-08-16 22:37:53 | feed_update | Update id=612799568 is handled. Duration 534 ms by bot id=7317277427
+2024-08-16 22:40:34 | start_polling | Start polling
+2024-08-16 22:40:34 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 22:40:39 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:40:39 | cmd_start | Админ 593807464 вызвал команду /start
+2024-08-16 22:40:39 | feed_update | Update id=612799569 is handled. Duration 281 ms by bot id=7317277427
+2024-08-16 22:40:46 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:40:46 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:40:46 | feed_update | Update id=612799570 is handled. Duration 225 ms by bot id=7317277427
+2024-08-16 22:40:48 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:40:48 | cmd_show_teams | Админ 593807464 запросил список команд
+2024-08-16 22:40:49 | feed_update | Update id=612799571 is handled. Duration 147 ms by bot id=7317277427
+2024-08-16 22:40:50 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:40:50 | cmd_show_teams | Админ 593807464 запросил список команд
+2024-08-16 22:40:50 | feed_update | Update id=612799572 is handled. Duration 105 ms by bot id=7317277427
+2024-08-16 22:40:53 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:40:53 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:40:54 | feed_update | Update id=612799573 is handled. Duration 207 ms by bot id=7317277427
+2024-08-16 22:40:55 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:40:55 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:40:55 | feed_update | Update id=612799574 is handled. Duration 167 ms by bot id=7317277427
+2024-08-16 22:40:57 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:40:57 | process_name_sent | Админ 593807464 ввел название команды: ufa
+2024-08-16 22:40:57 | feed_update | Update id=612799575 is handled. Duration 251 ms by bot id=7317277427
+2024-08-16 22:40:58 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:40:58 | cheking_correct_name | Команда ufa успешно зарегистрирована
+2024-08-16 22:40:58 | cheking_correct_name | Команда ufa отправлена на станцию Water-Sport-1
+2024-08-16 22:40:58 | feed_update | Update id=612799576 is handled. Duration 162 ms by bot id=7317277427
+2024-08-16 22:41:00 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:00 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:41:00 | feed_update | Update id=612799577 is handled. Duration 180 ms by bot id=7317277427
+2024-08-16 22:41:01 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:01 | process_name_sent | Админ 593807464 ввел название команды: ufa
+2024-08-16 22:41:01 | feed_update | Update id=612799578 is handled. Duration 149 ms by bot id=7317277427
+2024-08-16 22:41:03 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:03 | cheking_correct_name | Попытка зарегистрировать существующую команду: ufa
+2024-08-16 22:41:03 | feed_update | Update id=612799579 is handled. Duration 135 ms by bot id=7317277427
+2024-08-16 22:41:04 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:04 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:41:05 | feed_update | Update id=612799580 is handled. Duration 174 ms by bot id=7317277427
+2024-08-16 22:41:09 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:09 | process_name_sent | Админ 593807464 ввел название команды: apple
+2024-08-16 22:41:09 | feed_update | Update id=612799581 is handled. Duration 110 ms by bot id=7317277427
+2024-08-16 22:41:10 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:10 | cheking_correct_name | Команда apple успешно зарегистрирована
+2024-08-16 22:41:10 | cheking_correct_name | Команда apple отправлена на станцию Taxi-1
+2024-08-16 22:41:10 | feed_update | Update id=612799582 is handled. Duration 137 ms by bot id=7317277427
+2024-08-16 22:41:14 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:14 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:41:14 | feed_update | Update id=612799583 is handled. Duration 151 ms by bot id=7317277427
+2024-08-16 22:41:15 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:15 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:41:15 | feed_update | Update id=612799584 is handled. Duration 126 ms by bot id=7317277427
+2024-08-16 22:41:17 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:17 | process_name_sent | Админ 593807464 ввел название команды: a
+2024-08-16 22:41:17 | feed_update | Update id=612799585 is handled. Duration 189 ms by bot id=7317277427
+2024-08-16 22:41:22 | start_polling | Start polling
+2024-08-16 22:41:22 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 22:41:28 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:28 | cmd_start | Админ 593807464 вызвал команду /start
+2024-08-16 22:41:29 | feed_update | Update id=612799586 is handled. Duration 319 ms by bot id=7317277427
+2024-08-16 22:41:33 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:33 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:41:33 | feed_update | Update id=612799587 is handled. Duration 98 ms by bot id=7317277427
+2024-08-16 22:41:34 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:34 | process_name_sent | Админ 593807464 ввел название команды: a
+2024-08-16 22:41:35 | feed_update | Update id=612799588 is handled. Duration 123 ms by bot id=7317277427
+2024-08-16 22:41:35 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:35 | cheking_correct_name | Команда a успешно зарегистрирована
+2024-08-16 22:41:35 | cheking_correct_name | Команда a отправлена на станцию Water-Sport-1
+2024-08-16 22:41:36 | feed_update | Update id=612799589 is handled. Duration 187 ms by bot id=7317277427
+2024-08-16 22:41:37 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:37 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:41:37 | feed_update | Update id=612799590 is handled. Duration 250 ms by bot id=7317277427
+2024-08-16 22:41:38 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:38 | process_name_sent | Админ 593807464 ввел название команды: b
+2024-08-16 22:41:38 | feed_update | Update id=612799591 is handled. Duration 119 ms by bot id=7317277427
+2024-08-16 22:41:39 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:41:39 | cheking_correct_name | Команда b успешно зарегистрирована
+2024-08-16 22:41:39 | cheking_correct_name | Команда b отправлена на станцию Taxi-1
+2024-08-16 22:41:39 | feed_update | Update id=612799592 is handled. Duration 146 ms by bot id=7317277427
+2024-08-16 22:42:26 | start_polling | Start polling
+2024-08-16 22:42:26 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 22:42:29 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:29 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:42:30 | feed_update | Update id=612799593 is handled. Duration 294 ms by bot id=7317277427
+2024-08-16 22:42:31 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:31 | process_name_sent | Админ 593807464 ввел название команды: a
+2024-08-16 22:42:31 | feed_update | Update id=612799594 is handled. Duration 168 ms by bot id=7317277427
+2024-08-16 22:42:32 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:32 | cheking_correct_name | Команда a успешно зарегистрирована
+2024-08-16 22:42:32 | cheking_correct_name | Команда a отправлена на станцию Taxi-1
+2024-08-16 22:42:32 | feed_update | Update id=612799595 is handled. Duration 186 ms by bot id=7317277427
+2024-08-16 22:42:34 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:34 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:42:34 | feed_update | Update id=612799596 is handled. Duration 118 ms by bot id=7317277427
+2024-08-16 22:42:35 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:35 | process_name_sent | Админ 593807464 ввел название команды: b
+2024-08-16 22:42:35 | feed_update | Update id=612799597 is handled. Duration 209 ms by bot id=7317277427
+2024-08-16 22:42:36 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:36 | cheking_correct_name | Команда b успешно зарегистрирована
+2024-08-16 22:42:36 | cheking_correct_name | Команда b отправлена на станцию Water-Sport-1
+2024-08-16 22:42:36 | feed_update | Update id=612799598 is handled. Duration 187 ms by bot id=7317277427
+2024-08-16 22:42:37 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:37 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:42:38 | feed_update | Update id=612799599 is handled. Duration 186 ms by bot id=7317277427
+2024-08-16 22:42:38 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:38 | process_name_sent | Админ 593807464 ввел название команды: c
+2024-08-16 22:42:38 | feed_update | Update id=612799600 is handled. Duration 168 ms by bot id=7317277427
+2024-08-16 22:42:40 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:40 | cheking_correct_name | Команда c успешно зарегистрирована
+2024-08-16 22:42:40 | cheking_correct_name | Команда c отправлена на станцию Chalyan-1
+2024-08-16 22:42:40 | feed_update | Update id=612799601 is handled. Duration 104 ms by bot id=7317277427
+2024-08-16 22:42:41 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:41 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:42:41 | feed_update | Update id=612799602 is handled. Duration 178 ms by bot id=7317277427
+2024-08-16 22:42:42 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:42 | process_name_sent | Админ 593807464 ввел название команды: d
+2024-08-16 22:42:42 | feed_update | Update id=612799603 is handled. Duration 156 ms by bot id=7317277427
+2024-08-16 22:42:43 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:43 | cheking_correct_name | Команда d успешно зарегистрирована
+2024-08-16 22:42:43 | cheking_correct_name | Команда d отправлена на станцию Chill-1
+2024-08-16 22:42:44 | feed_update | Update id=612799604 is handled. Duration 190 ms by bot id=7317277427
+2024-08-16 22:42:45 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:45 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:42:45 | feed_update | Update id=612799605 is handled. Duration 99 ms by bot id=7317277427
+2024-08-16 22:42:47 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:47 | process_name_sent | Админ 593807464 ввел название команды: e
+2024-08-16 22:42:47 | feed_update | Update id=612799606 is handled. Duration 151 ms by bot id=7317277427
+2024-08-16 22:42:48 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:48 | cheking_correct_name | Команда e успешно зарегистрирована
+2024-08-16 22:42:48 | cheking_correct_name | Команда e отправлена на станцию Shreks-1
+2024-08-16 22:42:48 | cheking_correct_name | Найден куратор с id 1808760043 к нему идет команда e
+2024-08-16 22:42:49 | feed_update | Update id=612799607 is handled. Duration 464 ms by bot id=7317277427
+2024-08-16 22:42:51 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:51 | cmd_show_teams | Админ 593807464 запросил список команд
+2024-08-16 22:42:51 | feed_update | Update id=612799608 is handled. Duration 171 ms by bot id=7317277427
+2024-08-16 22:42:52 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:52 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:42:52 | feed_update | Update id=612799609 is handled. Duration 156 ms by bot id=7317277427
+2024-08-16 22:42:57 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 22:42:57 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но станция Shreks-1 не в процессе работы
+2024-08-16 22:42:57 | feed_update | Update id=612799610 is handled. Duration 204 ms by bot id=7317277427
+2024-08-16 22:42:59 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:42:59 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:42:59 | feed_update | Update id=612799611 is handled. Duration 170 ms by bot id=7317277427
+2024-08-16 22:43:00 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 22:43:00 | accept_new_task | Caretaker 1808760043 принял команду e на станцию Shreks-1
+2024-08-16 22:43:00 | feed_update | Update id=612799612 is handled. Duration 102 ms by bot id=7317277427
+2024-08-16 22:43:01 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:43:01 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:43:02 | feed_update | Update id=612799613 is handled. Duration 1096 ms by bot id=7317277427
+2024-08-16 22:43:10 | start_polling | Start polling
+2024-08-16 22:43:10 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-16 22:43:14 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:43:14 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:43:14 | feed_update | Update id=612799614 is handled. Duration 257 ms by bot id=7317277427
+2024-08-16 22:43:15 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:43:15 | process_name_sent | Админ 593807464 ввел название команды: a
+2024-08-16 22:43:15 | feed_update | Update id=612799615 is handled. Duration 100 ms by bot id=7317277427
+2024-08-16 22:43:16 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:43:16 | cheking_correct_name | Команда a успешно зарегистрирована
+2024-08-16 22:43:16 | cheking_correct_name | Команда a отправлена на станцию Chill-1
+2024-08-16 22:43:16 | feed_update | Update id=612799616 is handled. Duration 112 ms by bot id=7317277427
+2024-08-16 22:43:18 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:43:18 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-16 22:43:18 | feed_update | Update id=612799617 is handled. Duration 151 ms by bot id=7317277427
+2024-08-16 22:43:19 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:43:19 | process_name_sent | Админ 593807464 ввел название команды: b
+2024-08-16 22:43:19 | feed_update | Update id=612799618 is handled. Duration 104 ms by bot id=7317277427
+2024-08-16 22:43:21 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:43:21 | cheking_correct_name | Команда b успешно зарегистрирована
+2024-08-16 22:43:21 | cheking_correct_name | Команда b отправлена на станцию Shreks-1
+2024-08-16 22:43:21 | cheking_correct_name | Найден куратор с id 1808760043 к нему идет команда b
+2024-08-16 22:43:21 | feed_update | Update id=612799619 is handled. Duration 356 ms by bot id=7317277427
+2024-08-16 22:43:23 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:43:23 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:43:24 | feed_update | Update id=612799620 is handled. Duration 183 ms by bot id=7317277427
+2024-08-16 22:43:25 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 22:43:25 | accept_new_task | Caretaker 1808760043 принял команду b на станцию Shreks-1
+2024-08-16 22:43:25 | feed_update | Update id=612799621 is handled. Duration 141 ms by bot id=7317277427
+2024-08-16 22:43:27 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:43:27 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:43:27 | feed_update | Update id=612799622 is handled. Duration 541 ms by bot id=7317277427
+2024-08-16 22:43:29 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-16 22:43:29 | redirect_task | Команда b перенаправлена со станции Shreks-1 на станцию Taxi-1
+2024-08-16 22:43:29 | feed_update | Update id=612799623 is handled. Duration 138 ms by bot id=7317277427
+2024-08-16 22:43:31 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-16 22:43:31 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-16 22:43:31 | feed_update | Update id=612799624 is handled. Duration 156 ms by bot id=7317277427
