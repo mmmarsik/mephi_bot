@@ -12,13 +12,12 @@ from bot import game_info, bot, logging
 class IsCaretakerFilter(BaseFilter):
     async def __call__(self, message: Message) -> bool:
         user_id : int = message.from_user.id
-        print(f"{user_id}")
-        print(len(game_info.caretakers))
-        for caretaker_id, _ in game_info.caretakers:
+        for caretaker_id, _ in game_info.caretakers.items():
             if caretaker_id == user_id:
-                is_caretaker = True
-                logging.info(f"IsCaretakerFilter: {user_id} is caretaker: {is_caretaker}")
+                logging.info(f"IsCaretakerFilter: {user_id} is caretaker: {True}")
                 return True
+            
+        logging.info(f"IsCaretakerFilter: {user_id} is caretaker: {True}")
         return False
 
 
@@ -71,7 +70,7 @@ async def accept_new_task(message: types.Message):
         await message.reply("На вашей станции нет команды.")
         return
 
-    if not station.IsFree():
+    if not station.IsWaiting() :
         logging.warning(f"Caretaker {message.from_user.id} попытался принять новую команду, но станция {station.GetName()} уже занята")
         await message.reply("Станция уже занята.")
         return

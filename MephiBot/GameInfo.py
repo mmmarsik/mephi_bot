@@ -23,6 +23,9 @@ class Station():
 
     def IsInProgress(self) -> bool:
         return self.status == StationStatus.IN_PROGRESS
+    
+    def IsWaiting(self) -> bool:
+        return self.status == StationStatus.WAITING
 
     def SetStatus(self, status: StationStatus):
         self.status = status
@@ -103,7 +106,7 @@ class GameInfo:
     def ResetTeamOnStation(self, station_name: str):
         self.team_on_station[station_name] = None
 
-    def GetTeamByTeamName(self, team_name: str):
+    def GetTeamByTeamName(self, team_name: str) -> Team | None:
         for team in self.teams:
             if team.GetName() == team_name:
                 return team
@@ -137,7 +140,7 @@ class GameInfo:
 
     def GetIDByStationName(self, station_name: str) -> int | None:
         for id, station in self.caretakers.items():
-            if station_name == station.GetName():
+            if station_name == station:
                 return id
         return None
 
