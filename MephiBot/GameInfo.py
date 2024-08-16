@@ -82,7 +82,7 @@ class Team():
 
 class GameInfo:
     def __init__(self, caretakers: dict[int, str], admins: set[int], location_list: list[tuple[str, int]]):
-        self.caretakers: dict[int, str] = dict()
+        self.caretakers: dict[int, str] = caretakers
         self.admins = admins
         self.locations: set[Location] = set()
         self.teams: set[Team] = set()
