@@ -87,8 +87,8 @@ async def redirect_task(message: types.Message):
         if next_station is not None:
 
             station.SetStatus(StationStatus.FREE)
-            print(f"статус станции {station.GetName()} это {station.WriteStatus()}")
             game_info.ResetTeamOnStation(station)
+            print(f"статус станции {station.GetName()} это {station.WriteStatus()}")
 
             next_station.SetStatus(StationStatus.WAITING)
             print(f"trying to visit location called {next_station.GetName()[:-2]}")

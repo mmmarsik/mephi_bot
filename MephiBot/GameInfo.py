@@ -55,8 +55,6 @@ class Location():
 class Team():
     def __init__(self, name: str, to_visit_list: list[Location]) -> None:
         self.name = name
-        self.to_visit_list = []
-
         self.to_visit_list = to_visit_list
     
     def __eq__(self, other):
