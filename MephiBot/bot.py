@@ -18,6 +18,7 @@ game_info = GameInfo(
     location_list=[("Shreks", 1), ("Taxi", 1)]
 )
 
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(funcName)s | %(message)s",
