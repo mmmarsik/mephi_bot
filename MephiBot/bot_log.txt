@@ -1190,3 +1190,35 @@ AttributeError: 'str' object has no attribute 'GetName'
 2024-08-18 00:17:38 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
 2024-08-18 00:17:38 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но все станции заняты
 2024-08-18 00:17:38 | feed_update | Update id=612799655 is handled. Duration 129 ms by bot id=7317277427
+2024-08-18 01:22:02 | start_polling | Start polling
+2024-08-18 01:22:02 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-18 01:22:09 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 01:22:09 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-18 01:22:10 | feed_update | Update id=612799656 is handled. Duration 340 ms by bot id=7317277427
+2024-08-18 01:22:11 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 01:22:11 | process_name_sent | Админ 593807464 ввел название команды: a
+2024-08-18 01:22:11 | feed_update | Update id=612799657 is handled. Duration 115 ms by bot id=7317277427
+2024-08-18 01:22:12 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 01:22:12 | cheking_correct_name | Команда a успешно зарегистрирована
+2024-08-18 01:22:12 | cheking_correct_name | Команда a отправлена на станцию Shreks-1
+2024-08-18 01:22:12 | cheking_correct_name | Найден куратор с id 1808760043 к нему идет команда a
+2024-08-18 01:22:13 | feed_update | Update id=612799658 is handled. Duration 420 ms by bot id=7317277427
+2024-08-18 01:22:14 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 01:22:14 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-18 01:22:14 | feed_update | Update id=612799659 is handled. Duration 102 ms by bot id=7317277427
+2024-08-18 01:22:15 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 01:22:15 | process_name_sent | Админ 593807464 ввел название команды: b
+2024-08-18 01:22:15 | feed_update | Update id=612799660 is handled. Duration 135 ms by bot id=7317277427
+2024-08-18 01:22:16 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 01:22:16 | cheking_correct_name | Команда b успешно зарегистрирована
+2024-08-18 01:22:16 | cheking_correct_name | Команда b отправлена на станцию Taxi-1
+2024-08-18 01:22:17 | feed_update | Update id=612799661 is handled. Duration 217 ms by bot id=7317277427
+2024-08-18 01:22:18 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 01:22:18 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 01:22:18 | feed_update | Update id=612799662 is handled. Duration 106 ms by bot id=7317277427
+2024-08-18 01:22:23 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 01:22:23 | accept_new_task | Caretaker 1808760043 принял команду a на станцию Shreks-1
+2024-08-18 01:22:23 | feed_update | Update id=612799663 is handled. Duration 116 ms by bot id=7317277427
+2024-08-18 01:22:25 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 01:22:25 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но все станции заняты
+2024-08-18 01:22:25 | feed_update | Update id=612799664 is handled. Duration 109 ms by bot id=7317277427
