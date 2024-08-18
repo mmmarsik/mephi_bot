@@ -1,8 +1,10 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class StationStatus(Enum):
-    FREE, WAITING, IN_PROGRESS = range(3)
+class StationStatus(StrEnum):
+    FREE = "Free"
+    WAITING = "Waiting"
+    IN_PROGRESS = "In progress"
 
 
 class Station():
@@ -32,14 +34,6 @@ class Station():
 
     def GetName(self) -> str:
         return self.name
-
-    def WriteStatus(self) -> str:
-        if self.status == StationStatus.FREE:
-            return "Free"
-        elif self.status == StationStatus.IN_PROGRESS:
-            return "In progress"
-        elif self.status == StationStatus.WAITING:
-            return "Waiting"
 
 
 class Location():
