@@ -5,7 +5,7 @@ from aiogram import types
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from aiogram.filters import BaseFilter
 
-from GameInfo import Station, StationStatus
+from GameInfo import Station, StationStatus, Team
 from bot import game_info, bot, logging
 
 
@@ -74,7 +74,7 @@ async def accept_new_task(message: types.Message):
         logging.warning(f"Caretaker {message.from_user.id} попытался принять новую команду, но станция {station.GetName()} уже занята")
         await message.reply("Станция уже занята.")
         return
-
+    
     station.SetStatus(StationStatus.IN_PROGRESS)
     logging.info(f"Caretaker {message.from_user.id} принял команду {team.GetName()} на станцию {station.GetName()}")
     await message.reply(f"Вы успешно приняли новую команду '{team.GetName()}' на станцию {station.GetName()}.")
@@ -89,36 +89,59 @@ async def redirect_task(message: types.Message):
         return
 
     team = game_info.GetTeamByStation(station.GetName())
-    if team is None:
-        logging.info(f"Caretaker {message.from_user.id} попытался перенаправить команду, но на станции {station.GetName()} нет команды")
-        await message.reply("На вашей станции нет команды для перенаправления.")
-        return
 
-    if not station.IsInProgress():
-        logging.warning(f"Caretaker {message.from_user.id} попытался перенаправить команду, но станция {station.GetName()} не в процессе работы")
-        await message.reply("Станция не в процессе работы. Невозможно перенаправить команду.")
-        return
 
-    next_station = game_info.GetNextFreeStation(team.GetName())
-    if next_station is None:
-        logging.error(f"Caretaker {message.from_user.id} попытался перенаправить команду, но все станции заняты")
-        await message.reply("Нет доступных станций для перенаправления.")
-        return
+    if not game_info.HasLeavingTeam(station.GetName()) and not (team is None) and station.IsInProgress():
+        game_info.StartLeavingStation(station.GetName())
+        station.SetStatus(StationStatus.FREE)
 
-    station.SetStatus(StationStatus.FREE)
-    game_info.ResetTeamOnStation(station.GetName())
-    next_station.SetStatus(StationStatus.WAITING)
+        if not (team is None) and len(team.GetToVisitList()) == 0:
+            station.SetStatus(StationStatus.FREE)
+            await message.answer(f"Команда {team.GetName()} посетила все станции, некуда перенаправить ее")
 
-    location_name: str = next_station.GetName()[:-2]
-    team.ToVisitLocation(location_name)
-    next_station_caretaker_id = game_info.GetIDByStationName(next_station.GetName())
-    game_info.SendTeamOnStation(team.GetName(), next_station.GetName())
+        next_station = game_info.GetNextFreeStation(team.GetName())
+        if next_station is None:
+            logging.error(f"Caretaker {message.from_user.id} попытался перенаправить команду, но все станции заняты")
+            await message.reply("Пока что все станции заняты. Повторите попытку немного позже")
+            return
+        
+        next_station.SetStatus(StationStatus.WAITING)
+        location_name: str = next_station.GetName()[:-2]
+        team.ToVisitLocation(location_name)
+        game_info.LeaveStation(station.GetName())
+        next_station_caretaker_id = game_info.GetIDByStationName(next_station.GetName())
+        game_info.SendTeamOnStation(team.GetName(), next_station.GetName())
 
-    if next_station_caretaker_id:
-        logging.info(f"Caretaker {message.from_user.id} перенаправил команду {team.GetName()} на станцию {next_station.GetName()} (ID куратора {next_station_caretaker_id})")
-        await bot.send_message(next_station_caretaker_id, f"К вам идет команда '{team.GetName()}'.")
+        if next_station_caretaker_id:
+            logging.info(f"Caretaker {message.from_user.id} перенаправил команду {team.GetName()} на станцию {next_station.GetName()} (ID куратора {next_station_caretaker_id})")
+            await bot.send_message(next_station_caretaker_id, f"К вам идет команда '{team.GetName()}'.")
 
-    logging.info(f"Команда {team.GetName()} перенаправлена со станции {station.GetName()} на станцию {next_station.GetName()}")
-    await message.answer(f"Команда '{team.GetName()}' перенаправлена на станцию {next_station.GetName()}.")
+        logging.info(f"Команда {team.GetName()} перенаправлена со станции {station.GetName()} на станцию {next_station.GetName()}")
+        await message.answer(f"Команда '{team.GetName()}' перенаправлена на станцию {next_station.GetName()}.")
+    
+    if game_info.HasLeavingTeam(station.GetName()):
+        team_leaving_station: Team = game_info.GetLeavingTeamByStation(station.GetName())
+        next_station = game_info.GetNextFreeStation(team_leaving_station.GetName())
+        if next_station is None:
+            logging.error(f"Caretaker {message.from_user.id} попытался перенаправить команду, но все станции заняты")
+            await message.reply("Пока что все станции заняты. Повторите попытку немного позже")
+            return
+        
+        next_station.SetStatus(StationStatus.WAITING)
+        location_name: str = next_station.GetName()[:-2]
+        team_leaving_station.ToVisitLocation(location_name)
+        next_station_caretaker_id = game_info.GetIDByStationName(next_station.GetName())
+        game_info.SendTeamOnStation(team_leaving_station.GetName(), next_station.GetName()) 
+
+        if next_station_caretaker_id:
+            logging.info(f"Caretaker {message.from_user.id} перенаправил команду {team_leaving_station.GetName()} на станцию {next_station.GetName()} (ID куратора {next_station_caretaker_id})")
+            await bot.send_message(next_station_caretaker_id, f"К вам идет команда '{team.GetName()}'.")
+
+        logging.info(f"Команда {team.GetName()} перенаправлена со станции {station.GetName()} на станцию {next_station.GetName()}")
+        await message.answer(f"Команда '{team.GetName()}' перенаправлена на станцию {next_station.GetName()}.")
+
+
+        
+        
 
 

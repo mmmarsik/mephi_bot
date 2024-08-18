@@ -23,7 +23,7 @@ class Station():
 
     def IsInProgress(self) -> bool:
         return self.status == StationStatus.IN_PROGRESS
-    
+
     def IsWaiting(self) -> bool:
         return self.status == StationStatus.WAITING
 
@@ -84,16 +84,26 @@ class Team():
 
 
 class GameInfo:
+
     def __init__(self, caretakers: dict[int, str], admins: set[int], location_list: list[tuple[str, int]]):
         self.caretakers: dict[int, str] = caretakers
         self.admins = admins
         self.locations: set[Location] = set()
         self.teams: set[Team] = set()
         self.team_on_station: dict[str, str] = dict()
+        self.team_leaving_station: dict[str, str] = dict()
 
         for elem in location_list:
             self.locations.add(
                 Location(location_name=elem[0], number_of_stations=elem[1]))
+        
+        for location in self.locations:
+            for station in location.stations:
+                self.team_on_station[station.GetName()] = None
+        
+        for location in self.locations:
+            for station in location.stations:
+                self.team_leaving_station[station.GetName()] = None
 
     def AddTeam(self, team_name: str):
         to_visit_list: list[str] = [location.GetName()
@@ -103,8 +113,13 @@ class GameInfo:
     def SendTeamOnStation(self, team_name: str, station_name: str):
         self.team_on_station[station_name] = team_name
 
-    def ResetTeamOnStation(self, station_name: str):
-        self.team_on_station[station_name] = None
+    def StartLeavingStation(self, station_name: str): 
+        team_name: str = self.team_on_station[station_name]
+        self.team_leaving_station[station_name] = team_name
+        self.team_on_station[station_name] = None 
+
+    def LeaveStation(self, station_name: str):
+        self.team_leaving_station[station_name] = None
 
     def GetTeamByTeamName(self, team_name: str) -> Team | None:
         for team in self.teams:
@@ -153,5 +168,23 @@ class GameInfo:
         for team in self.teams:
             if team.GetName() == team_name:
                 return team
-            
+
         return None
+    
+
+    def GetLeavingTeamByStation(self, station_name: str) -> Team | None:
+        team_name = self.team_leaving_station.get(station_name, None)
+
+        if team_name is None:
+            return None
+
+        for team in self.teams:
+            if team.GetName() == team_name:
+                return team
+
+        return None
+    
+    def HasLeavingTeam(self, station_name: str) -> bool:
+        return self.team_leaving_station[station_name] != None
+    
+    

@@ -1222,3 +1222,296 @@ AttributeError: 'str' object has no attribute 'GetName'
 2024-08-18 01:22:25 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
 2024-08-18 01:22:25 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но все станции заняты
 2024-08-18 01:22:25 | feed_update | Update id=612799664 is handled. Duration 109 ms by bot id=7317277427
+2024-08-18 20:58:39 | start_polling | Start polling
+2024-08-18 20:58:39 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-18 20:58:48 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 20:58:48 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-18 20:58:49 | feed_update | Update id=612799665 is handled. Duration 330 ms by bot id=7317277427
+2024-08-18 20:58:50 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 20:58:50 | process_name_sent | Админ 593807464 ввел название команды: uda
+2024-08-18 20:58:50 | feed_update | Update id=612799666 is handled. Duration 103 ms by bot id=7317277427
+2024-08-18 20:58:52 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 20:58:52 | cheking_correct_name | Команда uda успешно зарегистрирована
+2024-08-18 20:58:52 | cheking_correct_name | Команда uda отправлена на станцию Taxi-1
+2024-08-18 20:58:52 | feed_update | Update id=612799667 is handled. Duration 112 ms by bot id=7317277427
+2024-08-18 20:58:54 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 20:58:54 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 20:58:54 | feed_update | Update id=612799668 is handled. Duration 213 ms by bot id=7317277427
+2024-08-18 20:58:55 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 20:58:55 | cmd_show_teams | Админ 593807464 запросил список команд
+2024-08-18 20:58:55 | feed_update | Update id=612799669 is handled. Duration 142 ms by bot id=7317277427
+2024-08-18 20:59:04 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 20:59:04 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-18 20:59:04 | feed_update | Update id=612799670 is handled. Duration 93 ms by bot id=7317277427
+2024-08-18 20:59:05 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 20:59:05 | process_name_sent | Админ 593807464 ввел название команды: ad
+2024-08-18 20:59:05 | feed_update | Update id=612799671 is handled. Duration 93 ms by bot id=7317277427
+2024-08-18 20:59:07 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 20:59:07 | cheking_correct_name | Команда ad успешно зарегистрирована
+2024-08-18 20:59:07 | cheking_correct_name | Команда ad отправлена на станцию Shreks-1
+2024-08-18 20:59:07 | cheking_correct_name | Найден куратор с id 1808760043 к нему идет команда ad
+2024-08-18 20:59:07 | feed_update | Update id=612799672 is handled. Duration 368 ms by bot id=7317277427
+2024-08-18 20:59:09 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 20:59:09 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 20:59:09 | feed_update | Update id=612799673 is handled. Duration 102 ms by bot id=7317277427
+2024-08-18 20:59:15 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 20:59:15 | accept_new_task | Caretaker 1808760043 принял команду ad на станцию Shreks-1
+2024-08-18 20:59:15 | feed_update | Update id=612799674 is handled. Duration 190 ms by bot id=7317277427
+2024-08-18 20:59:17 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 20:59:17 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 20:59:17 | feed_update | Update id=612799675 is handled. Duration 98 ms by bot id=7317277427
+2024-08-18 20:59:19 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 20:59:19 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но все станции заняты
+2024-08-18 20:59:19 | feed_update | Update id=612799676 is handled. Duration 94 ms by bot id=7317277427
+2024-08-18 21:46:29 | start_polling | Start polling
+2024-08-18 21:46:29 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-18 21:46:35 | start_polling | Start polling
+2024-08-18 21:46:35 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-18 21:47:02 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:47:02 | cmd_start | Caretaker 1808760043 запустил команду /start для станции Shreks-1
+2024-08-18 21:47:02 | feed_update | Update id=612799678 is handled. Duration 263 ms by bot id=7317277427
+2024-08-18 21:47:05 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:47:05 | cmd_work | Caretaker 1808760043 запустил команду /go
+2024-08-18 21:47:05 | feed_update | Update id=612799679 is handled. Duration 156 ms by bot id=7317277427
+2024-08-18 21:47:22 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:47:22 | accept_new_task | Caretaker 1808760043 попытался принять новую команду, но на станции Shreks-1 нет команды
+2024-08-18 21:47:22 | feed_update | Update id=612799680 is handled. Duration 303 ms by bot id=7317277427
+2024-08-18 21:47:22 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:47:22 | feed_update | Update id=612799681 is handled. Duration 0 ms by bot id=7317277427
+2024-08-18 21:47:52 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:47:52 | cmd_start | Caretaker 832090978 запустил команду /start для станции Plov-Center-1
+2024-08-18 21:47:52 | feed_update | Update id=612799682 is handled. Duration 235 ms by bot id=7317277427
+2024-08-18 21:48:13 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:48:13 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-18 21:48:13 | feed_update | Update id=612799683 is handled. Duration 242 ms by bot id=7317277427
+2024-08-18 21:48:15 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:48:15 | process_name_sent | Админ 593807464 ввел название команды: ufa
+2024-08-18 21:48:15 | feed_update | Update id=612799684 is handled. Duration 97 ms by bot id=7317277427
+2024-08-18 21:48:16 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:48:16 | cmd_start | Caretaker 832090978 запустил команду /start для станции Plov-Center-1
+2024-08-18 21:48:16 | feed_update | Update id=612799685 is handled. Duration 152 ms by bot id=7317277427
+2024-08-18 21:48:17 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:48:17 | cheking_correct_name | Команда ufa успешно зарегистрирована
+2024-08-18 21:48:17 | cheking_correct_name | Команда ufa отправлена на станцию Plov-Center-1
+2024-08-18 21:48:17 | cheking_correct_name | Найден куратор с id 832090978 к нему идет команда ufa
+2024-08-18 21:48:17 | feed_update | Update id=612799686 is handled. Duration 346 ms by bot id=7317277427
+2024-08-18 21:48:43 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:48:43 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-18 21:48:43 | feed_update | Update id=612799687 is handled. Duration 235 ms by bot id=7317277427
+2024-08-18 21:48:47 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:48:47 | process_name_sent | Админ 593807464 ввел название команды: msk
+2024-08-18 21:48:48 | feed_update | Update id=612799688 is handled. Duration 96 ms by bot id=7317277427
+2024-08-18 21:48:49 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:48:49 | cheking_correct_name | Команда msk успешно зарегистрирована
+2024-08-18 21:48:49 | cheking_correct_name | Команда msk отправлена на станцию Shreks-1
+2024-08-18 21:48:49 | cheking_correct_name | Найден куратор с id 1808760043 к нему идет команда msk
+2024-08-18 21:48:49 | feed_update | Update id=612799689 is handled. Duration 369 ms by bot id=7317277427
+2024-08-18 21:48:50 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:48:50 | accept_new_task | Caretaker 1808760043 принял команду msk на станцию Shreks-1
+2024-08-18 21:48:51 | feed_update | Update id=612799690 is handled. Duration 210 ms by bot id=7317277427
+2024-08-18 21:49:15 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:49:15 | cmd_work | Caretaker 832090978 запустил команду /go
+2024-08-18 21:49:16 | feed_update | Update id=612799691 is handled. Duration 235 ms by bot id=7317277427
+2024-08-18 21:49:21 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:49:21 | accept_new_task | Caretaker 832090978 принял команду ufa на станцию Plov-Center-1
+2024-08-18 21:49:22 | feed_update | Update id=612799692 is handled. Duration 142 ms by bot id=7317277427
+2024-08-18 21:49:41 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:49:41 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:49:41 | feed_update | Update id=612799693 is handled. Duration 243 ms by bot id=7317277427
+2024-08-18 21:49:47 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:49:47 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:49:48 | feed_update | Update id=612799694 is handled. Duration 149 ms by bot id=7317277427
+2024-08-18 21:50:17 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:50:17 | redirect_task | Caretaker 832090978 перенаправил команду ufa на станцию Shreks-1 (ID куратора 1808760043)
+2024-08-18 21:50:17 | redirect_task | Команда ufa перенаправлена со станции Plov-Center-1 на станцию Shreks-1
+2024-08-18 21:50:17 | feed_update | Update id=612799695 is handled. Duration 550 ms by bot id=7317277427
+2024-08-18 21:50:27 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:50:27 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:50:27 | feed_update | Update id=612799696 is handled. Duration 109 ms by bot id=7317277427
+2024-08-18 21:50:31 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:50:31 | accept_new_task | Caretaker 1808760043 принял команду ufa на станцию Shreks-1
+2024-08-18 21:50:31 | feed_update | Update id=612799697 is handled. Duration 158 ms by bot id=7317277427
+2024-08-18 21:50:32 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:50:32 | redirect_task | Caretaker 1808760043 перенаправил команду msk на станцию Plov-Center-1 (ID куратора 832090978)
+2024-08-18 21:50:33 | redirect_task | Команда ufa перенаправлена со станции Shreks-1 на станцию Plov-Center-1
+2024-08-18 21:50:33 | feed_update | Update id=612799698 is handled. Duration 374 ms by bot id=7317277427
+2024-08-18 21:50:43 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:50:43 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:50:43 | feed_update | Update id=612799699 is handled. Duration 93 ms by bot id=7317277427
+2024-08-18 21:50:46 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:50:46 | accept_new_task | Caretaker 1808760043 попытался принять новую команду, но станция Shreks-1 уже занята
+2024-08-18 21:50:46 | feed_update | Update id=612799700 is handled. Duration 116 ms by bot id=7317277427
+2024-08-18 21:50:47 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:50:47 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:50:48 | feed_update | Update id=612799701 is handled. Duration 138 ms by bot id=7317277427
+2024-08-18 21:50:50 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:50:50 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:50:50 | feed_update | Update id=612799702 is handled. Duration 109 ms by bot id=7317277427
+2024-08-18 21:51:08 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:51:08 | accept_new_task | Caretaker 832090978 принял команду msk на станцию Plov-Center-1
+2024-08-18 21:51:09 | feed_update | Update id=612799703 is handled. Duration 252 ms by bot id=7317277427
+2024-08-18 21:51:12 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:51:12 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:51:12 | feed_update | Update id=612799704 is handled. Duration 227 ms by bot id=7317277427
+2024-08-18 21:51:15 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:51:15 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:51:15 | feed_update | Update id=612799705 is handled. Duration 193 ms by bot id=7317277427
+2024-08-18 21:51:16 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:51:16 | accept_new_task | Caretaker 1808760043 попытался принять новую команду, но станция Shreks-1 уже занята
+2024-08-18 21:51:16 | feed_update | Update id=612799706 is handled. Duration 207 ms by bot id=7317277427
+2024-08-18 21:51:42 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:51:42 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:51:42 | feed_update | Update id=612799707 is handled. Duration 259 ms by bot id=7317277427
+2024-08-18 21:51:43 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:51:43 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:51:43 | feed_update | Update id=612799708 is handled. Duration 136 ms by bot id=7317277427
+2024-08-18 21:51:44 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:51:44 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:51:44 | feed_update | Update id=612799709 is handled. Duration 195 ms by bot id=7317277427
+2024-08-18 21:51:44 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:51:44 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:51:44 | feed_update | Update id=612799710 is handled. Duration 102 ms by bot id=7317277427
+2024-08-18 21:51:44 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:51:44 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:51:44 | feed_update | Update id=612799711 is handled. Duration 93 ms by bot id=7317277427
+2024-08-18 21:51:45 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:51:45 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:51:45 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:51:45 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:51:45 | feed_update | Update id=612799712 is handled. Duration 118 ms by bot id=7317277427
+2024-08-18 21:51:45 | feed_update | Update id=612799713 is handled. Duration 232 ms by bot id=7317277427
+2024-08-18 21:51:46 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:51:46 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:51:46 | feed_update | Update id=612799714 is handled. Duration 121 ms by bot id=7317277427
+2024-08-18 21:51:47 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:51:47 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:51:47 | feed_update | Update id=612799715 is handled. Duration 179 ms by bot id=7317277427
+2024-08-18 21:51:47 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:51:47 | accept_new_task | Caretaker 1808760043 попытался принять новую команду, но станция Shreks-1 уже занята
+2024-08-18 21:51:47 | feed_update | Update id=612799716 is handled. Duration 164 ms by bot id=7317277427
+2024-08-18 21:51:47 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:51:47 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:51:48 | feed_update | Update id=612799717 is handled. Duration 153 ms by bot id=7317277427
+2024-08-18 21:51:48 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:51:48 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:51:48 | feed_update | Update id=612799718 is handled. Duration 117 ms by bot id=7317277427
+2024-08-18 21:51:50 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:51:50 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:51:50 | feed_update | Update id=612799719 is handled. Duration 203 ms by bot id=7317277427
+2024-08-18 21:51:51 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:51:51 | accept_new_task | Caretaker 1808760043 попытался принять новую команду, но станция Shreks-1 уже занята
+2024-08-18 21:51:51 | feed_update | Update id=612799720 is handled. Duration 156 ms by bot id=7317277427
+2024-08-18 21:51:52 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:51:52 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:51:52 | feed_update | Update id=612799721 is handled. Duration 110 ms by bot id=7317277427
+2024-08-18 21:51:56 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:51:56 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:51:56 | feed_update | Update id=612799722 is handled. Duration 108 ms by bot id=7317277427
+2024-08-18 21:51:57 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:51:57 | cmd_show_teams | Админ 593807464 запросил список команд
+2024-08-18 21:51:57 | feed_update | Update id=612799723 is handled. Duration 99 ms by bot id=7317277427
+2024-08-18 21:51:59 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:51:59 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:51:59 | feed_update | Update id=612799724 is handled. Duration 118 ms by bot id=7317277427
+2024-08-18 21:52:00 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:52:00 | accept_new_task | Caretaker 1808760043 попытался принять новую команду, но станция Shreks-1 уже занята
+2024-08-18 21:52:01 | feed_update | Update id=612799725 is handled. Duration 95 ms by bot id=7317277427
+2024-08-18 21:52:01 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:52:01 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:01 | feed_update | Update id=612799726 is handled. Duration 99 ms by bot id=7317277427
+2024-08-18 21:52:01 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:01 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:01 | feed_update | Update id=612799727 is handled. Duration 124 ms by bot id=7317277427
+2024-08-18 21:52:02 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:02 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:02 | feed_update | Update id=612799728 is handled. Duration 103 ms by bot id=7317277427
+2024-08-18 21:52:02 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:02 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:03 | feed_update | Update id=612799729 is handled. Duration 91 ms by bot id=7317277427
+2024-08-18 21:52:03 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:03 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:03 | feed_update | Update id=612799730 is handled. Duration 129 ms by bot id=7317277427
+2024-08-18 21:52:04 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:04 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:04 | feed_update | Update id=612799731 is handled. Duration 99 ms by bot id=7317277427
+2024-08-18 21:52:04 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:04 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:04 | feed_update | Update id=612799732 is handled. Duration 93 ms by bot id=7317277427
+2024-08-18 21:52:05 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:05 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:05 | feed_update | Update id=612799733 is handled. Duration 117 ms by bot id=7317277427
+2024-08-18 21:52:05 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:05 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:05 | feed_update | Update id=612799734 is handled. Duration 100 ms by bot id=7317277427
+2024-08-18 21:52:06 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:06 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:06 | feed_update | Update id=612799735 is handled. Duration 125 ms by bot id=7317277427
+2024-08-18 21:52:06 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:06 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:06 | feed_update | Update id=612799736 is handled. Duration 187 ms by bot id=7317277427
+2024-08-18 21:52:06 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:06 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:06 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:06 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:06 | feed_update | Update id=612799737 is handled. Duration 107 ms by bot id=7317277427
+2024-08-18 21:52:07 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:07 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:07 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:07 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:07 | feed_update | Update id=612799739 is handled. Duration 101 ms by bot id=7317277427
+2024-08-18 21:52:07 | feed_update | Update id=612799738 is handled. Duration 250 ms by bot id=7317277427
+2024-08-18 21:52:07 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:07 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:07 | feed_update | Update id=612799741 is handled. Duration 105 ms by bot id=7317277427
+2024-08-18 21:52:07 | feed_update | Update id=612799740 is handled. Duration 246 ms by bot id=7317277427
+2024-08-18 21:52:07 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:07 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:07 | feed_update | Update id=612799742 is handled. Duration 118 ms by bot id=7317277427
+2024-08-18 21:52:07 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:07 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:07 | feed_update | Update id=612799743 is handled. Duration 117 ms by bot id=7317277427
+2024-08-18 21:52:09 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:09 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:09 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:09 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:09 | feed_update | Update id=612799744 is handled. Duration 133 ms by bot id=7317277427
+2024-08-18 21:52:09 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:09 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:09 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:09 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:09 | feed_update | Update id=612799745 is handled. Duration 131 ms by bot id=7317277427
+2024-08-18 21:52:09 | feed_update | Update id=612799746 is handled. Duration 139 ms by bot id=7317277427
+2024-08-18 21:52:09 | feed_update | Update id=612799747 is handled. Duration 168 ms by bot id=7317277427
+2024-08-18 21:52:09 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:09 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:09 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:09 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:09 | feed_update | Update id=612799748 is handled. Duration 123 ms by bot id=7317277427
+2024-08-18 21:52:09 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:09 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:09 | feed_update | Update id=612799749 is handled. Duration 124 ms by bot id=7317277427
+2024-08-18 21:52:09 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:09 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:09 | feed_update | Update id=612799750 is handled. Duration 124 ms by bot id=7317277427
+2024-08-18 21:52:09 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:09 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:09 | feed_update | Update id=612799751 is handled. Duration 129 ms by bot id=7317277427
+2024-08-18 21:52:09 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:09 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:09 | feed_update | Update id=612799752 is handled. Duration 130 ms by bot id=7317277427
+2024-08-18 21:52:10 | feed_update | Update id=612799753 is handled. Duration 118 ms by bot id=7317277427
+2024-08-18 21:52:10 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:10 | accept_new_task | Caretaker 832090978 попытался принять новую команду, но на станции Plov-Center-1 нет команды
+2024-08-18 21:52:10 | __call__ | IsCaretakerFilter: 832090978 is caretaker: True
+2024-08-18 21:52:10 | redirect_task | Caretaker 832090978 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:10 | feed_update | Update id=612799754 is handled. Duration 102 ms by bot id=7317277427
+2024-08-18 21:52:10 | feed_update | Update id=612799755 is handled. Duration 112 ms by bot id=7317277427
+2024-08-18 21:52:23 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:52:23 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:52:23 | feed_update | Update id=612799756 is handled. Duration 249 ms by bot id=7317277427
+2024-08-18 21:52:24 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 21:52:24 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 21:52:25 | feed_update | Update id=612799757 is handled. Duration 94 ms by bot id=7317277427
+2024-08-18 21:52:27 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
+2024-08-18 21:52:27 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но все станции заняты
+2024-08-18 21:52:27 | feed_update | Update id=612799758 is handled. Duration 115 ms by bot id=7317277427
