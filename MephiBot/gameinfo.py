@@ -115,7 +115,7 @@ class GameInfo:
     def LeaveStation(self, station_name: str):
         self.team_leaving_station[station_name] = None
 
-    def GetTeamByTeamName(self, team_name: str) -> Team | None:
+    def GetTeamByName(self, team_name: str) -> Team | None:
         for team in self.teams:
             if team.GetName() == team_name:
                 return team
@@ -137,8 +137,8 @@ class GameInfo:
         print(f"None in GetNextFreeStation")
         return None
 
-    def GetStationByID(self, caretaker_id: int) -> Station | None:
-        print(f"GetStationByID was called")
+    def GetStationByCaretakerID(self, caretaker_id: int) -> Station | None:
+        print(f"GetStationByCaretakerID was called")
         station_name: str = self.caretakers.get(caretaker_id, None)
         location_name: str = station_name[:-2]
         for location in self.locations:
@@ -147,13 +147,13 @@ class GameInfo:
                     return station
         return None
 
-    def GetIDByStationName(self, station_name: str) -> int | None:
+    def GetCaretakerIDByStationName(self, station_name: str) -> int | None:
         for id, station in self.caretakers.items():
             if station_name == station:
                 return id
         return None
 
-    def GetTeamByStation(self, station_name: str) -> Team | None:
+    def GetCurrentTeamOnStation(self, station_name: str) -> Team | None:
         team_name = self.team_on_station.get(station_name, None)
 
         if team_name is None:

@@ -119,7 +119,7 @@ async def cheking_correct_name(message: Message, state: FSMContext):
         await message.answer("Произошла ошибка: Все станции заняты.")
         return
 
-    team = game_info.GetTeamByTeamName(team_name)
+    team = game_info.GetTeamByName(team_name)
     location_name: str = next_station.GetName()[:-2]
     team.ToVisitLocation(location_name)
 
@@ -127,7 +127,7 @@ async def cheking_correct_name(message: Message, state: FSMContext):
     next_station.SetStatus(StationStatus.WAITING)
     logging.info(f"Команда {team_name} отправлена на станцию {next_station.GetName()}")
 
-    next_caretaker_id: int = game_info.GetIDByStationName(next_station.GetName())
+    next_caretaker_id: int = game_info.GetCaretakerIDByStationName(next_station.GetName())
     if next_caretaker_id:
         logging.info(f"Найден куратор с id {next_caretaker_id} к нему идет команда {team_name}")
         await bot.send_message(next_caretaker_id, f"На вашу станцию направлена команда {team_name}")
