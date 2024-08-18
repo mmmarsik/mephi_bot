@@ -160,7 +160,7 @@ async def cmd_show_teams(message: Message):
     logging.info(f"Админ {message.from_user.id} запросил список команд")
     string_teams_presentation = "Зарегистрированные команды:\n"
     for team in game_info.teams:
-        string_teams_presentation += f"- {team.GetName()}\n"
+        string_teams_presentation += f"- {team.GetName()} : Осталось посетить станции {team.GetToVisitList()}\n"
     if len(game_info.teams) > 0:
         await message.answer(string_teams_presentation)
     else:

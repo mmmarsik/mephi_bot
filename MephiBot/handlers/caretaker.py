@@ -132,13 +132,14 @@ async def redirect_task(message: types.Message):
         team_leaving_station.ToVisitLocation(location_name)
         next_station_caretaker_id = game_info.GetIDByStationName(next_station.GetName())
         game_info.SendTeamOnStation(team_leaving_station.GetName(), next_station.GetName()) 
+        
 
         if next_station_caretaker_id:
             logging.info(f"Caretaker {message.from_user.id} перенаправил команду {team_leaving_station.GetName()} на станцию {next_station.GetName()} (ID куратора {next_station_caretaker_id})")
-            await bot.send_message(next_station_caretaker_id, f"К вам идет команда '{team.GetName()}'.")
+            await bot.send_message(next_station_caretaker_id, f"К вам идет команда '{team_leaving_station.GetName()}'.")
 
-        logging.info(f"Команда {team.GetName()} перенаправлена со станции {station.GetName()} на станцию {next_station.GetName()}")
-        await message.answer(f"Команда '{team.GetName()}' перенаправлена на станцию {next_station.GetName()}.")
+        logging.info(f"Команда {team_leaving_station.GetName()} перенаправлена со станции {station.GetName()} на станцию {next_station.GetName()}")
+        await message.answer(f"Команда '{team_leaving_station.GetName()}' перенаправлена на станцию {next_station.GetName()}.")
 
 
         

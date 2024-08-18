@@ -1515,3 +1515,27 @@ AttributeError: 'str' object has no attribute 'GetName'
 2024-08-18 21:52:27 | __call__ | IsCaretakerFilter: 1808760043 is caretaker: True
 2024-08-18 21:52:27 | redirect_task | Caretaker 1808760043 попытался перенаправить команду, но все станции заняты
 2024-08-18 21:52:27 | feed_update | Update id=612799758 is handled. Duration 115 ms by bot id=7317277427
+2024-08-18 22:00:44 | start_polling | Start polling
+2024-08-18 22:00:44 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-18 22:01:14 | start_polling | Start polling
+2024-08-18 22:01:14 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-18 22:01:23 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 22:01:23 | cmd_register | Админ 593807464 начал процесс регистрации команды
+2024-08-18 22:01:23 | feed_update | Update id=612799759 is handled. Duration 254 ms by bot id=7317277427
+2024-08-18 22:01:25 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 22:01:25 | process_name_sent | Админ 593807464 ввел название команды: as
+2024-08-18 22:01:25 | feed_update | Update id=612799760 is handled. Duration 102 ms by bot id=7317277427
+2024-08-18 22:01:26 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 22:01:26 | cheking_correct_name | Команда as успешно зарегистрирована
+2024-08-18 22:01:26 | cheking_correct_name | Команда as отправлена на станцию Plov-Center-1
+2024-08-18 22:01:26 | feed_update | Update id=612799761 is handled. Duration 236 ms by bot id=7317277427
+2024-08-18 22:01:29 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 22:01:29 | cmd_show_teams | Админ 593807464 запросил список команд
+2024-08-18 22:01:29 | feed_update | Update id=612799762 is handled. Duration 121 ms by bot id=7317277427
+2024-08-18 22:01:47 | __call__ | IsCaretakerFilter: 593807464 is caretaker: True
+2024-08-18 22:01:47 | cmd_show_stations | Админ 593807464 запросил состояние станций
+2024-08-18 22:01:47 | feed_update | Update id=612799763 is handled. Duration 252 ms by bot id=7317277427
+2024-08-18 22:05:37 | start_polling | Start polling
+2024-08-18 22:05:38 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
+2024-08-18 22:05:54 | start_polling | Start polling
+2024-08-18 22:05:54 | _polling | Run polling for bot @MyFirstTryAllaxbot id=7317277427 - 'MyFirstTry'
