@@ -4,8 +4,7 @@ from aiogram.types import Message
 from aiogram import types
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from aiogram.filters import BaseFilter
-
-from GameInfo import Station, StationStatus, Team
+from gameinfo import Station, StationStatus, Team
 from bot import game_info, bot, logging
 
 
@@ -27,7 +26,7 @@ caretaker_router.message.filter(IsCaretakerFilter())
 
 @caretaker_router.message(Command("start"))
 async def cmd_start(message: types.Message):
-    station = game_info.GetStationByID(message.from_user.id)
+    station = game_info.GetStationByCaretakerID(message.from_user.id)
     if station is None:
         logging.warning(f"Caretaker {message.from_user.id} попытался запустить команду /start, но не был найден для станции")
         await message.answer(f"Не было найдено станции за которую вы ответственны.")
@@ -61,13 +60,13 @@ async def cmd_work(message: types.Message):
 
 @caretaker_router.message(F.text.lower() == "принять новую команду")
 async def accept_new_task(message: types.Message):
-    station = game_info.GetStationByID(message.from_user.id)
+    station = game_info.GetStationByCaretakerID(message.from_user.id)
     if station is None:
         logging.warning(f"Caretaker {message.from_user.id} попытался принять новую команду, но его станция не найдена")
         await message.reply("Не удалось найти вашу станцию.")
         return
 
-    team = game_info.GetTeamByStation(station.GetName())
+    team = game_info.GetCurrentTeamOnStation(station.GetName())
     if team is None:
         logging.info(f"Caretaker {message.from_user.id} попытался принять новую команду, но на станции {station.GetName()} нет команды")
         await message.reply("На вашей станции нет команды.")
@@ -90,13 +89,13 @@ async def accept_new_task(message: types.Message):
 
 @caretaker_router.message(F.text.lower() == "перенаправить текущую команду")
 async def redirect_task(message: types.Message):
-    station = game_info.GetStationByID(message.from_user.id)
+    station = game_info.GetStationByCaretakerID(message.from_user.id)
     if station is None:
         logging.warning(f"Caretaker {message.from_user.id} попытался перенаправить команду, но станция не найдена")
         await message.reply("Не удалось найти вашу станцию.")
         return
 
-    team = game_info.GetTeamByStation(station.GetName())
+    team = game_info.GetCurrentTeamOnStation(station.GetName())
 
 
     if not game_info.HasLeavingTeam(station.GetName()) and not (team is None) and station.IsInProgress():
@@ -122,7 +121,7 @@ async def redirect_task(message: types.Message):
         location_name: str = next_station.GetName()[:-2]
         team.ToVisitLocation(location_name)
         game_info.LeaveStation(station.GetName())
-        next_station_caretaker_id = game_info.GetIDByStationName(next_station.GetName())
+        next_station_caretaker_id = game_info.GetCaretakerIDByStationName(next_station.GetName())
         game_info.SendTeamOnStation(team.GetName(), next_station.GetName())
 
         if next_station_caretaker_id:
@@ -145,7 +144,7 @@ async def redirect_task(message: types.Message):
         location_name: str = next_station.GetName()[:-2]
         game_info.LeaveStation(station.GetName())
         team_leaving_station.ToVisitLocation(location_name)
-        next_station_caretaker_id = game_info.GetIDByStationName(next_station.GetName())
+        next_station_caretaker_id = game_info.GetCaretakerIDByStationName(next_station.GetName())
         game_info.SendTeamOnStation(team_leaving_station.GetName(), next_station.GetName()) 
         
 
@@ -155,6 +154,19 @@ async def redirect_task(message: types.Message):
 
         logging.info(f"Команда {team_leaving_station.GetName()} перенаправлена со станции {station.GetName()} на станцию {next_station.GetName()}")
         await message.answer(f"Команда '{team_leaving_station.GetName()}' перенаправлена на станцию {next_station.GetName()}.")
+
+    if not game_info.HasLeavingTeam(station.GetName()) and not game_info.HasTeam(station.GetName()):
+        logging.warning(f"Caretaker {message.from_user.id} попытался перенаправить команду со своей станции, но на ней никого не оказалось")
+        await message.answer(f"На данной станции нет ни одной команды, некого перенаправлять")
+        return
+
+    if not game_info.HasLeavingTeam(station.GetName()) and game_info.HasTeam(station.GetName()) and station.IsWaiting():
+        await message.answer(f"Некого перенаправлять, команда еще не дошла до вашей станции, или вы забыли нажать кнопку 'Принять новую команду'.")
+        return
+    
+    print("whaaaaat")
+
+    print(game_info.HasLeavingTeam(station.GetName()))
 
 
         
