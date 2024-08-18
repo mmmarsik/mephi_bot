@@ -10,7 +10,7 @@ from aiogram import types
 from bot import bot
 from types import NoneType
 from bot import game_info
-from GameInfo import Station, Location, Team, StationStatus
+from gameinfo import Station, Location, Team, StationStatus
 from bot import logging
 
 class IsAdminFilter(BaseFilter):
