@@ -33,14 +33,17 @@ async def cmd_start(message: types.Message):
         await message.answer(f"Не было найдено станции за которую вы ответственны.")
         return
 
+    builder = ReplyKeyboardBuilder()
+    builder.add(types.KeyboardButton(text="Начать работать со станцией"))
+
     logging.info(f"Caretaker {message.from_user.id} запустил команду /start для станции {station.GetName()}")
     await message.answer(
         f"Привет, {message.from_user.full_name}, твоя станция это - {station.GetName()}\n"
-        f"Чтобы начать, напиши команду: /go"
+        f"Чтобы начать, напиши команду: /go", reply_markup=builder.as_markup(resize_keyboard=True)
     )
 
-
 @caretaker_router.message(Command("go"))
+@caretaker_router.message(F.text.lower() ==  "начать работать со станцией")
 async def cmd_work(message: types.Message):
     logging.info(f"Caretaker {message.from_user.id} запустил команду /go")
     builder = ReplyKeyboardBuilder()
@@ -75,6 +78,11 @@ async def accept_new_task(message: types.Message):
         await message.reply("Станция уже занята.")
         return
     
+    if game_info.HasLeavingTeam(station.GetName()):
+        logging.warning(f"Caretaker {message.from_user.id} попытался принять новую команду, но станция {station.GetName()} еще не отправила прошлую команду дальше")
+        await message.reply(f"Вы еще не отправили прошлую команду дальше")
+        return
+
     station.SetStatus(StationStatus.IN_PROGRESS)
     logging.info(f"Caretaker {message.from_user.id} принял команду {team.GetName()} на станцию {station.GetName()}")
     await message.reply(f"Вы успешно приняли новую команду '{team.GetName()}' на станцию {station.GetName()}.")
@@ -97,7 +105,12 @@ async def redirect_task(message: types.Message):
 
         if not (team is None) and len(team.GetToVisitList()) == 0:
             station.SetStatus(StationStatus.FREE)
-            await message.answer(f"Команда {team.GetName()} посетила все станции, некуда перенаправить ее")
+            game_info.LeaveStation(station.GetName())
+            await message.answer(f"Команда {team.GetName()} посетила все станции, некуда перенаправить ее\n\n"
+                                 f"Можете принимать новую команду, если она назначена")
+            return
+            
+
 
         next_station = game_info.GetNextFreeStation(team.GetName())
         if next_station is None:
@@ -118,6 +131,7 @@ async def redirect_task(message: types.Message):
 
         logging.info(f"Команда {team.GetName()} перенаправлена со станции {station.GetName()} на станцию {next_station.GetName()}")
         await message.answer(f"Команда '{team.GetName()}' перенаправлена на станцию {next_station.GetName()}.")
+        return
     
     if game_info.HasLeavingTeam(station.GetName()):
         team_leaving_station: Team = game_info.GetLeavingTeamByStation(station.GetName())
@@ -129,6 +143,7 @@ async def redirect_task(message: types.Message):
         
         next_station.SetStatus(StationStatus.WAITING)
         location_name: str = next_station.GetName()[:-2]
+        game_info.LeaveStation(station.GetName())
         team_leaving_station.ToVisitLocation(location_name)
         next_station_caretaker_id = game_info.GetIDByStationName(next_station.GetName())
         game_info.SendTeamOnStation(team_leaving_station.GetName(), next_station.GetName()) 

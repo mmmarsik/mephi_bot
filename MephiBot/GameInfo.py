@@ -185,6 +185,8 @@ class GameInfo:
         return None
     
     def HasLeavingTeam(self, station_name: str) -> bool:
-        return self.team_leaving_station[station_name] != None
+        if self.team_leaving_station[station_name] == None:
+            return False
+        return True
     
     
