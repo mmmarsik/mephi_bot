@@ -13,11 +13,10 @@ dp = Dispatcher(storage=storage)
 
 
 game_info = GameInfo(
-    # caretakers={1808760043: "Shreks-1", 832090978: "Plov-Center-1"},
-    caretakers={1808760043: "Shreks-1"},
-
+    
+    caretakers={1808760043: "Shreks-1"}, 
     admins={1413950580, 593807464},
-    location_list=[("Shreks", 1), ("Plov-Center", 1)]
+    location_list=[("Painting", 10), ("Plov-Center", 10), ("Cooking", 10)]
 )
 
 

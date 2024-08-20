@@ -164,9 +164,7 @@ async def redirect_task(message: types.Message):
         await message.answer(f"Некого перенаправлять, команда еще не дошла до вашей станции, или вы забыли нажать кнопку 'Принять новую команду'.")
         return
     
-    print("whaaaaat")
-
-    print(game_info.HasLeavingTeam(station.GetName()))
+    
 
 
         

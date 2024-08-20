@@ -154,18 +154,50 @@ async def cheking_not_correct_name(message: Message, state: FSMContext):
         f'отправьте команду /cancel'
     )
 
+# @admin_router.message(Command("showteams"))
+# @admin_router.message(F.text == "Показать команды")
+# async def cmd_show_teams(message: Message):
+#     logging.info(f"Админ {message.from_user.id} запросил список команд")
+#     string_teams_presentation = "Зарегистрированные команды:\n"
+#     for team in game_info.teams:
+#         string_teams_presentation += f"- {team.GetName()} : Осталось посетить станции {team.GetToVisitList()}\n"
+#     if len(game_info.teams) > 0:
+#         await message.answer(string_teams_presentation)
+#     else:
+#         await message.answer("Пока что не было зарегистрировано ни одной команды")
+
 @admin_router.message(Command("showteams"))
 @admin_router.message(F.text == "Показать команды")
 async def cmd_show_teams(message: Message):
     logging.info(f"Админ {message.from_user.id} запросил список команд")
-    string_teams_presentation = "Зарегистрированные команды:\n"
+    builder = ReplyKeyboardBuilder()
     for team in game_info.teams:
-        string_teams_presentation += f"- {team.GetName()} : Осталось посетить станции {team.GetToVisitList()}\n"
-    if len(game_info.teams) > 0:
-        await message.answer(string_teams_presentation)
+        builder.add(types.KeyboardButton(text= team.GetName()))
+    
+    builder.adjust(6)
+
+    await message.answer(f"Выберете команду о которой вы хотите получить информацию", reply_markup=builder.as_markup(resize_keyboard = True), )
+
+@admin_router.message(lambda x: x in [team.GetName() for team in game_info.teams])
+# @admin_router.message(F.text in [team.GetName() for team in game_info.teams])
+async def cmd_answer_show_teams(message: Message):
+    team_name: str = F.text
+    logging.info(f"Админ {message.from_user.id} запросил информацию о команде {team_name}")
+
+    team = game_info.GetTeamByName(team_name)
+    if team is None:
+        logging.warning(f"Админу {message.from_user.id} не удалось получить информацию о команде {team_name}")
+        await message.answer(f"Что-то пошло не так")
+        return
+
+    string_ans_representation: str = f"Команде {team_name} Осталось посетить станции: {team.GetToVisitList()}"
+    if len(string_ans_representation) > 0:
+        await message.answer(string_ans_representation)
     else:
-        await message.answer("Пока что не было зарегистрировано ни одной команды")
-        
+        logging.warning(f"Админу {message.from_user.id} не удалось получить информацию о команде {team_name}")
+        await message.answer(f"Что-то пошло не так")
+
+
 @admin_router.message(Command("stations"))
 @admin_router.message(F.text == "Статус станций")
 async def cmd_show_stations(message: Message):
