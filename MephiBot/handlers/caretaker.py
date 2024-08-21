@@ -103,7 +103,6 @@ async def redirect_task(message: types.Message):
         station.SetStatus(StationStatus.FREE)
 
         if not (team is None) and len(team.GetToVisitList()) == 0:
-            station.SetStatus(StationStatus.FREE)
             game_info.LeaveStation(station.GetName())
             await message.answer(f"Команда {team.GetName()} посетила все станции, некуда перенаправить ее\n\n"
                                  f"Можете принимать новую команду, если она назначена")
@@ -137,10 +136,6 @@ async def redirect_task(message: types.Message):
 
         if not (team_leaving_station is None) and len(team_leaving_station.GetToVisitList()) == 0:
             
-            # if station.IsInProgress():
-            #     station.SetStatus(StationStatus.FREE)
-
-
             game_info.LeaveStation(station.GetName())
             await message.answer(f"Команда {team.GetName()} посетила все станции, некуда перенаправить ее\n\n"
                                  f"Можете принимать новую команду, если она назначена")
