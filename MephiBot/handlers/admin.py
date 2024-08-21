@@ -10,6 +10,7 @@ from aiogram import types
 from bot import bot
 from types import NoneType
 from bot import game_info
+from aiogram.types import ReplyKeyboardRemove
 from gameinfo import Station, Location, Team, StationStatus
 from bot import logging
 
@@ -166,22 +167,29 @@ async def cheking_not_correct_name(message: Message, state: FSMContext):
 #     else:
 #         await message.answer("Пока что не было зарегистрировано ни одной команды")
 
-@admin_router.message(Command("showteams"))
-@admin_router.message(F.text == "Показать команды")
+@admin_router.message(lambda message : message.text == "Показать команды" or message.text.startswith("/showteams"))
 async def cmd_show_teams(message: Message):
     logging.info(f"Админ {message.from_user.id} запросил список команд")
+    
+    if len(game_info.teams) == 0:
+        logging.warning(f"Админ {message.from_user.id} запросил список команд, но оказалось что ни одной команды не было зарегистировано")
+        await message.answer(f"Пока что ни одной команды не было зарегистрировано")
+        return
+
     builder = ReplyKeyboardBuilder()
+
+
     for team in game_info.teams:
         builder.add(types.KeyboardButton(text= team.GetName()))
     
     builder.adjust(6)
 
-    await message.answer(f"Выберете команду о которой вы хотите получить информацию", reply_markup=builder.as_markup(resize_keyboard = True), )
 
-@admin_router.message(lambda x: x in [team.GetName() for team in game_info.teams])
-# @admin_router.message(F.text in [team.GetName() for team in game_info.teams])
+    await message.answer(f"Выберете команду о которой вы хотите получить информацию", reply_markup=builder.as_markup(resize_keyboard = True),  )
+
+@admin_router.message(lambda msg: msg.text in [team.GetName() for team in game_info.teams])
 async def cmd_answer_show_teams(message: Message):
-    team_name: str = F.text
+    team_name: str = message.text
     logging.info(f"Админ {message.from_user.id} запросил информацию о команде {team_name}")
 
     team = game_info.GetTeamByName(team_name)
@@ -190,9 +198,12 @@ async def cmd_answer_show_teams(message: Message):
         await message.answer(f"Что-то пошло не так")
         return
 
-    string_ans_representation: str = f"Команде {team_name} Осталось посетить станции: {team.GetToVisitList()}"
+    list_answer: list[str] =  team.GetToVisitList()
+    unpacked_list_answer = ", ".join(list_answer)
+
+    string_ans_representation: str = f"Команде {team_name} Осталось посетить локации : {unpacked_list_answer}"
     if len(string_ans_representation) > 0:
-        await message.answer(string_ans_representation)
+        await message.answer(string_ans_representation, reply_markup=ReplyKeyboardRemove())
     else:
         logging.warning(f"Админу {message.from_user.id} не удалось получить информацию о команде {team_name}")
         await message.answer(f"Что-то пошло не так")
