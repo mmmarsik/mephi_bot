@@ -25,7 +25,7 @@ class FSMStatesRegister(StatesGroup):
     choose_name = State()
     accept_info = State()
 
-def register_keyboard() -> ReplyKeyboardMarkup:
+def admin_menu_keyboard() -> ReplyKeyboardMarkup:
     keyboard = ReplyKeyboardMarkup(
         keyboard=[
             [KeyboardButton(text="Зарегистрировать команду")],
@@ -42,7 +42,7 @@ async def cmd_start(message: Message):
                          f"Чтобы зарегистрировать команду, нажми на кнопку ниже или введи: /register\n"
                          f"Чтобы посмотреть список станций и их статус нажми на кнопку ниже или введи /stations\n"
                          f"Чтобы посмотреть список зарегистрированных команд нажми на кнопку ниже или введи /showteams",
-                         reply_markup=register_keyboard()
+                         reply_markup=admin_menu_keyboard()
                          )
 
 @admin_router.message(Command("cancel"), StateFilter(default_state))
@@ -137,7 +137,7 @@ async def cheking_correct_name(message: Message, state: FSMContext):
     await message.answer(f"Успешно зарегистрирована команда {team_name}.\nОна отправлена на станцию {next_station.GetName()}.\n"
                          f"Чтобы посмотреть список зарегистрированных команд напишите /showteams\n\n"
                          f"Чтобы регистрировать другие команды, нажмите на кнопку ниже или введите команду:",
-                         reply_markup=register_keyboard())
+                         reply_markup=admin_menu_keyboard())
 
 @admin_router.message(StateFilter(FSMStatesRegister.accept_info), F.text.lower() == "нет")
 async def cheking_correct_name(message: Message, state: FSMContext):
@@ -155,19 +155,10 @@ async def cheking_not_correct_name(message: Message, state: FSMContext):
         f'отправьте команду /cancel'
     )
 
-# @admin_router.message(Command("showteams"))
-# @admin_router.message(F.text == "Показать команды")
-# async def cmd_show_teams(message: Message):
-#     logging.info(f"Админ {message.from_user.id} запросил список команд")
-#     string_teams_presentation = "Зарегистрированные команды:\n"
-#     for team in game_info.teams:
-#         string_teams_presentation += f"- {team.GetName()} : Осталось посетить станции {team.GetToVisitList()}\n"
-#     if len(game_info.teams) > 0:
-#         await message.answer(string_teams_presentation)
-#     else:
-#         await message.answer("Пока что не было зарегистрировано ни одной команды")
 
-@admin_router.message(lambda message : message.text == "Показать команды" or message.text.startswith("/showteams"))
+
+@admin_router.message(Command("showteams"))
+@admin_router.message(F.text == "Показать команды")
 async def cmd_show_teams(message: Message):
     logging.info(f"Админ {message.from_user.id} запросил список команд")
     
@@ -203,7 +194,7 @@ async def cmd_answer_show_teams(message: Message):
 
     string_ans_representation: str = f"Команде {team_name} Осталось посетить локации : {unpacked_list_answer}"
     if len(string_ans_representation) > 0:
-        await message.answer(string_ans_representation, reply_markup=ReplyKeyboardRemove())
+        await message.answer(string_ans_representation, reply_markup=admin_menu_keyboard())
     else:
         logging.warning(f"Админу {message.from_user.id} не удалось получить информацию о команде {team_name}")
         await message.answer(f"Что-то пошло не так")
