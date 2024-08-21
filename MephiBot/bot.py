@@ -4,6 +4,13 @@ from aiogram import Bot, Dispatcher
 from config import TOKEN
 from gameinfo import GameInfo
 from aiogram.fsm.storage.memory import MemoryStorage
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+TOKEN = os.environ.get("TOKEN")
 
 storage = MemoryStorage()
 
