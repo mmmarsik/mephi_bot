@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import argparse
 from aiogram import Bot, Dispatcher
 from gameinfo import GameInfo
 from aiogram.fsm.storage.memory import MemoryStorage
@@ -13,18 +14,39 @@ TOKEN = os.environ.get("TOKEN")
 
 storage = MemoryStorage()
 
-
 bot = Bot(token=TOKEN)
 dp = Dispatcher(storage=storage)
 
+# Аргументы командной строки
+parser = argparse.ArgumentParser(description="Запуск бота с заданным файлом кураторов и локаций")
+parser.add_argument('--caretakers-file', type=str, help='Путь к файлу с данными кураторов', default="users.txt")
+parser.add_argument('--locations-file', type=str, help='Путь к файлу с данными локаций', default="locations.txt")
+args = parser.parse_args()
+
+def load_caretakers_from_file(file_path: str) -> dict[int, str]:
+    caretakers = {}
+    with open(file_path, 'r') as f:
+        for line in f:
+            user_id, station_name = line.strip().split()
+            caretakers[int(user_id)] = station_name
+    return caretakers
+
+def load_locations_from_file(file_path: str) -> list[tuple[str, int]]:
+    locations = []
+    with open(file_path, 'r') as f:
+        for line in f:
+            location_name, max_users = line.strip().split()
+            locations.append((location_name, int(max_users)))
+    return locations
+
+caretakers_data = load_caretakers_from_file(args.caretakers_file)
+location_list_data = load_locations_from_file(args.locations_file)
 
 game_info = GameInfo(
-    
-    caretakers={1808760043: "Painting-1"}, 
+    caretakers=caretakers_data, 
     admins={1413950580, 593807464},
-    location_list=[("Painting", 3), ("Plov-Center", 3), ("Cooking", 3), ("Restraunt", 3), ("A-100", 3), ("Funny-Eggs", 3), ("Water", 3), ("Fire" ,3)]
+    location_list=location_list_data
 )
-
 
 logging.basicConfig(
     level=logging.INFO,
@@ -37,7 +59,6 @@ logging.basicConfig(
 )
 
 from handlers import caretaker, admin
-
 
 async def main():
     dp.include_router(caretaker.caretaker_router)
