@@ -20,7 +20,7 @@ dp = Dispatcher(storage=storage)
 
 game_info = GameInfo(
     
-    caretakers={1808760043: "Shreks-1"}, 
+    caretakers={1808760043: "Painting-1"}, 
     admins={1413950580, 593807464},
     location_list=[("Painting", 3), ("Plov-Center", 3), ("Cooking", 3), ("Restraunt", 3), ("A-100", 3), ("Funny-Eggs", 3), ("Water", 3), ("Fire" ,3)]
 )
