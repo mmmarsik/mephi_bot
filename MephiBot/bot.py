@@ -22,7 +22,7 @@ game_info = GameInfo(
     
     caretakers={1808760043: "Shreks-1"}, 
     admins={1413950580, 593807464},
-    location_list=[("Painting", 10), ("Plov-Center", 10), ("Cooking", 10)]
+    location_list=[("Painting", 3), ("Plov-Center", 3), ("Cooking", 3), ("Restraunt", 3), ("A-100", 3), ("Funny-Eggs", 3), ("Water", 3), ("Fire" ,3)]
 )
 
 
