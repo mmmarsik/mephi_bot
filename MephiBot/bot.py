@@ -1,7 +1,6 @@
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher
-from config import TOKEN
 from gameinfo import GameInfo
 from aiogram.fsm.storage.memory import MemoryStorage
 import os
