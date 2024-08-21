@@ -134,6 +134,20 @@ async def redirect_task(message: types.Message):
     
     if game_info.HasLeavingTeam(station.GetName()):
         team_leaving_station: Team = game_info.GetLeavingTeamByStation(station.GetName())
+
+        if not (team_leaving_station is None) and len(team_leaving_station.GetToVisitList()) == 0:
+            
+            # if station.IsInProgress():
+            #     station.SetStatus(StationStatus.FREE)
+
+
+            game_info.LeaveStation(station.GetName())
+            await message.answer(f"Команда {team.GetName()} посетила все станции, некуда перенаправить ее\n\n"
+                                 f"Можете принимать новую команду, если она назначена")
+            return
+            
+
+
         next_station = game_info.GetNextFreeStation(team_leaving_station.GetName())
         if next_station is None:
             logging.error(f"Caretaker {message.from_user.id} попытался перенаправить команду, но все станции заняты")

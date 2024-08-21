@@ -17,7 +17,6 @@ storage = MemoryStorage()
 bot = Bot(token=TOKEN)
 dp = Dispatcher(storage=storage)
 
-# Аргументы командной строки
 parser = argparse.ArgumentParser(description="Запуск бота с заданным файлом кураторов и локаций")
 parser.add_argument('--caretakers-file', type=str, help='Путь к файлу с данными кураторов', default="users.txt")
 parser.add_argument('--locations-file', type=str, help='Путь к файлу с данными локаций', default="locations.txt")
@@ -44,7 +43,7 @@ location_list_data = load_locations_from_file(args.locations_file)
 
 game_info = GameInfo(
     caretakers=caretakers_data, 
-    admins={1413950580, 593807464},
+    admins={1413950580, 593807464, 783440088},
     location_list=location_list_data
 )
 
