@@ -1,6 +1,5 @@
 from enum import StrEnum
 
-
 class StationStatus(StrEnum):
     FREE = "Free"
     WAITING = "Waiting"
@@ -86,15 +85,16 @@ class GameInfo:
         self.teams: set[Team] = set()
         self.team_on_station: dict[str, str] = dict()
         self.team_leaving_station: dict[str, str] = dict()
+        self.BAD_ID = "INCORRECT_ID"
 
         for elem in location_list:
             self.locations.add(
                 Location(location_name=elem[0], number_of_stations=elem[1]))
-        
+
         for location in self.locations:
             for station in location.stations:
                 self.team_on_station[station.GetName()] = None
-        
+
         for location in self.locations:
             for station in location.stations:
                 self.team_leaving_station[station.GetName()] = None
@@ -107,10 +107,10 @@ class GameInfo:
     def SendTeamOnStation(self, team_name: str, station_name: str):
         self.team_on_station[station_name] = team_name
 
-    def StartLeavingStation(self, station_name: str): 
+    def StartLeavingStation(self, station_name: str):
         team_name: str = self.team_on_station[station_name]
         self.team_leaving_station[station_name] = team_name
-        self.team_on_station[station_name] = None 
+        self.team_on_station[station_name] = None
 
     def LeaveStation(self, station_name: str):
         self.team_leaving_station[station_name] = None
@@ -119,6 +119,13 @@ class GameInfo:
         for team in self.teams:
             if team.GetName() == team_name:
                 return team
+        return None
+
+    def GetStationByName(self, station_name: str) -> Station | None:
+        for location in self.locations:
+            for station in location.stations:
+                if station.GetName() == station_name:
+                    return station
         return None
 
     def GetNextFreeStation(self, team_name: str) -> Station | None:
@@ -147,11 +154,16 @@ class GameInfo:
                     return station
         return None
 
-    def GetCaretakerIDByStationName(self, station_name: str) -> int | None:
+    def GetCaretakersIDByStationName(self, station_name: str) -> list[int, int] | list[str, str]:
+        id_list: list[int] = [self.BAD_ID, self.BAD_ID]
         for id, station in self.caretakers.items():
             if station_name == station:
-                return id
-        return None
+                if id_list[0] == self.BAD_ID:
+                    id_list[0] = id
+                elif id_list[1] == self.BAD_ID:
+                    id_list[1] = id
+
+        return id_list
 
     def GetCurrentTeamOnStation(self, station_name: str) -> Team | None:
         team_name = self.team_on_station.get(station_name, None)
@@ -164,7 +176,6 @@ class GameInfo:
                 return team
 
         return None
-    
 
     def GetLeavingTeamByStation(self, station_name: str) -> Team | None:
         team_name = self.team_leaving_station.get(station_name, None)
@@ -177,15 +188,13 @@ class GameInfo:
                 return team
 
         return None
-    
+
     def HasLeavingTeam(self, station_name: str) -> bool:
         if self.team_leaving_station.get(station_name, None) == None:
             return False
         return True
-    
+
     def HasTeam(self, station_name: str) -> bool:
         if self.team_on_station.get(station_name, None) == None:
             return False
         return True
-    
-    

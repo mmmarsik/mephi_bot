@@ -120,12 +120,22 @@ async def redirect_task(message: types.Message):
         location_name: str = next_station.GetName()[:-2]
         team.ToVisitLocation(location_name)
         game_info.LeaveStation(station.GetName())
-        next_station_caretaker_id = game_info.GetCaretakerIDByStationName(next_station.GetName())
         game_info.SendTeamOnStation(team.GetName(), next_station.GetName())
 
-        if next_station_caretaker_id:
-            logging.info(f"Caretaker {message.from_user.id} перенаправил команду {team.GetName()} на станцию {next_station.GetName()} (ID куратора {next_station_caretaker_id})")
-            await bot.send_message(next_station_caretaker_id, f"К вам идет команда '{team.GetName()}'.")
+        next_caretakers_id: tuple[int, int] = game_info.GetCaretakersIDByStationName(next_station.GetName())
+        next_caretaker_id_1: int = next_caretakers_id[0]
+        next_caretaker_id_2: int = next_caretakers_id[1]
+
+        team_name = team.GetName()
+
+        if  next_caretaker_id_1 != game_info.BAD_ID: 
+            logging.info(f"Найден куратор с id {next_caretaker_id_1} к нему идет команда {team_name}")
+            await bot.send_message(next_caretaker_id_1, f"На вашу станцию направлена команда {team_name}")
+
+        if  next_caretaker_id_2 != game_info.BAD_ID:
+            logging.info(f"Найден куратор с id {next_caretaker_id_2} к нему идет команда {team_name}")
+            await bot.send_message(next_caretaker_id_2, f"На вашу станцию направлена команда {team_name}")
+
 
         logging.info(f"Команда {team.GetName()} перенаправлена со станции {station.GetName()} на станцию {next_station.GetName()}")
         await message.answer(f"Команда '{team.GetName()}' перенаправлена на станцию {next_station.GetName()}.")
@@ -153,16 +163,24 @@ async def redirect_task(message: types.Message):
         location_name: str = next_station.GetName()[:-2]
         game_info.LeaveStation(station.GetName())
         team_leaving_station.ToVisitLocation(location_name)
-        next_station_caretaker_id = game_info.GetCaretakerIDByStationName(next_station.GetName())
         game_info.SendTeamOnStation(team_leaving_station.GetName(), next_station.GetName()) 
-        
+        team_name = team_leaving_station.GetName()
 
-        if next_station_caretaker_id:
-            logging.info(f"Caretaker {message.from_user.id} перенаправил команду {team_leaving_station.GetName()} на станцию {next_station.GetName()} (ID куратора {next_station_caretaker_id})")
-            await bot.send_message(next_station_caretaker_id, f"К вам идет команда '{team_leaving_station.GetName()}'.")
+        next_caretakers_id: tuple[int, int] = game_info.GetCaretakersIDByStationName(next_station.GetName())
+        next_caretaker_id_1: int = next_caretakers_id[0]
+        next_caretaker_id_2: int = next_caretakers_id[1]
+
+        if  next_caretaker_id_1 != game_info.BAD_ID: 
+            logging.info(f"Найден куратор с id {next_caretaker_id_1} к нему идет команда {team_name}")
+            await bot.send_message(next_caretaker_id_1, f"На вашу станцию направлена команда {team_name}")
+
+        if  next_caretaker_id_2 != game_info.BAD_ID:
+            logging.info(f"Найден куратор с id {next_caretaker_id_2} к нему идет команда {team_name}")
+            await bot.send_message(next_caretaker_id_2, f"На вашу станцию направлена команда {team_name}")
 
         logging.info(f"Команда {team_leaving_station.GetName()} перенаправлена со станции {station.GetName()} на станцию {next_station.GetName()}")
         await message.answer(f"Команда '{team_leaving_station.GetName()}' перенаправлена на станцию {next_station.GetName()}.")
+        return
 
     if not game_info.HasLeavingTeam(station.GetName()) and not game_info.HasTeam(station.GetName()):
         logging.warning(f"Caretaker {message.from_user.id} попытался перенаправить команду со своей станции, но на ней никого не оказалось")
@@ -174,9 +192,5 @@ async def redirect_task(message: types.Message):
         return
     
     
-
-
-        
-        
 
 

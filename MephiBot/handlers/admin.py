@@ -14,6 +14,8 @@ from aiogram.types import ReplyKeyboardRemove
 from gameinfo import Station, Location, Team, StationStatus
 from bot import logging
 
+
+
 class IsAdminFilter(BaseFilter):
     async def __call__(self, message: Message) -> bool:
         return message.from_user.id in game_info.admins
@@ -60,6 +62,18 @@ async def process_cancel_command_state(message: Message, state: FSMContext):
 @admin_router.message(Command("register"), StateFilter(default_state))
 async def cmd_register(message: Message, state: FSMContext):
     logging.info(f"Админ {message.from_user.id} начал процесс регистрации команды")
+
+    teams_count = len(game_info.teams)
+    stations_count = 0
+
+    for location in game_info.locations:
+        stations_count += len(location.stations)
+    
+    if teams_count >= stations_count:
+        logging.warning(f"Админ {message.from_user.id} попытался зарегистрировать команду, но их количество уже максимально допустимо")
+        await message.answer(f"Команд уже максимально возможное количество")
+        return
+
     await message.answer(f"Введите название команды")
     await state.set_state(FSMStatesRegister.choose_name)
 
@@ -128,10 +142,24 @@ async def cheking_correct_name(message: Message, state: FSMContext):
     next_station.SetStatus(StationStatus.WAITING)
     logging.info(f"Команда {team_name} отправлена на станцию {next_station.GetName()}")
 
-    next_caretaker_id: int = game_info.GetCaretakerIDByStationName(next_station.GetName())
-    if next_caretaker_id:
-        logging.info(f"Найден куратор с id {next_caretaker_id} к нему идет команда {team_name}")
-        await bot.send_message(next_caretaker_id, f"На вашу станцию направлена команда {team_name}")
+    next_caretakers_id: tuple[int, int] = game_info.GetCaretakersIDByStationName(next_station.GetName())
+    
+    print(f"\n\n\n\\n\n\n")
+    print(next_caretakers_id)
+    print(f"\n\n\n\\n\n\n")
+    
+    
+    next_caretaker_id_1 = next_caretakers_id[0]
+    next_caretaker_id_2 = next_caretakers_id[1]
+    
+
+    if  next_caretaker_id_1 != game_info.BAD_ID:
+        logging.info(f"Найден куратор с id {next_caretaker_id_1} к нему идет команда {team_name}")
+        await bot.send_message(next_caretaker_id_1, f"На вашу станцию направлена команда {team_name}")
+
+    if  next_caretaker_id_2 != game_info.BAD_ID:
+        logging.info(f"Найден куратор с id {next_caretaker_id_2} к нему идет команда {team_name}")
+        await bot.send_message(next_caretaker_id_2, f"На вашу станцию направлена команда {team_name}")
 
     await state.clear()
     await message.answer(f"Успешно зарегистрирована команда {team_name}.\nОна отправлена на станцию {next_station.GetName()}.\n"
@@ -223,3 +251,96 @@ async def cmd_show_stations(message: Message):
         await message.answer(answer_repr)
     else:
         await message.answer("Пока еще не было зарегистрировано ни одной станции.")
+
+
+def station_selection_keyboard() -> ReplyKeyboardMarkup:
+    builder = ReplyKeyboardBuilder()
+    for location in game_info.locations:
+        for station in location.stations:
+            builder.add(types.KeyboardButton(text=station.GetName()))
+    builder.adjust(3)
+    return builder.as_markup(resize_keyboard=True)
+
+def status_selection_keyboard() -> ReplyKeyboardMarkup:
+    builder = ReplyKeyboardBuilder()
+    builder.add(KeyboardButton(text="🟢 Свободна"))
+    builder.add(KeyboardButton(text="🟡 Ожидание"))
+    builder.add(KeyboardButton(text="🔴 В процессе"))
+    builder.adjust(1)
+    return builder.as_markup(resize_keyboard=True)
+
+class FSMStationStatusChange(StatesGroup):
+    choose_station = State()
+    choose_status = State()
+
+@admin_router.message(Command("changestatus"), StateFilter(default_state))
+@admin_router.message(F.text == "Изменить статус станции", StateFilter(default_state))
+async def cmd_change_status(message: Message, state: FSMContext):
+    logging.info(f"Админ {message.from_user.id} начал процесс изменения статуса станции")
+    
+    await message.answer("Выберите станцию, статус которой вы хотите изменить:", reply_markup=station_selection_keyboard())
+    await state.set_state(FSMStationStatusChange.choose_station)
+
+@admin_router.message(StateFilter(FSMStationStatusChange.choose_station), F.text)
+async def process_station_selected(message: Message, state: FSMContext):
+    selected_station_name = message.text
+    station = game_info.GetStationByName(selected_station_name)
+    
+    if station is None:
+        logging.warning(f"Админ {message.from_user.id} выбрал некорректное название станции: {selected_station_name}")
+        await message.answer("Станция не найдена. Пожалуйста, выберите корректное название станции.")
+        return
+    
+    await state.update_data(station_name=selected_station_name)
+    await message.answer(f"Вы выбрали станцию: {selected_station_name}.\nТеперь выберите новый статус:", reply_markup=status_selection_keyboard())
+    await state.set_state(FSMStationStatusChange.choose_status)
+
+@admin_router.message(StateFilter(FSMStationStatusChange.choose_status), F.text)
+async def process_status_selected(message: Message, state: FSMContext):
+    status_map = {
+        "🟢 Свободна": StationStatus.FREE,
+        "🟡 Ожидание": StationStatus.WAITING,
+        "🔴 В процессе": StationStatus.IN_PROGRESS
+    }
+    
+    selected_status_text = message.text
+    new_status = status_map.get(selected_status_text)
+     
+    if new_status is None:
+        logging.warning(f"Админ {message.from_user.id} выбрал некорректный статус: {selected_status_text}")
+        await message.answer("Некорректный статус. Пожалуйста, выберите корректный статус.")
+        return
+    
+    data = await state.get_data()
+    station_name = data.get("station_name")
+    station = game_info.GetStationByName(station_name)
+    
+    if station is None:
+        logging.error(f"Ошибка при изменении статуса станции: станция {station_name} не найдена")
+        await message.answer("Произошла ошибка: станция не найдена.")
+        await state.clear()
+        return
+    
+    station.SetStatus(new_status)
+    logging.info(f"Админ {message.from_user.id} изменил статус станции {station_name} на {new_status.name}")
+    
+    await state.clear()
+    await message.answer(f"Статус станции {station_name} успешно изменен на {selected_status_text}.", reply_markup=admin_menu_keyboard())
+
+@admin_router.message(StateFilter(FSMStationStatusChange.choose_station))
+async def warning_invalid_station(message: Message):
+    logging.warning(f"Админ {message.from_user.id} ввел некорректное название станции")
+    await message.answer(
+        f'Название станции некорректно.\n\n'
+        f'Пожалуйста, выберите станцию из списка.\n\n'
+        f'Если вы хотите прервать процесс изменения статуса, отправьте команду /cancel'
+    )
+
+@admin_router.message(StateFilter(FSMStationStatusChange.choose_status))
+async def warning_invalid_status(message: Message):
+    logging.warning(f"Админ {message.from_user.id} ввел некорректный статус")
+    await message.answer(
+        f'Некорректный статус.\n\n'
+        f'Пожалуйста, выберите статус из предложенных вариантов.\n\n'
+        f'Если вы хотите прервать процесс изменения статуса, отправьте команду /cancel'
+    )
