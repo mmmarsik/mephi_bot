@@ -23,15 +23,13 @@ class IsAdminFilter(BaseFilter):
 admin_router = Router()
 admin_router.message.filter(IsAdminFilter())
 
-class FSMStatesRegister(StatesGroup):
-    choose_name = State()
-    accept_info = State()
 
 def admin_menu_keyboard() -> ReplyKeyboardMarkup:
     keyboard = ReplyKeyboardMarkup(
         keyboard=[
             [KeyboardButton(text="Зарегистрировать команду")],
-            [KeyboardButton(text="Показать команды"), KeyboardButton(text="Статус станций")]
+            [KeyboardButton(text="Показать команды"), KeyboardButton(text="Статус станций")],
+            [KeyboardButton(text="Показать команды на станции"), KeyboardButton(text="Изменить статус станции")]
         ],
         resize_keyboard=True
     )
@@ -46,6 +44,11 @@ async def cmd_start(message: Message):
                          f"Чтобы посмотреть список зарегистрированных команд нажми на кнопку ниже или введи /showteams",
                          reply_markup=admin_menu_keyboard()
                          )
+
+class FSMStatesRegister(StatesGroup):
+    choose_name = State()
+    accept_info = State()
+
 
 @admin_router.message(Command("cancel"), StateFilter(default_state))
 async def cmd_cancel(message: Message):
