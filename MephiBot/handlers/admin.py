@@ -136,7 +136,7 @@ async def cheking_correct_name(message: Message, state: FSMContext):
 
     team = game_info.GetTeamByName(team_name)
     location_name: str = next_station.GetName()[:-2]
-    team.ToVisitLocation(location_name)
+    # team.ToVisitLocation(location_name)
 
     game_info.SendTeamOnStation(team.GetName(), next_station.GetName())
     next_station.SetStatus(StationStatus.WAITING)
