@@ -344,3 +344,58 @@ async def warning_invalid_status(message: Message):
         f'Пожалуйста, выберите статус из предложенных вариантов.\n\n'
         f'Если вы хотите прервать процесс изменения статуса, отправьте команду /cancel'
     )
+
+
+class FSMShowStationTeams(StatesGroup):
+    choose_station = State()
+
+def station_selection_keyboard() -> ReplyKeyboardMarkup:
+    builder = ReplyKeyboardBuilder()
+    for location in game_info.locations:
+        for station in location.stations:
+            builder.add(types.KeyboardButton(text=station.GetName()))
+    builder.adjust(3)
+    return builder.as_markup(resize_keyboard=True)
+
+@admin_router.message(Command("showstationteams"))
+@admin_router.message(F.text == "Показать команды на станции")
+async def cmd_show_station_teams(message: Message, state: FSMContext):
+    logging.info(f"Админ {message.from_user.id} начал процесс выбора станции для показа команд")
+    
+    await message.answer("Выберите станцию, для которой вы хотите посмотреть список команд:", reply_markup=station_selection_keyboard())
+    await state.set_state(FSMShowStationTeams.choose_station)
+
+@admin_router.message(StateFilter(FSMShowStationTeams.choose_station), F.text)
+async def process_station_selected(message: Message, state: FSMContext):
+    selected_station_name = message.text
+    station = game_info.GetStationByName(selected_station_name)
+    
+    if station is None:
+        logging.warning(f"Админ {message.from_user.id} выбрал некорректное название станции: {selected_station_name}")
+        await message.answer("Станция не найдена. Пожалуйста, выберите корректное название станции.")
+        return
+    
+    current_team = game_info.GetCurrentTeamOnStation(selected_station_name)
+    leaving_team = game_info.GetLeavingTeamByStation(selected_station_name)
+    
+    if current_team is None and leaving_team is None:
+        await message.answer(f"На станции {selected_station_name} нет зарегистрированных команд.")
+    else:
+        status_messages = []
+        if current_team:
+            status_messages.append(f"Команда '{current_team.GetName()}' находится на станции.")
+        if leaving_team:
+            status_messages.append(f"Команда '{leaving_team.GetName()}' покидает станцию.")
+        await message.answer("\n".join(status_messages))
+    
+    await state.clear()
+    await message.answer("Вы можете выбрать другую станцию или вернуться в главное меню.", reply_markup=admin_menu_keyboard())
+
+@admin_router.message(StateFilter(FSMShowStationTeams.choose_station))
+async def warning_invalid_station(message: Message):
+    logging.warning(f"Админ {message.from_user.id} ввел некорректное название станции")
+    await message.answer(
+        f'Название станции некорректно.\n\n'
+        f'Пожалуйста, выберите станцию из списка.\n\n'
+        f'Если вы хотите прервать процесс, отправьте команду /cancel'
+    )
