@@ -29,7 +29,7 @@ def admin_menu_keyboard() -> ReplyKeyboardMarkup:
         keyboard=[
             [KeyboardButton(text="Зарегистрировать команду")],
             [KeyboardButton(text="Показать команды"), KeyboardButton(text="Статус станций")],
-            [KeyboardButton(text="Показать команды на станции"), KeyboardButton(text="Изменить статус станции")]
+            [KeyboardButton(text="Показать команды на станции"), KeyboardButton(text="Изменить статус станции")],[ KeyboardButton(text="Редактировать список локаций для опр. команды")]
         ],
         resize_keyboard=True
     )
@@ -49,11 +49,22 @@ class FSMStatesRegister(StatesGroup):
     choose_name = State()
     accept_info = State()
 
+class FSMStationStatusChange(StatesGroup):
+    choose_station = State()
+    choose_status = State()
 
 @admin_router.message(Command("cancel"), StateFilter(default_state))
 async def cmd_cancel(message: Message):
     logging.info(f"Админ {message.from_user.id} вызвал команду /cancel вне процесса регистрации")
     await message.answer(f"Вы находитесь вне процесса регистрации команд, отменять нечего")
+
+
+@admin_router.message(Command("cancel"), StateFilter(FSMStationStatusChange))
+async def cancel_status_change(message: Message, state: FSMContext):
+    logging.info(f"Админ {message.from_user.id} отменил процесс изменения статуса станции")
+    await state.clear()
+    await message.answer(f"Процесс изменения статуса станции был отменен. Вы можете начать процесс снова, отправив команду /changestatus", reply_markup=admin_menu_keyboard())
+
 
 @admin_router.message(Command("cancel"), ~StateFilter(default_state))
 async def process_cancel_command_state(message: Message, state: FSMContext):
@@ -187,6 +198,147 @@ async def cheking_not_correct_name(message: Message, state: FSMContext):
     )
 
 
+class FSMEditStation(StatesGroup):
+    choosing_team = State()
+    editing_stations = State()
+    adding_station = State()
+    removing_station = State()
+
+def get_team_keyboard() -> ReplyKeyboardMarkup:
+    builder = ReplyKeyboardBuilder()
+    for team in game_info.teams:
+        builder.add(KeyboardButton(text=team.GetName()))
+    return builder.as_markup(resize_keyboard=True)
+
+def get_edit_action_keyboard() -> ReplyKeyboardMarkup:
+    builder = ReplyKeyboardBuilder()
+    builder.add(KeyboardButton(text="Добавить станцию"))
+    builder.add(KeyboardButton(text="Удалить станцию"))
+    builder.add(KeyboardButton(text="Отмена"))
+    return builder.as_markup(resize_keyboard=True)
+
+def get_location_keyboard() -> ReplyKeyboardMarkup:
+    builder = ReplyKeyboardBuilder()
+    for location in game_info.locations:
+        builder.add(KeyboardButton(text=location.GetName()))
+    return builder.as_markup(resize_keyboard=True)
+
+@admin_router.message(F.text == "Редактировать список локаций для опр. команды")
+@admin_router.message(Command(commands='edit_command_stations'))
+async def cmd_edit_stations(message: Message, state: FSMContext):
+    keyboard = get_team_keyboard()
+
+    if len(game_info.teams) == 0:
+        logging.warning(f"Админ {message.from_user.id} хотел редактировать список посещенных станций для команд, но пока еще не зарегистрировано ни одной команды")
+        await message.answer(f"Пока что ни одной команды не было зарегистрировано, не у кого менять список посещенных станций")
+        return
+
+    await message.answer("Выберите команду:", reply_markup=keyboard)
+    await state.set_state(FSMEditStation.choosing_team)
+
+@admin_router.message(FSMEditStation.choosing_team)
+async def choose_team(message: Message, state: FSMContext):
+    if message.text == "Отмена":
+        await cancel_editing(message, state)
+        return
+    
+    team_name = message.text
+    team = game_info.GetTeamByName(team_name)
+
+    if team is None:
+        await message.answer("Команда не найдена, попробуйте снова.")
+        return
+    
+    await state.update_data(team_name=team_name)
+    keyboard = get_edit_action_keyboard()
+    await message.answer(f"Команда {team_name} выбрана. Выберите действие:", reply_markup=keyboard)
+    await state.set_state(FSMEditStation.editing_stations)
+
+@admin_router.message(FSMEditStation.editing_stations)
+async def choose_action(message: Message, state: FSMContext):
+    if message.text == "Отмена":
+        await cancel_editing(message, state)
+        return
+
+    action = message.text
+
+    if action == "Добавить станцию":
+        keyboard = get_location_keyboard()
+        await message.answer("Выберите станцию для добавления:", reply_markup=keyboard)
+        await state.set_state(FSMEditStation.adding_station)
+    elif action == "Удалить станцию":
+        keyboard = get_location_keyboard()
+        await message.answer("Выберите станцию для удаления:", reply_markup=keyboard)
+        await state.set_state(FSMEditStation.removing_station)
+    else:
+        await message.answer("Неверная команда. Попробуйте снова.")
+
+@admin_router.message(FSMEditStation.adding_station)
+async def add_station(message: Message, state: FSMContext):
+    if message.text == "Отмена":
+        await cancel_editing(message, state)
+        return
+
+    location_name = message.text
+    data = await state.get_data()
+    team_name = data.get("team_name")
+
+    team = game_info.GetTeamByName(team_name)
+    if team is None:
+        await message.answer("Команда не найдена.\n\n"
+                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=admin_menu_keyboard() )
+        await state.clear()
+        return
+
+    if location_name not in team.to_visit_list:
+        team.to_visit_list.append(location_name)
+        await message.answer(f"Станция {location_name} добавлена в список посещений команды {team_name}.\n\n"
+                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=admin_menu_keyboard() )
+    else:
+        await message.answer(f"Станция {location_name} уже в списке посещений команды {team_name}.\n\n"
+                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=admin_menu_keyboard() )
+
+    await state.clear()
+
+@admin_router.message(FSMEditStation.removing_station)
+async def remove_station(message: Message, state: FSMContext):
+    if message.text == "Отмена":
+        await cancel_editing(message, state)
+        return
+
+    location_name = message.text
+    data = await state.get_data()
+    team_name = data.get("team_name")
+
+    team = game_info.GetTeamByName(team_name)
+    if team is None:
+        await message.answer("Команда не найдена.\n\n"
+                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=admin_menu_keyboard() )
+        await state.clear()
+        return
+
+
+    to_visit_list: list[str] = team.GetToVisitList()
+
+    if location_name in to_visit_list:
+        team.to_visit_list.remove(location_name)
+
+        await message.answer(f"Локация {location_name} удалена из списка посещений команды {team_name}.\n\n"
+                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=admin_menu_keyboard() )
+    else:
+        print(f"\n\n\n\n\n {to_visit_list} \n\n\n\n\n ")
+
+        await message.answer(f"Станция {location_name} не найдена в списке посещений команды {team_name}.\n\n"
+                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=admin_menu_keyboard() )
+
+    await state.clear()
+
+async def cancel_editing(message: Message, state: FSMContext):
+    await message.answer("Редактирование отменено.\n\n"
+                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=admin_menu_keyboard() )
+    await state.clear()
+
+
 
 @admin_router.message(Command("showteams"))
 @admin_router.message(F.text == "Показать команды")
@@ -272,9 +424,7 @@ def status_selection_keyboard() -> ReplyKeyboardMarkup:
     builder.adjust(1)
     return builder.as_markup(resize_keyboard=True)
 
-class FSMStationStatusChange(StatesGroup):
-    choose_station = State()
-    choose_status = State()
+
 
 @admin_router.message(Command("changestatus"), StateFilter(default_state))
 @admin_router.message(F.text == "Изменить статус станции", StateFilter(default_state))
@@ -402,3 +552,4 @@ async def warning_invalid_station(message: Message):
         f'Пожалуйста, выберите станцию из списка.\n\n'
         f'Если вы хотите прервать процесс, отправьте команду /cancel'
     )
+

@@ -52,6 +52,7 @@ class Team():
     def __init__(self, name: str, to_visit_list: list[str]) -> None:
         self.name = name
         self.to_visit_list = to_visit_list
+        self.visited_list = []
 
     def __eq__(self, other):
         if isinstance(other, Team):
@@ -62,15 +63,20 @@ class Team():
         return hash(self.name)
 
     def ToVisitLocation(self, location_name: str):
+        if location_name in self.to_visit_list:
+            self.to_visit_list.remove(location_name)
+            self.visited_list.append(location_name)
 
-        for location in self.to_visit_list:
-            if location == location_name:
-                location_to_remove = location
-
-        self.to_visit_list.remove(location_to_remove)
+    def AddToVisitLocation(self, location_name: str):
+        if location_name in self.visited_list:
+            self.visited_list.remove(location_name)
+            self.to_visit_list.append(location_name)
 
     def GetToVisitList(self) -> list[str]:
         return self.to_visit_list
+
+    def GetVisitedList(self) -> list[str]:
+        return self.visited_list
 
     def GetName(self) -> str:
         return self.name
