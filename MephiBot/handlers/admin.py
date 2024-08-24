@@ -553,3 +553,15 @@ async def warning_invalid_station(message: Message):
         f'Если вы хотите прервать процесс, отправьте команду /cancel'
     )
 
+@admin_router.message(Command("reset_all_stations_teams"))
+async def reset_all_station_teams(message: Message):
+    for station_name, team_name in game_info.team_on_station:
+        game_info.team_on_station[station_name] = None
+    
+    for station_name, team_name in game_info.team_leaving_station:
+        game_info.team_leaving_station[station_name] = None
+    
+    logging.info(f"У всех станций были очищены команды на них")
+    await message.answer("У всех станций были очищены команды на них\n\nВНИМАНИЕ !!! теперь нужно направить каждую команду на станцию тк иначе ей будет некуда идти", reply_markup=admin_menu_keyboard())
+
+@admin_router.message(Command(""))
