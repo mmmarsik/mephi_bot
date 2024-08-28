@@ -61,8 +61,7 @@ async def process_cancel_command_state(message: Message, state: FSMContext):
 @admin_router.message(F.text == "Зарегистрировать команду", StateFilter(default_state))
 @admin_router.message(Command("register"), StateFilter(default_state))
 async def cmd_register(message: Message, state: FSMContext):
-    logging.info(
-        f"Админ {message.from_user.id} начал процесс регистрации команды")
+    logging.info(f"Админ {message.from_user.id} начал процесс регистрации команды")
 
     teams_count = len(game_info.teams)
     stations_count = 0
@@ -71,8 +70,7 @@ async def cmd_register(message: Message, state: FSMContext):
         stations_count += len(location.stations)
 
     if teams_count >= stations_count:
-        logging.warning(f"Админ {
-                        message.from_user.id} попытался зарегистрировать команду, но их количество уже максимально допустимо")
+        logging.warning(f"Админ {message.from_user.id} попытался зарегистрировать команду, но их количество уже максимально допустимо")
         await message.answer(f"Команд уже максимально возможное количество")
         return
 
@@ -92,8 +90,7 @@ async def process_name_sent(message: Message, state: FSMContext):
 
 @admin_router.message(StateFilter(FSMStatesRegister.choose_name))
 async def warning_not_name(message: Message):
-    logging.warning(
-        f"Админ {message.from_user.id} ввел некорректное название команды")
+    logging.warning(f"Админ {message.from_user.id} ввел некорректное название команды")
     await message.answer(
         f'То, что вы отправили не похоже на название команды\n\n'
         f'Пожалуйста, введите верное название\n\n'
@@ -108,15 +105,13 @@ async def cheking_correct_name(message: Message, state: FSMContext):
     team_name: str = data.get("name")
 
     if not team_name:
-        logging.error(
-            "Ошибка регистрации команды: название команды не найдено")
+        logging.error("Ошибка регистрации команды: название команды не найдено")
         await message.answer("Произошла ошибка: не удалось подтвердить регистрацию команды.")
         return
 
     for team_ in game_info.teams:
         if team_.GetName() == team_name:
-            logging.warning(
-                f"Попытка зарегистрировать существующую команду: {team_name}")
+            logging.warning(f"Попытка зарегистрировать существующую команду: {team_name}")
             builder = ReplyKeyboardBuilder()
             builder.add(types.KeyboardButton(text="Зарегистрировать команду"))
             await state.clear()
@@ -132,56 +127,47 @@ async def cheking_correct_name(message: Message, state: FSMContext):
     next_station: Station = game_info.GetNextFreeStation(team_name)
 
     if next_station is None:
-        logging.error(
-            "Все станции заняты, невозможно отправить команду на станцию")
+        logging.error("Все станции заняты, невозможно отправить команду на станцию")
         await state.clear()
         await message.answer("Произошла ошибка: Все станции заняты.")
         return
 
     team = game_info.GetTeamByName(team_name)
     location_name: str = next_station.GetName()[:-2]
-    # team.ToVisitLocation(location_name)
 
     game_info.SendTeamOnStation(team.GetName(), next_station.GetName())
     next_station.SetStatus(StationStatus.WAITING)
-    logging.info(f"Команда {team_name} отправлена на станцию {
-                 next_station.GetName()}")
+    logging.info(f"Команда {team_name} отправлена на станцию {next_station.GetName()}")
 
-    next_caretakers_id: tuple[int, int] = game_info.GetCaretakersIDByStationName(
-        next_station.GetName())
+    next_caretakers_id: tuple[int, int] = game_info.GetCaretakersIDByStationName(next_station.GetName())
 
     next_caretaker_id_1 = next_caretakers_id[0]
     next_caretaker_id_2 = next_caretakers_id[1]
 
     if next_caretaker_id_1 != game_info.BAD_ID:
-        logging.info(f"Найден куратор с id {
-                     next_caretaker_id_1} к нему идет команда {team_name}")
+        logging.info(f"Найден куратор с id {next_caretaker_id_1} к нему идет команда {team_name}")
         await bot.send_message(next_caretaker_id_1, f"На вашу станцию направлена команда {team_name}")
 
     if next_caretaker_id_2 != game_info.BAD_ID:
-        logging.info(f"Найден куратор с id {
-                     next_caretaker_id_2} к нему идет команда {team_name}")
+        logging.info(f"Найден куратор с id {next_caretaker_id_2} к нему идет команда {team_name}")
         await bot.send_message(next_caretaker_id_2, f"На вашу станцию направлена команда {team_name}")
 
     await state.clear()
     await message.answer(f"Успешно зарегистрирована команда {team_name}.\nОна отправлена на станцию {next_station.GetName()}.\n"
                          f"Чтобы посмотреть список зарегистрированных команд напишите /showteams\n\n"
-                         f"Чтобы регистрировать другие команды, нажмите на кнопку ниже или введите команду:",
-                         reply_markup=get_admin_menu_keyboard())
+                         f"Чтобы регистрировать другие команды, нажмите на кнопку ниже или введите команду:",reply_markup=get_admin_menu_keyboard())
 
 
 @admin_router.message(StateFilter(FSMStatesRegister.accept_info), F.text.lower() == "нет")
 async def cheking_correct_name(message: Message, state: FSMContext):
-    logging.info(
-        f"Админ {message.from_user.id} отменил процесс регистрации команды")
+    logging.info(f"Админ {message.from_user.id} отменил процесс регистрации команды")
     await state.clear()
     await message.answer(f"Процесс регистрации был отменен, чтобы повторить напишите /register")
 
 
 @admin_router.message(StateFilter(FSMStatesRegister.accept_info))
 async def cheking_not_correct_name(message: Message, state: FSMContext):
-    logging.warning(f"Админ {
-                    message.from_user.id} отправил некорректный ответ на этапе подтверждения имени команды")
+    logging.warning(f"Админ {message.from_user.id} отправил некорректный ответ на этапе подтверждения имени команды")
     await message.answer(
         f'Вы отправили что-то некорректное\n\n'
         f'Пожалуйста, напишите Да, если название верно, иначе напишите Нет\n\n'
@@ -196,8 +182,7 @@ async def cmd_edit_stations(message: Message, state: FSMContext):
     keyboard = get_team_keyboard()
 
     if len(game_info.teams) == 0:
-        logging.warning(f"Админ {
-                        message.from_user.id} хотел редактировать список посещенных станций для команд, но пока еще не зарегистрировано ни одной команды")
+        logging.warning(f"Админ {message.from_user.id} хотел редактировать список посещенных станций для команд, но пока еще не зарегистрировано ни одной команды")
         await message.answer(f"Пока что ни одной команды не было зарегистрировано, не у кого менять список посещенных станций")
         return
 
@@ -316,8 +301,7 @@ async def cmd_show_teams(message: Message):
     logging.info(f"Админ {message.from_user.id} запросил список команд")
 
     if len(game_info.teams) == 0:
-        logging.warning(f"Админ {
-                        message.from_user.id} запросил список команд, но оказалось что ни одной команды не было зарегистировано")
+        logging.warning(f"Админ {message.from_user.id} запросил список команд, но оказалось что ни одной команды не было зарегистировано")
         await message.answer(f"Пока что ни одной команды не было зарегистрировано")
         return
 
@@ -339,8 +323,7 @@ async def cmd_answer_show_teams(message: Message):
 
     team = game_info.GetTeamByName(team_name)
     if team is None:
-        logging.warning(f"Админу {
-                        message.from_user.id} не удалось получить информацию о команде {team_name}")
+        logging.warning(f"Админу {message.from_user.id} не удалось получить информацию о команде {team_name}")
         await message.answer(f"Что-то пошло не так")
         return
 
@@ -352,8 +335,7 @@ async def cmd_answer_show_teams(message: Message):
     if len(string_ans_representation) > 0:
         await message.answer(string_ans_representation, reply_markup=get_admin_menu_keyboard())
     else:
-        logging.warning(f"Админу {
-                        message.from_user.id} не удалось получить информацию о команде {team_name}")
+        logging.warning(f"Админу {message.from_user.id} не удалось получить информацию о команде {team_name}")
         await message.answer(f"Что-то пошло не так")
 
 
@@ -399,8 +381,7 @@ async def process_station_selected(message: Message, state: FSMContext):
     station = game_info.GetStationByName(selected_station_name)
 
     if station is None:
-        logging.warning(f"Админ {message.from_user.id} выбрал некорректное название станции: {
-                        selected_station_name}")
+        logging.warning(f"Админ {message.from_user.id} выбрал некорректное название станции: {selected_station_name}")
         await message.answer("Станция не найдена. Пожалуйста, выберите корректное название станции.")
         return
 
@@ -421,8 +402,7 @@ async def process_status_selected(message: Message, state: FSMContext):
     new_status = status_map.get(selected_status_text)
 
     if new_status is None:
-        logging.warning(f"Админ {message.from_user.id} выбрал некорректный статус: {
-                        selected_status_text}")
+        logging.warning(f"Админ {message.from_user.id} выбрал некорректный статус: {selected_status_text}")
         await message.answer("Некорректный статус. Пожалуйста, выберите корректный статус.")
         return
 
@@ -431,15 +411,13 @@ async def process_status_selected(message: Message, state: FSMContext):
     station = game_info.GetStationByName(station_name)
 
     if station is None:
-        logging.error(f"Ошибка при изменении статуса станции: станция {
-                      station_name} не найдена")
+        logging.error(f"Ошибка при изменении статуса станции: станция {station_name} не найдена")
         await message.answer("Произошла ошибка: станция не найдена.")
         await state.clear()
         return
 
     station.SetStatus(new_status)
-    logging.info(f"Админ {message.from_user.id} изменил статус станции {
-                 station_name} на {new_status.name}")
+    logging.info(f"Админ {message.from_user.id} изменил статус станции {station_name} на {new_status.name}")
 
     await state.clear()
     await message.answer(f"Статус станции {station_name} успешно изменен на {selected_status_text}.", reply_markup=get_admin_menu_keyboard())
@@ -482,8 +460,7 @@ async def process_station_selected(message: Message, state: FSMContext):
     station = game_info.GetStationByName(selected_station_name)
 
     if station is None:
-        logging.warning(f"Админ {message.from_user.id} выбрал некорректное название станции: {
-                        selected_station_name}")
+        logging.warning(f"Админ {message.from_user.id} выбрал некорректное название станции: {selected_station_name}")
         await message.answer("Станция не найдена. Пожалуйста, выберите корректное название станции.")
         return
 
