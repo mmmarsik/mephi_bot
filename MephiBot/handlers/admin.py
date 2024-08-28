@@ -44,8 +44,7 @@ async def cmd_cancel(message: Message):
 
 @admin_router.message(Command("cancel"), StateFilter(FSMStationStatusChange))
 async def cancel_status_change(message: Message, state: FSMContext):
-    logging.info(
-        f"Админ {message.from_user.id} отменил процесс изменения статуса станции")
+    logging.info(f"Админ {message.from_user.id} отменил процесс изменения статуса станции")
     await state.clear()
     await message.answer(f"Процесс изменения статуса станции был отменен. Вы можете начать процесс снова, отправив команду /changestatus", reply_markup=get_admin_menu_keyboard())
 
@@ -174,6 +173,51 @@ async def cheking_not_correct_name(message: Message, state: FSMContext):
         f'Если вы хотите прервать заполнение - '
         f'отправьте команду /cancel'
     )
+
+@admin_router.message(F.text == "Отправить команду на станцию")
+@admin_router.message(Command("edit_team_station"), StateFilter(default_state))
+async def edit_team_station(message: Message, state: FSMContext):
+    await state.set_state(FSMEditTeamStation.choose_team)
+    await message.answer(f"Выберете команду для которой хотите поменять станцию", reply_markup=get_team_keyboard())
+
+@admin_router.message(StateFilter(FSMEditTeamStation.choose_team), lambda message: message.text in [team.GetName() for team in game_info.teams])
+async def edit_team_station_correct_team(message: Message, state: FSMContext):
+    await state.update_data(team_name= message.text)
+    await state.set_state(FSMEditTeamStation.choose_location)
+    await message.answer(f"Вы выбрали команду {message.text}, если вы ошиблись напишите /cancel\n"
+                         f"Если ваш выбор корректен, выберете локацию, на которую хотите отправить команду", reply_markup=get_location_keyboard())
+
+@admin_router.message(StateFilter(FSMEditTeamStation.choose_team))
+async def edit_team_station_invalid_team(message: Message, state: FSMContext):
+    await message.answer(f"Вы отправили что-то некорректное, выберете команду заново", reply_markup=get_team_keyboard())
+
+@admin_router.message(StateFilter(FSMEditTeamStation.choose_location), lambda message: message.text in [location.GetName() for location in game_info.locations])
+async def edit_team_station_correct_location(message: Message, state: FSMContext):
+    await state.update_data(location_name= message.text)
+    await state.set_state(FSMEditTeamStation.choose_station)
+    await message.answer(f"Вы выбрали локацию {message.text}, верно ?", reply_markup=get_yes_no_keyboard())
+
+@admin_router.message(StateFilter(FSMEditTeamStation.choose_location))
+async def edit_team_station_invalid_team(message: Message, state: FSMContext):
+    await message.answer(f"Вы отправили что-то некорректное, выберете локацию заново", reply_markup=get_location_keyboard())
+
+@admin_router.message(StateFilter(FSMEditTeamStation.choose_station), F.text.lower() == "да")
+async def edit_team_station_success(message: Message, state: FSMContext):
+    data = await state.get_data()
+    location_name = data.get("location_name")
+
+    builder = ReplyKeyboardBuilder()
+
+    for location in game_info.locations:
+        if location.GetName() == location_name:
+            for station in location.stations:
+                builder.add(types.KeyboardButton(text=station.GetName()))
+    
+    builder.adjust(3)
+    
+    await message.answer(f"Вы выбрали локацию {location_name}, теперь выберете станцию из принадлежащих ей", reply_markup=builder.as_markup(resize_keyboard=True))
+
+
 
 
 @admin_router.message(F.text == "Редактировать список локаций для опр. команды")
@@ -501,7 +545,7 @@ async def reset_all_stations_teams_query(message: Message, state: FSMContext):
     await state.update_data(confirm_action="reset_all_stations_teams")
 
 
-@admin_router.message(StateFilter(default_state))
+@admin_router.message(StateFilter(default_state), lambda message: message.text in ["да", "нет"])
 async def reset_all_stations_teams_action(message: Message, state: FSMContext):
     data = await state.get_data()
     confirm_action = data.get("confirm_action")
@@ -532,15 +576,6 @@ async def reset_all_stations_teams_action(message: Message, state: FSMContext):
 
     await state.clear()
 
-@admin_router.message(F.text == "Отправить команду на станцию")
-@admin_router.message(Command("edit_team_station"), StateFilter(default_state))
-async def edit_team_station(message: Message, state: FSMContext):
-    await state.set_state(FSMEditTeamStation.choose_team)
-    await message.answer(f"Выберете команду для которой хотите поменять станцию", reply_markup=get_team_keyboard())
 
-@admin_router.message(StateFilter(FSMEditTeamStation.choose_team), lambda message: message.text in [team.GetName() for team in game_info.teams])
-async def edit_team_station_choose_team(message: Message, state: FSMContext):
-    await state.update_data(team_name= message.text)
-    await message.answer(f"Вы выбрали команду {message.text}, если вы ошиблись напишите /cancel\n"
-                         f"Если ваш выбор корректен, выберете локацию, на которую хотите отправить команду", reply_markup=get_location_keyboard())
-    
+
+

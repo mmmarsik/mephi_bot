@@ -21,4 +21,5 @@ class FSMShowStationTeams(StatesGroup):
 class FSMEditTeamStation(StatesGroup):
     choose_team = State()
     choose_location = State()
+    choose_station = State()
     accept_choice = State()
