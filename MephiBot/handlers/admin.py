@@ -513,9 +513,14 @@ async def reset_all_stations_teams_action(message: Message, state: FSMContext):
 
     for station_name, team_name in game_info.team_on_station.items():
         game_info.team_on_station[station_name] = None
+        caretaker_id: int = game_info.GetCaretakersIDByStationName(station_name)
+        await bot.send_message(caretaker_id, text=f"Админ сбросил команду, которая идёт или выполняет задание на вашей станции")
 
     for station_name, team_name in game_info.team_leaving_station.items():
         game_info.team_leaving_station[station_name] = None
+        caretaker_id: int = game_info.GetCaretakersIDByStationName(station_name)
+        await bot.send_message(caretaker_id, text=f"Админ сбросил команду, которая покидает вашу станцию")
+
 
     logging.info("У всех станций были очищены команды на них")
     await message.answer(
@@ -526,3 +531,16 @@ async def reset_all_stations_teams_action(message: Message, state: FSMContext):
     )
 
     await state.clear()
+
+@admin_router.message(F.text == "Отправить команду на станцию")
+@admin_router.message(Command("edit_team_station"), StateFilter(default_state))
+async def edit_team_station(message: Message, state: FSMContext):
+    await state.set_state(FSMEditTeamStation.choose_team)
+    await message.answer(f"Выберете команду для которой хотите поменять станцию", reply_markup=get_team_keyboard())
+
+@admin_router.message(StateFilter(FSMEditTeamStation.choose_team), lambda message: message.text in [team.GetName() for team in game_info.teams])
+async def edit_team_station_choose_team(message: Message, state: FSMContext):
+    await state.update_data(team_name= message.text)
+    await message.answer(f"Вы выбрали команду {message.text}, если вы ошиблись напишите /cancel\n"
+                         f"Если ваш выбор корректен, выберете локацию, на которую хотите отправить команду", reply_markup=get_location_keyboard())
+    

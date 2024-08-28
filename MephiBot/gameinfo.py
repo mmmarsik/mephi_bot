@@ -5,7 +5,6 @@ class StationStatus(StrEnum):
     WAITING = "Waiting"
     IN_PROGRESS = "In progress"
 
-
 class Station():
     def __init__(self, name: str):
         self.name = name
