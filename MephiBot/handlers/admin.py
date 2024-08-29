@@ -253,6 +253,20 @@ async def edit_team_station_accept_choice(message: Message, state: FSMContext):
     if message.text.lower() == "да":
         game_info.team_on_station[station_name] = team_name
 
+        for station_name_, team_name_ in game_info.team_on_station.items():
+            if team_name == team_name_:
+                game_info.team_on_station[station_name_] = None
+                station_ = game_info.GetStationByName(station_name_)
+                station_.SetStatus(StationStatus.FREE)
+
+                caretaker_id: list[int] = game_info.GetCaretakersIDByStationName(station_name)
+
+                if caretaker_id[0] != game_info.BAD_ID:
+                    await bot.send_message(caretaker_id[0], text=f"Админ убрал команду {team_name} с вашей станции.")
+
+                if caretaker_id[1] != game_info.BAD_ID:
+                    await bot.send_message(caretaker_id[1], text=f"Админ переназначил команду на вашей станции, теперь это {team_name}..")
+
         caretaker_id: list[int] = game_info.GetCaretakersIDByStationName(station_name)
 
         if caretaker_id[0] != game_info.BAD_ID:
@@ -264,7 +278,7 @@ async def edit_team_station_accept_choice(message: Message, state: FSMContext):
         await message.answer(f"Вы успешно назначили команде {team_name} станцию {station_name}. ОБЯЗАТЕЛЬНО передайте данную информацию команде, иначе она об этом не узнает")
     
     if message.text.lower() == "нет":
-        await message.answer(f"Процесс редактирования станции для команды {team_name} был отменен.", reply_markup=get_admin_menu_keyboard())
+        await message.answer(f"Процесс редактирования станции для команды {team_name} был отменен.", reply_markup=get_admin_menu_keyboard( ))
 
     await state.clear()
 
