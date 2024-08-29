@@ -21,12 +21,12 @@ class IsAdminFilter(BaseFilter):
 
 class IsStationNameFilter(BaseFilter):
     async def __call__(self, message: Message) -> bool:
-        stations_name_list = []
         for location in game_info.locations:
             for station in location.stations:
-                stations_name_list.append(station.GetName())
+                if message.text == station.GetName():
+                    return True
         
-        return message.text in stations_name_list
+        return False
 
 admin_router = Router()
 admin_router.message.filter(IsAdminFilter())
