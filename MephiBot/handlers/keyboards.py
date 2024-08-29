@@ -67,3 +67,13 @@ def get_status_selection_keyboard() -> ReplyKeyboardMarkup:
     builder.adjust(1)
     return builder.as_markup(resize_keyboard=True)
 
+def get_stations_by_location_keyboard(location_name: str) -> ReplyKeyboardMarkup:
+    builder = ReplyKeyboardBuilder()
+
+    for location in game_info.locations:
+        if location.GetName() == location_name:
+            for station in location.stations:
+                builder.add(types.KeyboardButton(text=station.GetName()))
+    
+    builder.adjust(3)
+    return builder.as_markup(resize_keyboard=True)

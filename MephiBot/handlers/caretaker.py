@@ -33,16 +33,16 @@ async def cmd_start(message: types.Message):
         return
 
     builder = ReplyKeyboardBuilder()
-    builder.add(types.KeyboardButton(text="Начать работать со станцией"))
+    builder.add(types.KeyboardButton(text="Начать или продолжить работать со станцией"))
 
     logging.info(f"Caretaker {message.from_user.id} запустил команду /start для станции {station.GetName()}")
     await message.answer(
         f"Привет, {message.from_user.full_name}, твоя станция это - {station.GetName()}\n"
-        f"Чтобы начать, напиши команду: /go", reply_markup=builder.as_markup(resize_keyboard=True)
+        f"Чтобы начать или продолжить работу, напиши команду: /go", reply_markup=builder.as_markup(resize_keyboard=True)
     )
 
 @caretaker_router.message(Command("go"))
-@caretaker_router.message(F.text.lower() ==  "начать работать со станцией")
+@caretaker_router.message(F.text.lower() ==  "начать или продолжить работать со станцией")
 async def cmd_work(message: types.Message):
     logging.info(f"Caretaker {message.from_user.id} запустил команду /go")
     builder = ReplyKeyboardBuilder()
