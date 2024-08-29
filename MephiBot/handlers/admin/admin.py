@@ -24,7 +24,7 @@ class IsAdminFilter(BaseFilter):
 
 admin_router = Router()
 admin_router.message.filter(IsAdminFilter())
-admin_router.include_routers(read_router, edit_router)
+admin_router.include_routers(edit_router, read_router)
 
 
 @admin_router.message(Command("start"), StateFilter(default_state))
