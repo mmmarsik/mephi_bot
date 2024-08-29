@@ -26,3 +26,8 @@ class FSMEditTeamStation(StatesGroup):
 
 class FSMResetAllStationsTeams(StatesGroup):
     accept_info = State()    
+
+class FSMResetSelectedStation(StatesGroup):
+    choose_location = State()
+    choose_station = State()
+    accept_info = State()

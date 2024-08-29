@@ -54,14 +54,16 @@ async def cmd_cancel(message: Message):
 async def cancel_status_change(message: Message, state: FSMContext):
     logging.info(f"Админ {message.from_user.id} отменил процесс изменения статуса станции")
     await state.clear()
-    await message.answer(f"Процесс изменения статуса станции был отменен. Вы можете начать процесс снова, отправив команду /changestatus", reply_markup=get_admin_menu_keyboard())
+    await message.answer(f"Процесс изменения статуса станции был отменен. Вы можете начать процесс снова, отправив команду /changestatus", 
+                         reply_markup=get_admin_menu_keyboard())
 
 
 @admin_router.message(Command("cancel"), ~StateFilter(default_state))
 async def process_cancel_command_state(message: Message, state: FSMContext):
     logging.info(
         f"Админ {message.from_user.id} прервал процесс регистрации команды")
-    await message.answer(f"Вы сбросили запущенный вами процесс, выберете что вы хотите сделать нажав на кнопку", reply_markup=get_admin_menu_keyboard())
+    await message.answer(f"Вы сбросили запущенный вами процесс, выберете что вы хотите сделать нажав на кнопку",
+                          reply_markup=get_admin_menu_keyboard())
     await state.clear()
 
 
@@ -77,8 +79,10 @@ async def cmd_register(message: Message, state: FSMContext):
         stations_count += len(location.stations)
 
     if teams_count >= stations_count:
-        logging.warning(f"Админ {message.from_user.id} попытался зарегистрировать команду, но их количество уже максимально допустимо")
-        await message.answer(f"Команд уже максимально возможное количество", reply_markup=get_admin_menu_keyboard())
+        logging.warning(f"Админ {message.from_user.id} попытался зарегистрировать команду, \
+                        но их количество уже максимально допустимо")
+        await message.answer(f"Команд уже максимально возможное количество", 
+                             reply_markup=get_admin_menu_keyboard())
         return
 
     await message.answer(f"Введите название команды")
@@ -162,7 +166,8 @@ async def cheking_correct_name(message: Message, state: FSMContext):
     await state.clear()
     await message.answer(f"Успешно зарегистрирована команда {team_name}.\nОна отправлена на станцию {next_station.GetName()}.\n"
                          f"Чтобы посмотреть список зарегистрированных команд напишите /showteams\n\n"
-                         f"Чтобы регистрировать другие команды, нажмите на кнопку ниже или введите команду:",reply_markup=get_admin_menu_keyboard())
+                         f"Чтобы регистрировать другие команды, нажмите на кнопку ниже или введите команду:",
+                         reply_markup=get_admin_menu_keyboard())
 
 
 @admin_router.message(StateFilter(FSMStatesRegister.accept_info), F.text.lower() == "нет")
@@ -186,20 +191,25 @@ async def cheking_not_correct_name(message: Message, state: FSMContext):
 @admin_router.message(Command("edit_team_station"), StateFilter(default_state))
 async def edit_team_station(message: Message, state: FSMContext):
     await state.set_state(FSMEditTeamStation.choose_team)
-    await message.answer(f"Выберете команду для которой хотите поменять станцию", reply_markup=get_team_keyboard())
+    await message.answer(f"Выберете команду для которой хотите поменять станцию", 
+                         reply_markup=get_team_keyboard())
 
-@admin_router.message(StateFilter(FSMEditTeamStation.choose_team), lambda message: message.text in [team.GetName() for team in game_info.teams])
+@admin_router.message(StateFilter(FSMEditTeamStation.choose_team), 
+                      lambda message: message.text in [team.GetName() for team in game_info.teams])
 async def edit_team_station_correct_team(message: Message, state: FSMContext):
     await state.update_data(team_name= message.text)
     await state.set_state(FSMEditTeamStation.choose_location)
     await message.answer(f"Вы выбрали команду {message.text}, если вы ошиблись напишите /cancel\n"
-                         f"Если ваш выбор корректен, выберете локацию, на которую хотите отправить команду", reply_markup=get_location_keyboard())
+                         f"Если ваш выбор корректен, выберете локацию, на которую хотите отправить команду", 
+                         reply_markup=get_location_keyboard())
 
 @admin_router.message(StateFilter(FSMEditTeamStation.choose_team))
 async def edit_team_station_invalid_team(message: Message, state: FSMContext):
-    await message.answer(f"Вы отправили что-то некорректное, выберете команду заново", reply_markup=get_team_keyboard())
+    await message.answer(f"Вы отправили что-то некорректное, выберете команду заново", 
+                         reply_markup=get_team_keyboard())
 
-@admin_router.message(StateFilter(FSMEditTeamStation.choose_location), lambda message: message.text in [location.GetName() for location in game_info.locations])
+@admin_router.message(StateFilter(FSMEditTeamStation.choose_location), 
+                      lambda message: message.text in [location.GetName() for location in game_info.locations])
 async def edit_team_station_correct_location(message: Message, state: FSMContext):
     await state.update_data(location_name= message.text)
     await state.set_state(FSMEditTeamStation.choose_station)
@@ -209,11 +219,13 @@ async def edit_team_station_correct_location(message: Message, state: FSMContext
     reply_markup = get_stations_by_location_keyboard(location_name)
 
     await message.answer(f"Вы выбрали локацию {location_name}, если вы ошиблись напишите /cancel\n"
-                         f"Если ваш выбор корректен, выберете станцию, на которую хотите отправить команду", reply_markup=reply_markup)
+                         f"Если ваш выбор корректен, выберете станцию, на которую хотите отправить команду", 
+                         reply_markup=reply_markup)
 
 @admin_router.message(StateFilter(FSMEditTeamStation.choose_location))
 async def edit_team_station_invalid_location(message: Message, state: FSMContext):
-    await message.answer(f"Вы отправили что-то некорректное, выберете локацию заново", reply_markup=get_location_keyboard())
+    await message.answer(f"Вы отправили что-то некорректное, выберете локацию заново", 
+                         reply_markup=get_location_keyboard())
 
 
 
@@ -227,13 +239,15 @@ async def edit_team_station_choose_station(message: Message, state: FSMContext):
     reply_markup = get_stations_by_location_keyboard(location_name)
 
     if station_name[:-2] != location_name:
-        await message.answer(f"Вы выбрали локацию {location_name}, но в качестве станции указали {station_name}. Данная станция не соответствует выбранной локации, выберете станцию еще раз", 
+        await message.answer(f"Вы выбрали локацию {location_name}, но в качестве станции указали {station_name}. \
+                             Данная станция не соответствует выбранной локации, выберете станцию еще раз", 
                              reply_markup=reply_markup)
         return
     
     await state.update_data(station_name= station_name)
     await state.set_state(FSMEditTeamStation.accept_info)
-    await message.answer(f"Вы выбрали команду {team_name} и хотите отправить ее на станцию {station_name}. Верно ?", reply_markup=get_yes_no_keyboard())
+    await message.answer(f"Вы выбрали команду {team_name} и хотите отправить ее на станцию {station_name}. Верно ?",
+                          reply_markup=get_yes_no_keyboard())
 
 
 @admin_router.message(StateFilter(FSMEditTeamStation.choose_station))
@@ -242,9 +256,11 @@ async def edit_team_station_invalid_name(message: Message, state: FSMContext):
     location_name = data.get("location_name")
     reply_markup = get_stations_by_location_keyboard(location_name)
 
-    await message.answer(f"Вы ввели что-то некорректное попробуйте выбрать название станции еще раз", reply_markup= reply_markup)
+    await message.answer(f"Вы ввели что-то некорректное попробуйте выбрать название станции еще раз", 
+                         reply_markup= reply_markup)
 
-@admin_router.message(StateFilter(FSMEditTeamStation.accept_info), lambda message: message.text.lower() in ["да", "нет"])
+@admin_router.message(StateFilter(FSMEditTeamStation.accept_info), 
+                      lambda message: message.text.lower() in ["да", "нет"])
 async def edit_team_station_accept_choice(message: Message, state: FSMContext):
     data = await state.get_data()
     team_name = data.get("team_name")
@@ -266,10 +282,12 @@ async def edit_team_station_accept_choice(message: Message, state: FSMContext):
                 caretaker_id: list[int] = game_info.GetCaretakersIDByStationName(prev_station_name)
 
                 if caretaker_id[0] != game_info.BAD_ID:
-                    await bot.send_message(caretaker_id[0], text=f"Админ убрал команду {team_name} с вашей станции.")
+                    await bot.send_message(caretaker_id[0], 
+                                           text=f"Админ убрал команду {team_name} с вашей станции.")
 
                 if caretaker_id[1] != game_info.BAD_ID:
-                    await bot.send_message(caretaker_id[1],  text=f"Админ убрал команду {team_name} с вашей станции.")
+                    await bot.send_message(caretaker_id[1], 
+                                            text=f"Админ убрал команду {team_name} с вашей станции.")
 
         for prev_station_name, team_name_ in game_info.team_leaving_station.items():
             if team_name == team_name_:
@@ -282,25 +300,31 @@ async def edit_team_station_accept_choice(message: Message, state: FSMContext):
                 caretaker_id: list[int] = game_info.GetCaretakersIDByStationName(prev_station_name)
 
                 if caretaker_id[0] != game_info.BAD_ID:
-                    await bot.send_message(caretaker_id[0], text=f"Админ убрал команду {team_name} с вашей станции.")
+                    await bot.send_message(caretaker_id[0], 
+                                           text=f"Админ убрал команду {team_name} с вашей станции.")
 
                 if caretaker_id[1] != game_info.BAD_ID:
-                    await bot.send_message(caretaker_id[1],  text=f"Админ убрал команду {team_name} с вашей станции.")
+                    await bot.send_message(caretaker_id[1],  
+                                           text=f"Админ убрал команду {team_name} с вашей станции.")
 
             
         caretaker_id: list[int] = game_info.GetCaretakersIDByStationName(station_name)
 
         if caretaker_id[0] != game_info.BAD_ID:
-            await bot.send_message(caretaker_id[0], text=f"Админ переназначил команду на вашей станции, теперь это {team_name}.")
+            await bot.send_message(caretaker_id[0], 
+                                   text=f"Админ переназначил команду на вашей станции, теперь это {team_name}.")
 
         if caretaker_id[1] != game_info.BAD_ID:
-            await bot.send_message(caretaker_id[1], text=f"Админ переназначил команду на вашей станции, теперь это {team_name}..")
+            await bot.send_message(caretaker_id[1],
+                                    text=f"Админ переназначил команду на вашей станции, теперь это {team_name}..")
         
-        await message.answer(f"Вы успешно назначили команде {team_name} станцию {station_name}. ОБЯЗАТЕЛЬНО передайте данную информацию команде, иначе она об этом не узнает",
+        await message.answer(f"Вы успешно назначили команде {team_name} станцию {station_name}. \
+                             ОБЯЗАТЕЛЬНО передайте данную информацию команде, иначе она об этом не узнает",
                              reply_markup=get_admin_menu_keyboard())
     
     if message.text.lower() == "нет":
-        await message.answer(f"Процесс редактирования станции для команды {team_name} был отменен.", reply_markup=get_admin_menu_keyboard( ))
+        await message.answer(f"Процесс редактирования станции для команды {team_name} был отменен.", 
+                             reply_markup=get_admin_menu_keyboard( ))
 
     await state.clear()
 
@@ -310,7 +334,8 @@ async def edit_team_station_invalid_accept(message: Message, state: FSMContext):
     team_name = data.get("team_name")
     station_name = data.get("station_name")
 
-    await message.answer(f"Вы ввели что-то некорректное. Вы согласны отправить команду {team_name} на станцию {station_name} ?", reply_markup=get_yes_no_keyboard())
+    await message.answer(f"Вы ввели что-то некорректное. Вы согласны отправить команду {team_name} на станцию {station_name} ?", 
+                         reply_markup=get_yes_no_keyboard())
 
 
 
@@ -320,7 +345,8 @@ async def cmd_edit_stations(message: Message, state: FSMContext):
     keyboard = get_team_keyboard()
 
     if len(game_info.teams) == 0:
-        logging.warning(f"Админ {message.from_user.id} хотел редактировать список посещенных станций для команд, но пока еще не зарегистрировано ни одной команды")
+        logging.warning(f"Админ {message.from_user.id} хотел редактировать список посещенных станций для команд, \
+                        но пока еще не зарегистрировано ни одной команды")
         await message.answer(f"Пока что ни одной команды не было зарегистрировано, не у кого менять список посещенных станций")
         return
 
@@ -342,7 +368,8 @@ async def choose_team(message: Message, state: FSMContext):
         return
 
     await state.update_data(team_name=team_name)
-    await message.answer(f"Команда {team_name} выбрана. Выберите действие:", reply_markup=get_edit_action_keyboard())
+    await message.answer(f"Команда {team_name} выбрана. Выберите действие:", 
+                         reply_markup=get_edit_action_keyboard())
     await state.set_state(FSMEditStation.editing_stations)
 
 
@@ -379,17 +406,20 @@ async def add_station(message: Message, state: FSMContext):
     team = game_info.GetTeamByName(team_name)
     if team is None:
         await message.answer("Команда не найдена.\n\n"
-                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=get_admin_menu_keyboard())
+                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", 
+                             reply_markup=get_admin_menu_keyboard())
         await state.clear()
         return
 
     if location_name not in team.to_visit_list:
         team.to_visit_list.append(location_name)
         await message.answer(f"Станция {location_name} добавлена в список посещений команды {team_name}.\n\n"
-                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=get_admin_menu_keyboard())
+                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations",
+                               reply_markup=get_admin_menu_keyboard())
     else:
         await message.answer(f"Станция {location_name} уже в списке посещений команды {team_name}.\n\n"
-                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=get_admin_menu_keyboard())
+                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", 
+                             reply_markup=get_admin_menu_keyboard())
 
     await state.clear()
 
@@ -407,7 +437,8 @@ async def remove_station(message: Message, state: FSMContext):
     team = game_info.GetTeamByName(team_name)
     if team is None:
         await message.answer("Команда не найдена.\n\n"
-                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=get_admin_menu_keyboard())
+                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", 
+                             reply_markup=get_admin_menu_keyboard())
         await state.clear()
         return
 
@@ -417,19 +448,22 @@ async def remove_station(message: Message, state: FSMContext):
         team.to_visit_list.remove(location_name)
 
         await message.answer(f"Локация {location_name} удалена из списка посещений команды {team_name}.\n\n"
-                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=get_admin_menu_keyboard())
+                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations",
+                               reply_markup=get_admin_menu_keyboard())
     else:
         print(f"\n\n\n\n\n {to_visit_list} \n\n\n\n\n ")
 
         await message.answer(f"Станция {location_name} не найдена в списке посещений команды {team_name}.\n\n"
-                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=get_admin_menu_keyboard())
+                             f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations",
+                               reply_markup=get_admin_menu_keyboard())
 
     await state.clear()
 
 
 async def cancel_editing(message: Message, state: FSMContext):
     await message.answer("Редактирование отменено.\n\n"
-                         f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations", reply_markup=get_admin_menu_keyboard())
+                         f"Если хотите попробовать еще раз нажмите кнопку или напишите /edit_command_stations",
+                           reply_markup=get_admin_menu_keyboard())
     await state.clear()
 
 
@@ -450,7 +484,8 @@ async def cmd_show_teams(message: Message):
 
     builder.adjust(6)
 
-    await message.answer(f"Выберете команду о которой вы хотите получить информацию", reply_markup=builder.as_markup(resize_keyboard=True),)
+    await message.answer(f"Выберете команду о которой вы хотите получить информацию", 
+                         reply_markup=builder.as_markup(resize_keyboard=True),)
 
 
 @admin_router.message(lambda msg: msg.text in [team.GetName() for team in game_info.teams])
@@ -471,7 +506,8 @@ async def cmd_answer_show_teams(message: Message):
     string_ans_representation: str = f"Команде {
         team_name} Осталось посетить локации : {unpacked_list_answer}"
     if len(string_ans_representation) > 0:
-        await message.answer(string_ans_representation, reply_markup=get_admin_menu_keyboard())
+        await message.answer(string_ans_representation, 
+                             reply_markup=get_admin_menu_keyboard())
     else:
         logging.warning(f"Админу {message.from_user.id} не удалось получить информацию о команде {team_name}")
         await message.answer(f"Что-то пошло не так")
@@ -509,7 +545,8 @@ async def cmd_change_status(message: Message, state: FSMContext):
     logging.info(
         f"Админ {message.from_user.id} начал процесс изменения статуса станции")
 
-    await message.answer("Выберите станцию, статус которой вы хотите изменить:", reply_markup=get_station_selection_keyboard())
+    await message.answer("Выберите станцию, статус которой вы хотите изменить:", 
+                         reply_markup=get_station_selection_keyboard())
     await state.set_state(FSMStationStatusChange.choose_station)
 
 
@@ -524,7 +561,8 @@ async def process_station_selected(message: Message, state: FSMContext):
         return
 
     await state.update_data(station_name=selected_station_name)
-    await message.answer(f"Вы выбрали станцию: {selected_station_name}.\nТеперь выберите новый статус:", reply_markup=get_status_selection_keyboard())
+    await message.answer(f"Вы выбрали станцию: {selected_station_name}.\nТеперь выберите новый статус:", 
+                         reply_markup=get_status_selection_keyboard())
     await state.set_state(FSMStationStatusChange.choose_status)
 
 
@@ -558,7 +596,8 @@ async def process_status_selected(message: Message, state: FSMContext):
     logging.info(f"Админ {message.from_user.id} изменил статус станции {station_name} на {new_status.name}")
 
     await state.clear()
-    await message.answer(f"Статус станции {station_name} успешно изменен на {selected_status_text}.", reply_markup=get_admin_menu_keyboard())
+    await message.answer(f"Статус станции {station_name} успешно изменен на {selected_status_text}.", 
+                         reply_markup=get_admin_menu_keyboard())
 
 
 @admin_router.message(StateFilter(FSMStationStatusChange.choose_station))
@@ -588,7 +627,8 @@ async def cmd_show_station_teams(message: Message, state: FSMContext):
     logging.info(
         f"Админ {message.from_user.id} начал процесс выбора станции для показа команд")
 
-    await message.answer("Выберите станцию, для которой вы хотите посмотреть список команд:", reply_markup=get_station_selection_keyboard())
+    await message.answer("Выберите станцию, для которой вы хотите посмотреть список команд:", 
+                         reply_markup=get_station_selection_keyboard())
     await state.set_state(FSMShowStationTeams.choose_station)
 
 
@@ -618,7 +658,8 @@ async def process_station_selected(message: Message, state: FSMContext):
         await message.answer("\n".join(status_messages))
 
     await state.clear()
-    await message.answer("Вы можете выбрать другую станцию или вернуться в главное меню.", reply_markup=get_admin_menu_keyboard())
+    await message.answer("Вы можете выбрать другую станцию или вернуться в главное меню.", 
+                         reply_markup=get_admin_menu_keyboard())
 
 
 @admin_router.message(StateFilter(FSMShowStationTeams.choose_station))
@@ -638,9 +679,11 @@ async def warning_invalid_station(message: Message):
 @admin_router.message(Command("reset_all_stations_teams"), StateFilter(default_state))
 async def reset_all_stations_teams_query(message: Message, state: FSMContext):
     await state.set_state(FSMResetAllStationsTeams.accept_info)
-    await message.answer("Вы точно хотите сбросить команды на ВСЕХ станциях?", reply_markup=get_yes_no_keyboard())
+    await message.answer("Вы точно хотите сбросить команды на ВСЕХ станциях?", 
+                         reply_markup=get_yes_no_keyboard())
 
-@admin_router.message(StateFilter(FSMResetAllStationsTeams.accept_info), lambda message: message.text.lower() in ["да", "нет"])
+@admin_router.message(StateFilter(FSMResetAllStationsTeams.accept_info), 
+                      lambda message: message.text.lower() in ["да", "нет"])
 async def reset_all_stations_teams_action(message: Message, state: FSMContext):
     if message.text.lower() != "да":
         await state.clear()
@@ -649,23 +692,35 @@ async def reset_all_stations_teams_action(message: Message, state: FSMContext):
 
     for station_name, team_name in game_info.team_on_station.items():
         game_info.team_on_station[station_name] = None
+
+        station = game_info.GetStationByName(station_name)
+        station.SetStatus(StationStatus.FREE)
+
         caretaker_id: list[int] = game_info.GetCaretakersIDByStationName(station_name)
 
         if caretaker_id[0] != game_info.BAD_ID:
-            await bot.send_message(caretaker_id[0], text=f"Админ сбросил команду, которая идет на вашу станцию или выполняет на ней задание.")
+            await bot.send_message(caretaker_id[0],
+                                    text=f"Админ сбросил команду, которая идет на вашу станцию или выполняет на ней задание.")
 
         if caretaker_id[1] != game_info.BAD_ID:
-            await bot.send_message(caretaker_id[1], text=f"Админ сбросил команду, которая идет на вашу станцию или выполняет на ней задание.")
+            await bot.send_message(caretaker_id[1], 
+                                   text=f"Админ сбросил команду, которая идет на вашу станцию или выполняет на ней задание.")
 
     for station_name, team_name in game_info.team_leaving_station.items():
         game_info.team_leaving_station[station_name] = None
+
+        station = game_info.GetStationByName(station_name)
+        station.SetStatus(StationStatus.FREE)
+
         caretaker_id: list[int] = game_info.GetCaretakersIDByStationName(station_name)
 
         if caretaker_id[0] != game_info.BAD_ID:
-            await bot.send_message(caretaker_id[0], text=f"Админ сбросил команду, которая покидает вашу станцию.")
+            await bot.send_message(caretaker_id[0], 
+                                   text=f"Админ сбросил команду, которая покидает вашу станцию.")
 
         if caretaker_id[1] != game_info.BAD_ID:
-            await bot.send_message(caretaker_id[1], text=f"Админ сбросил команду, которая покидает вашу станцию.")
+            await bot.send_message(caretaker_id[1], 
+                                   text=f"Админ сбросил команду, которая покидает вашу станцию.")
 
     logging.info("У всех станций были очищены команды на них")
     await message.answer(
@@ -677,5 +732,105 @@ async def reset_all_stations_teams_action(message: Message, state: FSMContext):
 
     await state.clear()
 
+@admin_router.message(F.text == "Сбросить команды на конкретной станции", StateFilter(default_state))
+@admin_router.message(Command("reset_selected_station"), StateFilter(default_state))
+async def reset_selected_station(message: Message, state: FSMContext):
+    await message.answer(f"Сначала выберете локацию у которой хотите сбросить команды", reply_markup=get_location_keyboard())
+    await state.set_state(FSMResetSelectedStation.choose_location)
 
+@admin_router.message(StateFilter(FSMResetSelectedStation.choose_location), 
+                      lambda message: message.text in [location.GetName() for location in game_info.locations])
+async def reset_selected_station_choose_location(message: Message, state: FSMContext):
+    state.update_data(location_name = message.text)
+    
+    reply_markup = get_stations_by_location_keyboard(message.text)
 
+    await state.set_state(FSMResetSelectedStation.choose_station)
+    await message.answer(f"Вы выбрали локацию {message.text}, далее выберете станцию из данной локации.\n"
+                         f"Если хотите отменить действие напишите /cancel", 
+                         reply_markup=reply_markup)
+
+@admin_router.message(StateFilter(FSMResetSelectedStation.choose_location))
+async def reset_selected_station_invalid_location_name(message: Message, state: FSMContext):
+    await message.answer(f"Вы ввели некорректное название локации, если хотите отменить процесс, то напишите /cancel\n"
+                         f"Если вы хотите выбрать локацию еще раз, то нажмите кнопку", 
+                         reply_markup=get_location_keyboard())
+
+@admin_router.message(StateFilter(FSMResetSelectedStation.choose_station), IsStationNameFilter())
+async def reset_selected_station_choose_station(message: Message, state: FSMContext):
+    station_name = message.text
+    await state.update_data(station_name=station_name)
+    await state.set_state(FSMResetSelectedStation.accept_info)
+
+    await message.answer(f"Вы выбрали станцию {station_name}, Вы уверены ?", 
+                         reply_markup= get_yes_no_keyboard())
+
+@admin_router.message(StateFilter(FSMResetSelectedStation.choose_station))
+async def reset_selected_station_invalid_station(message: Message, state: FSMContext):
+    data = await state.get_data()
+    location_name = data.get(location_name)
+
+    await message.answer(f"Вы ввели некорректное название станции, если хотите отменить процесс - напишите /cancel\n"
+                         f"Если вы хотите попробовать еще раз, то веберете заново название станции", 
+                         reply_markup=get_stations_by_location_keyboard(location_name))
+
+@admin_router.message(StateFilter(FSMResetSelectedStation.accept_info), 
+                      lambda message: message.text.lower() in ["да",  "нет"])
+async def reset_selected_station_accept_info(message: Message, state: FSMContext):
+    data = await state.get_data()
+    station_name = data.get("station_name")
+
+    await state.clear()
+
+    if message.text.lower() == "да":
+        game_info.team_on_station[station_name] = None
+        game_info.team_leaving_station[station_name] = None
+
+        station = game_info.GetStationByName(station_name)
+        station.SetStatus(StationStatus.FREE)
+
+        caretaker_id: list[int] = game_info.GetCaretakersIDByStationName(station_name)
+
+        if caretaker_id[0] != game_info.BAD_ID:
+            await bot.send_message(caretaker_id[0], 
+                                   text=f"Админ сбросил команду, которая покидает вашу станцию.")
+
+        if caretaker_id[1] != game_info.BAD_ID:
+            await bot.send_message(caretaker_id[1], 
+                                   text=f"Админ сбросил команду, которая покидает вашу станцию.")
+        
+        await message.answer(f"Вы успешно сбросили команды на станции {station_name}"
+                             f"ВНИМАНИЕ !!! Не забудьте назначить командам, которые находились сейчас на данной станции следующую\n"
+                             f"Иначе команда не сможет продолжить выполнения квеста", reply_markup=get_admin_menu_keyboard())
+    
+    if message.text.lower() == "нет":
+        await message.answer(f"Процесс сброса команд на станции {station_name} был отменен", reply_markup=get_admin_menu_keyboard())
+    
+@admin_router.message(StateFilter(FSMResetSelectedStation.accept_info))
+async def reset_selected_station_accept_info_invalid(message: Message, state: FSMContext):
+    data = await state.get_data()
+    station_name = data.get("station_name")
+
+    await message.answer(f"Вы ввели что-то некорректное.\n"
+                         f"Вы хотите сбросить команды на станции {station_name} ?", reply_markup=get_yes_no_keyboard())
+
+@admin_router.message(F.text == "Найти команды без станций")
+@admin_router.message(Command("find_teams_without_station"))
+async def find_teams_without_station(message: Message):
+    teams_without_station: set[str] = set()
+
+    for team in game_info.teams:
+        if len(team.GetToVisitList()) > 0:
+            if not team.GetName() in game_info.team_on_station.values():
+                teams_without_station.add(team.GetName())
+            
+            if not team.GetName() in game_info.team_leaving_station.values():
+                teams_without_station.add(team.GetName())
+
+    if len(teams_without_station) == 0:
+        await message.answer(f"У всех команд назначена станция", reply_markup=get_admin_menu_keyboard())
+        return
+
+    await message.answer(f"Вот список команд у которых не назначено ни одной станции\n"
+                        f"{list(teams_without_station)}", reply_markup=get_admin_menu_keyboard())
+    
