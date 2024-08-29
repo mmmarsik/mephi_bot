@@ -8,6 +8,8 @@ import os
 
 from dotenv import load_dotenv
 
+from handlers.admin import admin
+
 load_dotenv()
 
 TOKEN = os.environ.get("TOKEN")
@@ -57,7 +59,7 @@ logging.basicConfig(
     ]
 )
 
-from handlers import caretaker, admin
+from handlers import caretaker
 
 async def main():
     dp.include_router(caretaker.caretaker_router)
