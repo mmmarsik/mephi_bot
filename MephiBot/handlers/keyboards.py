@@ -20,7 +20,8 @@ def get_admin_menu_keyboard() -> ReplyKeyboardMarkup:
             [KeyboardButton(text="Показать команды"),
              KeyboardButton(text="Статус станций")],
             [KeyboardButton(text="Показать команды на станции"), KeyboardButton(text="Изменить статус станции")], [
-                KeyboardButton(text="Редактировать список локаций для опр. команды")], [KeyboardButton(text="Сбросить команды на всех станциях")]
+                KeyboardButton(text="Редактировать список локаций для опр. команды"), KeyboardButton(text="Сбросить команды на всех станциях")],
+            [KeyboardButton(text="Редактировать станцию у команды")]
         ],
         resize_keyboard=True
     )
