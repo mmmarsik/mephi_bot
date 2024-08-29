@@ -17,7 +17,7 @@ def get_admin_menu_keyboard() -> ReplyKeyboardMarkup:
     keyboard = ReplyKeyboardMarkup(
         keyboard=[
             [KeyboardButton(text="Зарегистрировать команду")],
-            [KeyboardButton(text="Показать команды"),
+            [KeyboardButton(text="Получить инфо о команде"),
              KeyboardButton(text="Статус станций")],
             [KeyboardButton(text="Показать команды на станции"), KeyboardButton(text="Изменить статус станции")], [
                 KeyboardButton(text="Редактировать список локаций для опр. команды"), KeyboardButton(text="Сбросить команды на всех станциях")],

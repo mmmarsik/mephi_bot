@@ -253,20 +253,41 @@ async def edit_team_station_accept_choice(message: Message, state: FSMContext):
     if message.text.lower() == "да":
         game_info.team_on_station[station_name] = team_name
 
-        for station_name_, team_name_ in game_info.team_on_station.items():
+        for prev_station_name, team_name_ in game_info.team_on_station.items():
             if team_name == team_name_:
-                game_info.team_on_station[station_name_] = None
-                station_ = game_info.GetStationByName(station_name_)
-                station_.SetStatus(StationStatus.FREE)
+                game_info.team_on_station[prev_station_name] = None
+                station_ = game_info.GetStationByName(prev_station_name)
 
-                caretaker_id: list[int] = game_info.GetCaretakersIDByStationName(station_name)
+                if not game_info.HasLeavingTeam(prev_station_name):
+                    station_.SetStatus(StationStatus.FREE)
+
+                                    
+
+                caretaker_id: list[int] = game_info.GetCaretakersIDByStationName(prev_station_name)
 
                 if caretaker_id[0] != game_info.BAD_ID:
                     await bot.send_message(caretaker_id[0], text=f"Админ убрал команду {team_name} с вашей станции.")
 
                 if caretaker_id[1] != game_info.BAD_ID:
-                    await bot.send_message(caretaker_id[1], text=f"Админ переназначил команду на вашей станции, теперь это {team_name}..")
+                    await bot.send_message(caretaker_id[1],  text=f"Админ убрал команду {team_name} с вашей станции.")
 
+        for prev_station_name, team_name_ in game_info.team_leaving_station.items():
+            if team_name == team_name_:
+                game_info.team_leaving_station[prev_station_name] = None
+                station_ = game_info.GetStationByName(prev_station_name)
+
+                if not game_info.HasTeam(prev_station_name):
+                    station_.SetStatus(StationStatus.FREE)
+
+                caretaker_id: list[int] = game_info.GetCaretakersIDByStationName(prev_station_name)
+
+                if caretaker_id[0] != game_info.BAD_ID:
+                    await bot.send_message(caretaker_id[0], text=f"Админ убрал команду {team_name} с вашей станции.")
+
+                if caretaker_id[1] != game_info.BAD_ID:
+                    await bot.send_message(caretaker_id[1],  text=f"Админ убрал команду {team_name} с вашей станции.")
+
+            
         caretaker_id: list[int] = game_info.GetCaretakersIDByStationName(station_name)
 
         if caretaker_id[0] != game_info.BAD_ID:
@@ -275,7 +296,8 @@ async def edit_team_station_accept_choice(message: Message, state: FSMContext):
         if caretaker_id[1] != game_info.BAD_ID:
             await bot.send_message(caretaker_id[1], text=f"Админ переназначил команду на вашей станции, теперь это {team_name}..")
         
-        await message.answer(f"Вы успешно назначили команде {team_name} станцию {station_name}. ОБЯЗАТЕЛЬНО передайте данную информацию команде, иначе она об этом не узнает")
+        await message.answer(f"Вы успешно назначили команде {team_name} станцию {station_name}. ОБЯЗАТЕЛЬНО передайте данную информацию команде, иначе она об этом не узнает",
+                             reply_markup=get_admin_menu_keyboard())
     
     if message.text.lower() == "нет":
         await message.answer(f"Процесс редактирования станции для команды {team_name} был отменен.", reply_markup=get_admin_menu_keyboard( ))
@@ -412,7 +434,7 @@ async def cancel_editing(message: Message, state: FSMContext):
 
 
 @admin_router.message(Command("showteams"))
-@admin_router.message(F.text == "Показать команды")
+@admin_router.message(F.text == "Получить инфо о команде")
 async def cmd_show_teams(message: Message):
     logging.info(f"Админ {message.from_user.id} запросил список команд")
 
@@ -561,7 +583,7 @@ async def warning_invalid_status(message: Message):
 
 
 @admin_router.message(Command("showstationteams"))
-@admin_router.message(F.text == "Показать команды на станции")
+@admin_router.message(F.text == "Получить инфо о команде на станции")
 async def cmd_show_station_teams(message: Message, state: FSMContext):
     logging.info(
         f"Админ {message.from_user.id} начал процесс выбора станции для показа команд")
