@@ -1,8 +1,6 @@
 aiogram<4.0
 pydantic-settings
 aiofiles
-aiogram
-aiogram-media-group
 aiohttp
 aioschedule
 aiosignal
