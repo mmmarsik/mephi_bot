@@ -1,9 +1,11 @@
 from enum import StrEnum
 
+
 class StationStatus(StrEnum):
     FREE = "Free"
     WAITING = "Waiting"
     IN_PROGRESS = "In progress"
+
 
 class Station():
     def __init__(self, name: str):
@@ -83,16 +85,18 @@ class Team():
 
 class GameInfo:
 
-    def __init__(self, caretakers: dict[int, str], admins: set[int], location_list: list[tuple[str, int]]):
+    def __init__(self, caretakers: dict[int, str], admins: set[int], location_list: list[tuple[str, int]], 
+                 teams: list[Team], team_on_station, team_leaving_station):
         self.caretakers: dict[int, str] = caretakers
         self.admins = admins
+        self.location_list = location_list
         self.locations: set[Location] = set()
-        self.teams: set[Team] = set()
-        self.team_on_station: dict[str, str] = dict()
-        self.team_leaving_station: dict[str, str] = dict()
+        self.teams: set[Team] = set(teams)
+        self.team_on_station: dict[str, str] = dict(team_on_station)
+        self.team_leaving_station: dict[str, str] = dict(team_leaving_station)
         self.BAD_ID = "INCORRECT_ID"
 
-        for elem in location_list:
+        for elem in self.location_list:
             self.locations.add(
                 Location(location_name=elem[0], number_of_stations=elem[1]))
 

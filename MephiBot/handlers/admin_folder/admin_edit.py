@@ -461,7 +461,7 @@ async def reset_selected_station(message: Message, state: FSMContext):
 @edit_router.message(StateFilter(FSMResetSelectedStation.choose_location), 
                       lambda message: message.text in [location.GetName() for location in game_info.locations])
 async def reset_selected_station_choose_location(message: Message, state: FSMContext):
-    state.update_data(location_name = message.text)
+    await state.update_data(location_name = message.text)
     
     reply_markup = get_stations_by_location_keyboard(message.text)
 

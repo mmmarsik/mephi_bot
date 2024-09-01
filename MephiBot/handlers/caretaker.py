@@ -76,11 +76,7 @@ async def accept_new_task(message: types.Message):
         logging.warning(f"Caretaker {message.from_user.id} попытался принять новую команду, но станция {station.GetName()} уже занята")
         await message.reply("Станция уже занята.")
         return
-    
-    # if  station.IsFree() :
-    #     logging.warning(f"Caretaker {message.from_user.id} попытался принять новую команду, но станция {station.GetName()} уже занята")
-    #     await message.reply("Станция уже занята.")
-    #     return
+
 
     if game_info.HasLeavingTeam(station.GetName()):
         logging.warning(f"Caretaker {message.from_user.id} попытался принять новую команду, но станция {station.GetName()} еще не отправила прошлую команду дальше")
@@ -92,6 +88,7 @@ async def accept_new_task(message: types.Message):
     team.ToVisitLocation(location_name)
     station.SetStatus(StationStatus.IN_PROGRESS)
     logging.info(f"Caretaker {message.from_user.id} принял команду {team.GetName()} на станцию {station.GetName()}")
+    bot.save_game_info()
     await message.reply(f"Вы успешно приняли новую команду '{team.GetName()}' на станцию {station.GetName()}.")
 
 
@@ -110,6 +107,8 @@ async def redirect_task(message: types.Message):
         game_info.StartLeavingStation(station.GetName())
         station.SetStatus(StationStatus.FREE)
 
+
+
         if not (team is None) and len(team.GetToVisitList()) == 0:
             game_info.LeaveStation(station.GetName())
             await message.answer(f"Команда {team.GetName()} посетила все станции, некуда перенаправить ее\n\n"
@@ -125,8 +124,6 @@ async def redirect_task(message: types.Message):
             return
         
         next_station.SetStatus(StationStatus.WAITING)
-        location_name: str = next_station.GetName()[:-2]
-        # team.ToVisitLocation(location_name)
         game_info.LeaveStation(station.GetName())
         game_info.SendTeamOnStation(team.GetName(), next_station.GetName())
 
@@ -168,9 +165,7 @@ async def redirect_task(message: types.Message):
             return
         
         next_station.SetStatus(StationStatus.WAITING)
-        location_name: str = next_station.GetName()[:-2]
         game_info.LeaveStation(station.GetName())
-        # team_leaving_station.ToVisitLocation(location_name)
         game_info.SendTeamOnStation(team_leaving_station.GetName(), next_station.GetName()) 
         team_name = team_leaving_station.GetName()
 
