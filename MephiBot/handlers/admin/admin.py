@@ -164,7 +164,7 @@ async def cheking_correct_name(message: Message, state: FSMContext):
 async def cheking_correct_name(message: Message, state: FSMContext):
     logging.info(f"Админ {message.from_user.id} отменил процесс регистрации команды")
     await state.clear()
-    await message.answer(f"Процесс регистрации был отменен, чтобы повторить напишите /register")
+    await message.answer(f"Процесс регистрации был отменен, чтобы повторить напишите /register", reply_markup=get_admin_menu_keyboard())
 
 
 @admin_router.message(StateFilter(FSMStatesRegister.accept_info))
