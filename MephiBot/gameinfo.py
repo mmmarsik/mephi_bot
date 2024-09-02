@@ -1,4 +1,5 @@
 from enum import StrEnum
+from typing import Any
 
 
 class StationStatus(StrEnum):
@@ -35,6 +36,8 @@ class Station():
     def GetName(self) -> str:
         return self.name
 
+    def __str__(self) -> str:
+        return f"{self.name} {str(self.status)}"
 
 class Location():
     def __init__(self, location_name: str, number_of_stations: int):
@@ -47,6 +50,10 @@ class Location():
 
     def GetName(self) -> str:
         return self.name
+    
+        
+
+        
 
 
 class Team():
