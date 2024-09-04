@@ -290,13 +290,10 @@ class GameInfo:
         caretakers = data["caretakers"]
         admins = set(data["admins"])
 
-        # Восстановление объектов Location
         locations = set([Location.deserialize(location_data) for location_data in data["locations"]])
 
-        # Восстановление объектов Team
         teams = set([Team.deserialize(team_data) for team_data in data["teams"]])
 
-        # Восстановление словарей с командами на станциях
         team_on_station = data["team_on_station"]
         team_leaving_station = data["team_leaving_station"]
 
@@ -314,10 +311,8 @@ class GameInfo:
         self.updates_count += 1
 
         if self.updates_count >= 1:
-            # Сериализация данных
             json_str_repr = json.dumps(self.serialize())
 
-            # Сохранение в Valkey
             self.client.set("game_info", json_str_repr)
             logging.info("Game info сохранены в Valkey")
             self.updates_count = 0
