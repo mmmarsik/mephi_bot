@@ -92,6 +92,8 @@ async def accept_new_task(message: types.Message):
     print(str(station))
 
     await message.reply(f"Вы успешно приняли новую команду '{team.GetName()}' на станцию {station.GetName()}.")
+    game_info.Update_game_info()
+
 
 
 @caretaker_router.message(F.text.lower() == "перенаправить текущую команду")
@@ -115,6 +117,7 @@ async def redirect_task(message: types.Message):
             game_info.LeaveStation(station.GetName())
             await message.answer(f"Команда {team.GetName()} посетила все станции, некуда перенаправить ее\n\n"
                                  f"Можете принимать новую команду, если она назначена")
+            game_info.Update_game_info()
             return
             
 
@@ -146,6 +149,7 @@ async def redirect_task(message: types.Message):
 
         logging.info(f"Команда {team.GetName()} перенаправлена со станции {station.GetName()} на станцию {next_station.GetName()}")
         await message.answer(f"Команда '{team.GetName()}' перенаправлена на станцию {next_station.GetName()}.")
+        game_info.Update_game_info()
         return
     
     if game_info.HasLeavingTeam(station.GetName()):
@@ -156,6 +160,7 @@ async def redirect_task(message: types.Message):
             game_info.LeaveStation(station.GetName())
             await message.answer(f"Команда {team.GetName()} посетила все станции, некуда перенаправить ее\n\n"
                                  f"Можете принимать новую команду, если она назначена")
+            game_info.Update_game_info()
             return
             
 
@@ -185,6 +190,7 @@ async def redirect_task(message: types.Message):
 
         logging.info(f"Команда {team_leaving_station.GetName()} перенаправлена со станции {station.GetName()} на станцию {next_station.GetName()}")
         await message.answer(f"Команда '{team_leaving_station.GetName()}' перенаправлена на станцию {next_station.GetName()}.")
+        game_info.Update_game_info()
         return
 
     if not game_info.HasLeavingTeam(station.GetName()) and not game_info.HasTeam(station.GetName()):

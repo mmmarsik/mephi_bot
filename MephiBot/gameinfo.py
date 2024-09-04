@@ -1,5 +1,15 @@
 from enum import StrEnum
-from typing import Any
+import json
+import logging
+import valkey
+
+connection_pool = valkey.ConnectionPool(
+    host='localhost',
+    port=6379,
+    db=0,
+    max_connections=10
+)
+
 
 
 class StationStatus(StrEnum):
@@ -39,6 +49,7 @@ class Station():
     def __str__(self) -> str:
         return f"{self.name} {str(self.status)}"
 
+
 class Location():
     def __init__(self, location_name: str, number_of_stations: int):
         self.name: str = location_name
@@ -50,10 +61,9 @@ class Location():
 
     def GetName(self) -> str:
         return self.name
-    
-        
 
-        
+    def __str__(self) -> str:
+        return f"{self.name} {[str(station) for station in self.stations]}"
 
 
 class Team():
@@ -89,10 +99,12 @@ class Team():
     def GetName(self) -> str:
         return self.name
 
+    def __str__(self) -> str:
+        return f"{self.name} {self.to_visit_list} {self.visited_list}"
+
 
 class GameInfo:
-
-    def __init__(self, caretakers: dict[int, str], admins: set[int], location_list: list[tuple[str, int]], 
+    def __init__(self, caretakers: dict[int, str], admins: set[int], location_list: list[tuple[str, int]],
                  teams: list[Team], team_on_station, team_leaving_station):
         self.caretakers: dict[int, str] = caretakers
         self.admins = admins
@@ -101,7 +113,9 @@ class GameInfo:
         self.teams: set[Team] = set(teams)
         self.team_on_station: dict[str, str] = dict(team_on_station)
         self.team_leaving_station: dict[str, str] = dict(team_leaving_station)
+        self.updates_count = 0
         self.BAD_ID = "INCORRECT_ID"
+        self.client = valkey.Valkey(connection_pool=connection_pool)
 
         for elem in self.location_list:
             self.locations.add(
@@ -214,3 +228,20 @@ class GameInfo:
         if self.team_on_station.get(station_name, None) == None:
             return False
         return True
+
+    def Update_game_info(self) -> None:
+        self.updates_count += 1
+
+        if self.updates_count >= 1:
+            game_info_data = {
+                "caretakers": self.caretakers,
+                "admins": list(self.admins),
+                "locations": [str(location) for location in self.locations],
+                "teams": [str(team) for team in self.teams],
+                "team_on_station": self.team_on_station,
+                "team_leaving_station": self.team_leaving_station
+            }
+
+            self.client.set("game_info", json.dumps(game_info_data))
+            logging.info("Game info сохранены в Valkey")
+            self.updates_count = 0
