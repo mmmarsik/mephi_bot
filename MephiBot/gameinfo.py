@@ -275,7 +275,6 @@ class GameInfo:
             return False
         return True
 
-     # Сериализация данных класса GameInfo
     def serialize(self) -> dict:
         return {
             "caretakers": self.caretakers,
@@ -286,7 +285,6 @@ class GameInfo:
             "team_leaving_station": self.team_leaving_station
         }
 
-    # Десериализация данных класса GameInfo
     @staticmethod
     def deserialize(data: dict):
         caretakers = data["caretakers"]
@@ -305,14 +303,13 @@ class GameInfo:
         return GameInfo(
             caretakers=caretakers,
             admins=admins,
-            location_list=[],  # Это не нужно при восстановлении
+            location_list=[],  
             teams=list(teams),
             team_on_station=team_on_station,
             team_leaving_station=team_leaving_station,
             is_restored=True
         )
 
-    # Метод для сохранения состояния игры в Valkey
     def update_game_info(self):
         self.updates_count += 1
 
@@ -325,19 +322,16 @@ class GameInfo:
             logging.info("Game info сохранены в Valkey")
             self.updates_count = 0
 
-    # Метод для восстановления состояния игры из Valkey
     @classmethod
     def restore_game_info(cls):
         client = valkey.Valkey(connection_pool=connection_pool)
 
-        # Получение данных из Valkey
         json_str_repr = client.get("game_info")
 
         if not json_str_repr:
             logging.error("Не удалось восстановить игру, данные отсутствуют")
             return None
 
-        # Десериализация данных
         data = json.loads(json_str_repr)
         return cls.deserialize(data)
 
