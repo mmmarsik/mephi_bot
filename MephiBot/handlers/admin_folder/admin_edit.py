@@ -173,7 +173,7 @@ async def edit_team_station_accept_choice(message: Message, state: FSMContext):
                              reply_markup=get_admin_menu_keyboard( ))
 
     await state.clear()
-    game_info.Update_game_info()
+    game_info.update_game_info()  
 
 @edit_router.message(StateFilter(FSMEditTeamStation.accept_info))
 async def edit_team_station_invalid_accept(message: Message, state: FSMContext):
@@ -302,7 +302,7 @@ async def remove_station(message: Message, state: FSMContext):
                                reply_markup=get_admin_menu_keyboard())
 
     await state.clear()
-    game_info.Update_game_info()
+    game_info.update_game_info()  
 
 
 async def cancel_editing(message: Message, state: FSMContext):
@@ -370,7 +370,7 @@ async def process_status_selected(message: Message, state: FSMContext):
     await state.clear()
     await message.answer(f"Статус станции {station_name} успешно изменен на {selected_status_text}.", 
                          reply_markup=get_admin_menu_keyboard())
-    game_info.Update_game_info()
+    game_info.update_game_info()  
 
 
 
@@ -451,7 +451,7 @@ async def reset_all_stations_teams_action(message: Message, state: FSMContext):
     )
 
     await state.clear()
-    game_info.Update_game_info()
+    game_info.update_game_info()  
 
 
 @edit_router.message(F.text == "Сбросить команды на конкретной станции", StateFilter(default_state))
@@ -528,7 +528,7 @@ async def reset_selected_station_accept_info(message: Message, state: FSMContext
     if message.text.lower() == "нет":
         await message.answer(f"Процесс сброса команд на станции {station_name} был отменен", reply_markup=get_admin_menu_keyboard())
     
-    game_info.Update_game_info()
+    game_info.update_game_info()  
 
     
 @edit_router.message(StateFilter(FSMResetSelectedStation.accept_info))

@@ -10,13 +10,10 @@ connection_pool = valkey.ConnectionPool(
     max_connections=10
 )
 
-
-
 class StationStatus(StrEnum):
     FREE = "Free"
     WAITING = "Waiting"
     IN_PROGRESS = "In progress"
-
 
 class Station():
     def __init__(self, name: str):
@@ -45,10 +42,24 @@ class Station():
 
     def GetName(self) -> str:
         return self.name
+    
+    def __repr__(self) -> str:
+        return f"Station(name={self.name!r}, status={self.status!r})"
 
     def __str__(self) -> str:
-        return f"{self.name} {self.status.name}"
+        return f"{self.name} {self.status}"
 
+    def serialize(self) -> dict:
+        return {
+            "name": self.name,
+            "status": self.status.value  
+        }
+
+    @staticmethod
+    def deserialize(data: dict):
+        station = Station(data["name"])
+        station.status = StationStatus(data["status"])  
+        return station
 
 class Location():
     def __init__(self, location_name: str, number_of_stations: int):
@@ -61,12 +72,26 @@ class Location():
 
     def GetName(self) -> str:
         return self.name
+    
+    def __repr__(self) -> str:
+        stations_repr = ','.join(repr(station) for station in self.stations)
+        return f"Location(name={self.name!r}, stations=[{stations_repr}])"
 
     def __str__(self) -> str:
-        to_visit_str = ",".join(self.to_visit)
-        visited_str = ",".join(self.visited)
-        return f"Team({self.name}:[{to_visit_str}]:[{visited_str}])"
- 
+        stations_str = ";".join(str(station) for station in self.stations)
+        return f"{self.name}:{stations_str}"
+
+    def serialize(self) -> dict:
+        return {
+            "name": self.name,
+            "stations": [station.serialize() for station in self.stations]
+        }
+
+    @staticmethod
+    def deserialize(data: dict):
+        location = Location(data["name"], 0)  
+        location.stations = [Station.deserialize(station_data) for station_data in data["stations"]]
+        return location
 
 class Team():
     def __init__(self, name: str, to_visit_list: list[str]) -> None:
@@ -100,14 +125,33 @@ class Team():
 
     def GetName(self) -> str:
         return self.name
+    
+    def __repr__(self) -> str:
+        return f"Team(name={self.name!r}, to_visit_list={self.to_visit_list!r}, visited_list={self.visited_list!r})"
 
     def __str__(self) -> str:
-        return f"{self.name} {self.to_visit_list} {self.visited_list}"
+        to_visit_str = ','.join(self.to_visit_list)
+        visited_str = ','.join(self.visited_list)
+        return f"{self.name} [{to_visit_str}] [{visited_str}]"
+    
+    def serialize(self) -> dict:
+        return {
+            "name": self.name,
+            "to_visit_list": self.to_visit_list,
+            "visited_list": self.visited_list
+        }
+
+    @staticmethod
+    def deserialize(data: dict):
+        team = Team(data["name"], data["to_visit_list"])
+        team.visited_list = data["visited_list"]
+        return team
+
 
 
 class GameInfo:
     def __init__(self, caretakers: dict[int, str], admins: set[int], location_list: list[tuple[str, int]],
-                 teams: list[Team], team_on_station, team_leaving_station):
+                 teams: list[Team], team_on_station, team_leaving_station, is_restored=False):
         self.caretakers: dict[int, str] = caretakers
         self.admins = admins
         self.locations: set[Location] = set()
@@ -118,17 +162,18 @@ class GameInfo:
         self.BAD_ID = "INCORRECT_ID"
         self.client = valkey.Valkey(connection_pool=connection_pool)
 
-        for elem in location_list:
-            self.locations.add(
-                Location(location_name=elem[0], number_of_stations=elem[1]))
-
-        for location in self.locations:
-            for station in location.stations:
-                self.team_on_station[station.GetName()] = None
-
-        for location in self.locations:
-            for station in location.stations:
-                self.team_leaving_station[station.GetName()] = None
+        if not is_restored:
+            for elem in location_list:
+                self.locations.add(
+                    Location(location_name=elem[0], number_of_stations=elem[1]))
+        if not is_restored:
+            for location in self.locations:
+                for station in location.stations:
+                    self.team_on_station[station.GetName()] = None
+        if not is_restored:
+            for location in self.locations:
+                for station in location.stations:
+                    self.team_leaving_station[station.GetName()] = None
 
     def AddTeam(self, team_name: str):
         to_visit_list: list[str] = [location.GetName()
@@ -230,21 +275,72 @@ class GameInfo:
             return False
         return True
 
-    # def Update_game_info(self) -> None:
-    #     self.updates_count += 1
+     # Сериализация данных класса GameInfo
+    def serialize(self) -> dict:
+        return {
+            "caretakers": self.caretakers,
+            "admins": list(self.admins),
+            "locations": [location.serialize() for location in self.locations],
+            "teams": [team.serialize() for team in self.teams],
+            "team_on_station": self.team_on_station,
+            "team_leaving_station": self.team_leaving_station
+        }
 
-    #     if self.updates_count >= 1:
-    #         game_info_data = {
-    #             "caretakers": self.caretakers,
-    #             "admins": list(self.admins),
-    #             "locations": [str(location) for location in self.locations],
-    #             "teams": [str(team) for team in self.teams],
-    #             "team_on_station": self.team_on_station,
-    #             "team_leaving_station": self.team_leaving_station
-    #         }
+    # Десериализация данных класса GameInfo
+    @staticmethod
+    def deserialize(data: dict):
+        caretakers = data["caretakers"]
+        admins = set(data["admins"])
 
-    #         self.client.set("game_info", json.dumps(game_info_data))
-    #         logging.info("Game info сохранены в Valkey")
-    #         self.updates_count = 0
-    def Update_game_info(self):
-        pass
+        # Восстановление объектов Location
+        locations = set([Location.deserialize(location_data) for location_data in data["locations"]])
+
+        # Восстановление объектов Team
+        teams = set([Team.deserialize(team_data) for team_data in data["teams"]])
+
+        # Восстановление словарей с командами на станциях
+        team_on_station = data["team_on_station"]
+        team_leaving_station = data["team_leaving_station"]
+
+        return GameInfo(
+            caretakers=caretakers,
+            admins=admins,
+            location_list=[],  # Это не нужно при восстановлении
+            teams=list(teams),
+            team_on_station=team_on_station,
+            team_leaving_station=team_leaving_station,
+            is_restored=True
+        )
+
+    # Метод для сохранения состояния игры в Valkey
+    def update_game_info(self):
+        self.updates_count += 1
+
+        if self.updates_count >= 1:
+            # Сериализация данных
+            json_str_repr = json.dumps(self.serialize())
+
+            # Сохранение в Valkey
+            self.client.set("game_info", json_str_repr)
+            logging.info("Game info сохранены в Valkey")
+            self.updates_count = 0
+
+    # Метод для восстановления состояния игры из Valkey
+    @classmethod
+    def restore_game_info(cls):
+        client = valkey.Valkey(connection_pool=connection_pool)
+
+        # Получение данных из Valkey
+        json_str_repr = client.get("game_info")
+
+        if not json_str_repr:
+            logging.error("Не удалось восстановить игру, данные отсутствуют")
+            return None
+
+        # Десериализация данных
+        data = json.loads(json_str_repr)
+        return cls.deserialize(data)
+
+    
+
+    

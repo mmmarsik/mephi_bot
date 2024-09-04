@@ -159,7 +159,8 @@ async def cheking_correct_name(message: Message, state: FSMContext):
     with open("admin_logi.txt", "w") as f:
         f.write(f"In admin.py {[str(team) for team in game_info.teams]}")
 
-    game_info.Update_game_info()
+    game_info.update_game_info()  
+
 
     await message.answer(f"Успешно зарегистрирована команда {team_name}.\nОна отправлена на станцию {next_station.GetName()}.\n"
                          f"Чтобы посмотреть список зарегистрированных команд напишите /showteams\n\n"

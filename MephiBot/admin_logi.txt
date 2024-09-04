@@ -1,0 +1,1 @@
+In admin.py ["pizda_team' [Bar,Bebra] []", 'mars_team [Bar,Bebra] []']
