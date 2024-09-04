@@ -101,6 +101,7 @@ async def warning_not_name(message: Message):
 
 
 @admin_router.message(StateFilter(FSMStatesRegister.accept_info), F.text.lower() == "да")
+
 async def cheking_correct_name(message: Message, state: FSMContext):
     data = await state.get_data()
     team_name: str = data.get("name")

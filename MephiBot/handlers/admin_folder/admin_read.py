@@ -17,6 +17,7 @@ from ..keyboards import *
 
 read_router = Router()
 
+
 @read_router.message(Command("showteams"))
 @read_router.message(F.text == "Получить инфо о команде")
 async def cmd_show_teams(message: Message):
@@ -26,14 +27,15 @@ async def cmd_show_teams(message: Message):
         logging.warning(f"Админ {message.from_user.id} запросил список команд, но оказалось, что ни одной команды не было зарегистрировано")
         await message.answer(f"Пока что ни одной команды не было зарегистрировано")
         return
-    await message.answer(f"Выберите команду, о которой вы хотите получить информацию", 
+    await message.answer(f"Выберите команду, о которой вы хотите получить информацию",
                          reply_markup=get_team_keyboard())
 
 
 @read_router.message(lambda msg: msg.text in [team.GetName() for team in game_info.teams])
 async def cmd_answer_show_teams(message: Message):
     team_name: str = message.text
-    logging.info(f"Админ {message.from_user.id} запросил информацию о команде {team_name}")
+    logging.info(
+        f"Админ {message.from_user.id} запросил информацию о команде {team_name}")
 
     team = game_info.GetTeamByName(team_name)
     if team is None:
@@ -44,10 +46,11 @@ async def cmd_answer_show_teams(message: Message):
     list_answer: list[str] = team.GetToVisitList()
     unpacked_list_answer = ", ".join(list_answer)
 
-    string_ans_representation: str = f"Команде {team_name} осталось посетить локации: {unpacked_list_answer}"
-    
+    string_ans_representation: str = f"Команде {
+        team_name} осталось посетить локации: {unpacked_list_answer}"
+
     if len(string_ans_representation) > 0:
-        await message.answer(string_ans_representation, 
+        await message.answer(string_ans_representation,
                              reply_markup=get_admin_menu_keyboard())
     else:
         logging.warning(f"Админу {message.from_user.id} не удалось получить информацию о команде {team_name}")
@@ -58,7 +61,7 @@ async def cmd_answer_show_teams(message: Message):
 @read_router.message(F.text == "Статус станций")
 async def cmd_show_stations(message: Message):
     logging.info(f"Админ {message.from_user.id} запросил состояние станций")
-    
+
     status_emojis = {
         StationStatus.FREE: "🟢 Свободна",
         StationStatus.WAITING: "🟡 Ожидание",
@@ -76,19 +79,21 @@ async def cmd_show_stations(message: Message):
         answer_repr += "\n"
 
     if len(answer_repr.strip()) > 0:
-        logging.info(f"Админу {message.from_user.id} был показан статус станций")
+        logging.info(
+            f"Админу {message.from_user.id} был показан статус станций")
         await message.answer(answer_repr)
     else:
-        logging.warning(f"Админ {message.from_user.id} запросил состояние станций, но ни одной станции не было зарегистрировано")
+        logging.warning(f"Админ { message.from_user.id} запросил состояние станций, но ни одной станции не было зарегистрировано")
         await message.answer("Пока еще не было зарегистрировано ни одной станции.")
 
 
 @read_router.message(Command("showstationteams"))
 @read_router.message(F.text == "Показать команды на станции")
 async def cmd_show_station_teams(message: Message, state: FSMContext):
-    logging.info(f"Админ {message.from_user.id} начал процесс выбора станции для показа команд")
+    logging.info(
+        f"Админ {message.from_user.id} начал процесс выбора станции для показа команд")
 
-    await message.answer("Выберите станцию, для которой вы хотите посмотреть список команд:", 
+    await message.answer("Выберите станцию, для которой вы хотите посмотреть список команд:",
                          reply_markup=get_station_selection_keyboard())
     await state.set_state(FSMShowStationTeams.choose_station)
 
@@ -109,28 +114,54 @@ async def process_station_selected(message: Message, state: FSMContext):
     leaving_team = game_info.GetLeavingTeamByStation(selected_station_name)
 
     if current_team is None and leaving_team is None:
-        logging.info(f"На станции {selected_station_name} нет зарегистрированных команд")
+        logging.info(
+            f"На станции {selected_station_name} нет зарегистрированных команд")
         await message.answer(f"На станции {selected_station_name} нет зарегистрированных команд.")
     else:
         status_messages = []
         if current_team:
-            status_messages.append(f"Команда '{current_team.GetName()}' находится на станции.")
+            status_messages.append(
+                f"Команда '{current_team.GetName()}' находится на станции.")
         if leaving_team:
-            status_messages.append(f"Команда '{leaving_team.GetName()}' покидает станцию.")
-        
+            status_messages.append(
+                f"Команда '{leaving_team.GetName()}' покидает станцию.")
+
         logging.info(f"Админу {message.from_user.id} были показаны команды на станции {selected_station_name}")
         await message.answer("\n".join(status_messages))
 
     await state.clear()
-    await message.answer("Вы можете выбрать другую станцию или вернуться в главное меню.", 
+    await message.answer("Вы можете выбрать другую станцию или вернуться в главное меню.",
                          reply_markup=get_admin_menu_keyboard())
 
 
 @read_router.message(StateFilter(FSMShowStationTeams.choose_station))
 async def warning_invalid_station(message: Message):
-    logging.warning(f"Админ {message.from_user.id} ввел некорректное название станции")
+    logging.warning(
+        f"Админ {message.from_user.id} ввел некорректное название станции")
     await message.answer(
         f'Название станции некорректно.\n\n'
         f'Пожалуйста, выберите станцию из списка.\n\n'
         f'Если вы хотите прервать процесс, отправьте команду /cancel'
     )
+
+
+@read_router.message(F.text == "Найти команды без станций")
+@read_router.message(Command("find_teams_without_station"))
+async def find_teams_without_station(message: Message):
+    teams_without_station: set[str] = set()
+
+    for team in game_info.teams:
+        print(team.GetName())
+        print(game_info.team_on_station.values())
+        print(game_info.team_on_station.keys())
+        if len(team.GetToVisitList()) > 0:
+            if not (team.GetName() in game_info.team_on_station.values()) \
+                    and not (team.GetName() in game_info.team_leaving_station.values()):
+                teams_without_station.add(team.GetName())
+
+    if len(teams_without_station) == 0:
+        await message.answer(f"У всех команд назначена станция", reply_markup=get_admin_menu_keyboard())
+        return
+
+    await message.answer(f"Вот список команд у которых не назначено ни одной станции\n"
+                         f"{list(teams_without_station)}", reply_markup=get_admin_menu_keyboard())

@@ -47,7 +47,7 @@ class Station():
         return self.name
 
     def __str__(self) -> str:
-        return f"{self.name} {str(self.status)}"
+        return f"{self.name} {self.status.name}"
 
 
 class Location():
@@ -63,8 +63,10 @@ class Location():
         return self.name
 
     def __str__(self) -> str:
-        return f"{self.name} {[str(station) for station in self.stations]}"
-
+        to_visit_str = ",".join(self.to_visit)
+        visited_str = ",".join(self.visited)
+        return f"Team({self.name}:[{to_visit_str}]:[{visited_str}])"
+ 
 
 class Team():
     def __init__(self, name: str, to_visit_list: list[str]) -> None:
@@ -108,7 +110,6 @@ class GameInfo:
                  teams: list[Team], team_on_station, team_leaving_station):
         self.caretakers: dict[int, str] = caretakers
         self.admins = admins
-        self.location_list = location_list
         self.locations: set[Location] = set()
         self.teams: set[Team] = set(teams)
         self.team_on_station: dict[str, str] = dict(team_on_station)
@@ -117,7 +118,7 @@ class GameInfo:
         self.BAD_ID = "INCORRECT_ID"
         self.client = valkey.Valkey(connection_pool=connection_pool)
 
-        for elem in self.location_list:
+        for elem in location_list:
             self.locations.add(
                 Location(location_name=elem[0], number_of_stations=elem[1]))
 
@@ -229,19 +230,21 @@ class GameInfo:
             return False
         return True
 
-    def Update_game_info(self) -> None:
-        self.updates_count += 1
+    # def Update_game_info(self) -> None:
+    #     self.updates_count += 1
 
-        if self.updates_count >= 1:
-            game_info_data = {
-                "caretakers": self.caretakers,
-                "admins": list(self.admins),
-                "locations": [str(location) for location in self.locations],
-                "teams": [str(team) for team in self.teams],
-                "team_on_station": self.team_on_station,
-                "team_leaving_station": self.team_leaving_station
-            }
+    #     if self.updates_count >= 1:
+    #         game_info_data = {
+    #             "caretakers": self.caretakers,
+    #             "admins": list(self.admins),
+    #             "locations": [str(location) for location in self.locations],
+    #             "teams": [str(team) for team in self.teams],
+    #             "team_on_station": self.team_on_station,
+    #             "team_leaving_station": self.team_leaving_station
+    #         }
 
-            self.client.set("game_info", json.dumps(game_info_data))
-            logging.info("Game info сохранены в Valkey")
-            self.updates_count = 0
+    #         self.client.set("game_info", json.dumps(game_info_data))
+    #         logging.info("Game info сохранены в Valkey")
+    #         self.updates_count = 0
+    def Update_game_info(self):
+        pass

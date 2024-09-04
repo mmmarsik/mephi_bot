@@ -539,25 +539,6 @@ async def reset_selected_station_accept_info_invalid(message: Message, state: FS
     await message.answer(f"Вы ввели что-то некорректное.\n"
                          f"Вы хотите сбросить команды на станции {station_name} ?", reply_markup=get_yes_no_keyboard())
 
-@edit_router.message(F.text == "Найти команды без станций")
-@edit_router.message(Command("find_teams_without_station"))
-async def find_teams_without_station(message: Message):
-    teams_without_station: set[str] = set()
 
-    for team in game_info.teams:
-        if len(team.GetToVisitList()) > 0:
-            if not team.GetName() in game_info.team_on_station.values():
-                teams_without_station.add(team.GetName())
-            
-            if not team.GetName() in game_info.team_leaving_station.values():
-                teams_without_station.add(team.GetName())
-
-    if len(teams_without_station) == 0:
-        await message.answer(f"У всех команд назначена станция", reply_markup=get_admin_menu_keyboard())
-        return
-
-    await message.answer(f"Вот список команд у которых не назначено ни одной станции\n"
-                        f"{list(teams_without_station)}", reply_markup=get_admin_menu_keyboard())
-    game_info.Update_game_info()
 
     
