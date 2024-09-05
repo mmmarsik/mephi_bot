@@ -297,7 +297,7 @@ class GameInfo:
         team_on_station = data["team_on_station"]
         team_leaving_station = data["team_leaving_station"]
 
-        return GameInfo(
+        obj = GameInfo(
             caretakers=caretakers,
             admins=admins,
             location_list=[],  
@@ -306,6 +306,10 @@ class GameInfo:
             team_leaving_station=team_leaving_station,
             is_restored=True
         )
+
+        obj.locations = locations
+
+        return obj
 
     def update_game_info(self):
         self.updates_count += 1
@@ -329,7 +333,27 @@ class GameInfo:
 
         data = json.loads(json_str_repr)
         return cls.deserialize(data)
-
     
+    def copy_from_another_instance(self, another_instance):
+        if isinstance(another_instance, GameInfo):
+            self.caretakers = another_instance.caretakers
+            self.admins = another_instance.admins
+            self.locations = another_instance.locations
+            self.teams = another_instance.teams
+            self.team_on_station = another_instance.team_on_station
+            self.team_leaving_station = another_instance.team_leaving_station
+            self.updates_count = another_instance.updates_count
+            self.client = another_instance.client
+
+        with open("info.txt", "w") as f:
+            f.write(
+                f"{self.caretakers}\n"
+                f"{self.admins}\n"
+                f"{self.locations}\n"
+                f"{self.teams}\n"
+                f"{self.team_on_station}\n"
+                f"{self.team_leaving_station}\n"
+                f"{self.updates_count}\n"
+            )
 
     

@@ -68,7 +68,7 @@ restored_game_info = GameInfo.restore_game_info()
 
 if not restored_game_info is None:
     logging.info("Сохранение  найдено")
-    game_info = restored_game_info
+    game_info.copy_from_another_instance(restored_game_info)
 else:
     logging.info("Сохранение не найдено")
 

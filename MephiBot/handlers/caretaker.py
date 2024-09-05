@@ -89,7 +89,6 @@ async def accept_new_task(message: types.Message):
     station.SetStatus(StationStatus.IN_PROGRESS)
     logging.info(f"Caretaker {message.from_user.id} принял команду {team.GetName()} на станцию {station.GetName()}")
 
-    print(str(station))
 
     await message.reply(f"Вы успешно приняли новую команду '{team.GetName()}' на станцию {station.GetName()}.")
     game_info.update_game_info()  

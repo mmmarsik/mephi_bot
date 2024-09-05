@@ -151,9 +151,6 @@ async def find_teams_without_station(message: Message):
     teams_without_station: set[str] = set()
 
     for team in game_info.teams:
-        print(team.GetName())
-        print(game_info.team_on_station.values())
-        print(game_info.team_on_station.keys())
         if len(team.GetToVisitList()) > 0:
             if not (team.GetName() in game_info.team_on_station.values()) \
                     and not (team.GetName() in game_info.team_leaving_station.values()):
