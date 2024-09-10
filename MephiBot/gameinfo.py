@@ -314,7 +314,7 @@ class GameInfo:
     def update_game_info(self):
         self.updates_count += 1
 
-        if self.updates_count >= 1:
+        if self.updates_count >= 10:
             json_str_repr = json.dumps(self.serialize())
 
             self.client.set("game_info", json_str_repr)
