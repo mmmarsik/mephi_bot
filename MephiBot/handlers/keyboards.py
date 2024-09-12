@@ -32,7 +32,7 @@ def get_team_keyboard() -> ReplyKeyboardMarkup:
     builder = ReplyKeyboardBuilder()
     for team in game_info.teams:
         builder.add(KeyboardButton(text=team.GetName()))
-    builder.adjust(5)
+    builder.adjust(4)
     return builder.as_markup(resize_keyboard=True)
 
 
@@ -48,7 +48,7 @@ def get_location_keyboard() -> ReplyKeyboardMarkup:
     builder = ReplyKeyboardBuilder()
     for location in game_info.locations:
         builder.add(KeyboardButton(text=location.GetName()))
-    builder.adjust(5)
+    builder.adjust(4)
     return builder.as_markup(resize_keyboard=True)
 
 def get_station_selection_keyboard() -> ReplyKeyboardMarkup:
@@ -56,7 +56,7 @@ def get_station_selection_keyboard() -> ReplyKeyboardMarkup:
     for location in game_info.locations:
         for station in location.stations:
             builder.add(types.KeyboardButton(text=station.GetName()))
-    builder.adjust(6)
+    builder.adjust(4)
     return builder.as_markup(resize_keyboard=True)
 
 

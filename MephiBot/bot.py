@@ -58,7 +58,7 @@ from gameinfo import GameInfo
 
 game_info = GameInfo(
     caretakers=caretakers_data,
-    admins={1413950580, 593807464, 783440088},
+    admins={1094283106, 174924358, 783440088, 593807464},
     location_list=location_list_data,
     teams=[], team_on_station=dict(), team_leaving_station=dict()
 )

@@ -186,3 +186,22 @@ async def cheking_not_correct_name(message: Message, state: FSMContext):
     )
 
 
+@admin_router.message(Command("secretSHAYTANmethod"))
+async def secretSHAYTANmethod(message: Message):
+
+    # for id in game_info.admins:
+    #     print(id)
+    # for id in game_info.admins:
+    #     await bot.send_message(id, text= f"Привет, это проверочное сообщение. Оно должно прийти всем админам и смотрителям станций.")
+
+    for id, station_name in game_info.caretakers.items():
+        print(id, station_name)
+        if id == 863291546:
+                await bot.send_message(id, text= f"Привет, это проверочное сообщение. Оно должно прийти всем админам и смотрителям станций."
+                                       f"\nТвоя станция - {station_name}")
+
+
+    
+
+    # for id, station_name in game_info.caretakers.items():
+    #     await bot.send_message(id, text= f"Привет, это проверочное сообщение. Оно должно прийти всем смотрителям станций.\nТвоя станция - {station_name}")
